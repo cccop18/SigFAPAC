@@ -1,0 +1,83 @@
+
+<app-menu-proposta></app-menu-proposta>
+<br>
+<section id="cadastro">
+  <form (submit)="save()" [formGroup]="formParceriasProposta">
+    <div class="informacoes">
+      <h1>Recursos solicitados a outras fontes e/ou contrapartida da(s) instituição(ões) envolvida(s)</h1>
+      <p>Preencha corretamente os campos abaixo para adicionar novas Fontes de Recursos</p>
+      <h3>Os campos marcados com <span class="vermelho">*</span> são obrigatórios.</h3>
+    </div>
+    <br>
+    <hr>
+    <section id="diarias" class="dados-edital">
+      <!-- Localidade -->
+      <!-- Localidade como label com clique -->
+    <div>
+        <!-- Tipo de Localidade -->
+        <div class="form-group">
+          <label for="entidadeParceriaProposta" class="obrigatorio">Entidade:</label>
+          <input type="text" id="entidadeParceriaProposta" formControlName="entidadeParceriaProposta" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="tipoParceriaProposta" class="obrigatorio">Unidade</label>
+            <select id="tipoParceriaProposta" formControlName="tipoParceriaProposta" class="form-control" aria-placeholder="Unidade">
+                <option value="Pessoa Jurídica">Pessoa Jurídica</option>
+                <option value="Pessoa Física">Pessoa Física</option>
+            </select>
+        </div>
+      
+      <div class="form-group">
+        <label for="descricaoParceriaProposta" class="obrigatorio">Descrição</label>
+        <textarea id="descricaoParceriaProposta" formControlName="descricaoParceriaProposta" class="form-control" required
+          ></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="moeda" class="obrigatorio">Moeda</label>
+        <select id="moeda" formControlName="moeda" class="form-control" required>
+          <option *ngFor="let moeda of moedas" [ngValue]="moeda">{{ moeda.nomeMoeda }}</option>
+        </select>
+      </div>
+
+      <div class="bot">
+        <input type="button" value="Limpar" />
+        <input type="submit" value="Inserir" [disabled]="formParceriasProposta.invalid" />
+      </div>
+    </div>
+    </section>
+    <br>
+
+    <!-- Diárias Adicionadas -->
+    <section *ngIf="parceriasProposta.length > 0">
+      <hr>
+      <h3>Material de Consumo:</h3>
+      <table class="table table-bordered table-striped">
+        <thead class="bg-success">
+          <tr>
+            <th>Entidade</th>
+            <th>Tipo</th>
+            <th>Descrição</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let parcerias of parceriasProposta">
+              <td>{{ parcerias.entidadeParceriaProposta}}</td>
+              <td>{{ parcerias.tipoParceriaProposta }}</td>
+              <td>{{ parcerias.descricaoParceriaProposta }}</td>
+              <td>
+                <a href="" class="botao excluir text-danger" (click)="delete(parcerias.idParceriasProposta); $event.preventDefault();" ngbTooltip="Remover diária">Remover</a>
+              </td>
+            </tr>
+          </tbody>
+      </table>
+    </section>
+
+    <div class="bot">
+      <input type="button" value="Cancelar" routerLink="../">
+      <input type="button" value="Salvar" (click)="redirect()" />
+    </div>
+  </form>
+</section>

@@ -1,0 +1,105 @@
+<section id="cadastro">
+    <div class="informacoes">
+        <h1>Cadastro de Pesquisador</h1>
+        <p>Preencha corretamente os campos abaixo para fazer parte da comunidade de pesquisadores da FAPAC.</p>
+        <h3>Os campos marcados com <span class="vermelho">*</span> são obrigatórios.</h3>
+    </div>
+
+    <br>
+    <form [formGroup]="enderecoForm" (ngSubmit)="salvarEnderecos()">
+        <!-- Endereço Residencial -->
+        <h3>Endereço Residencial</h3>
+        <section class="dados-pesquisador dados">
+            <label for="pais" class="obrigatorio">País</label>
+            <select id="pais" name="pais" required>
+                <option value="BR">Brasil</option>
+            </select>
+
+            <label for="zipcode" class="obrigatorio estrangeiro-endR">Zip Code</label>
+            <input type="text" class="estrangeiro-endR">
+
+            <label for="cep" class="obrigatorio brasileiro-endR">CEP</label>
+            <input type="text" id="cep" name="cep" class="brasileiro-endR" required>
+
+            <label for="estado" class="obrigatorio brasileiro-endR">Estado</label>
+            <select id="uf1" name="estado" class="brasileiro-endR uf" required>
+                <option value="">Selecione o Estado</option>
+            </select>
+
+            <label for="municipio" class="obrigatorio brasileiro-endR">Município</label>
+            <select id="municipio1" name="municipio" class="municipio brasileiro-endR" required>
+                <option value="">Selecione o Município</option>
+            </select>
+
+            <label for="municipio" class="obrigatorio estrangeiro-endR">Município</label>
+            <input type="text" class="estrangeiro-endR">
+
+            <label for="logradouro" class="obrigatorio">Logradouro</label>
+            <input type="text" id="logradouro" name="logradouro" required>
+
+            <label for="numero" class="obrigatorio">Número</label>
+            <input type="number" id="numero" name="numero" required>
+
+            <label for="complemento">Complemento</label>
+            <input type="text" id="complemento" name="complemento">
+
+            <label for="bairro" class="obrigatorio">Bairro</label>
+            <input type="text" id="bairro" name="bairro" required>
+
+            <label for="telefone">Telefone</label>
+            <input type="tel" id="telefone" name="telefone">
+
+            <label for="celular">Celular</label>
+            <input type="tel" id="celular" name="celular">
+        </section>
+
+        <!-- Endereço Profissional -->
+        <h3>Endereço Profissional</h3>
+        <section class="dados-pesquisador dados">
+            <label for="pais-prof">País</label>
+            <select id="pais-prof" name="pais" required>
+                <option value="BR">Brasil</option>
+            </select>
+
+            <label for="cep" class="brasileiro-endP">CEP</label>
+            <input type="text" id="cep" name="cep" class="brasileiro-endP" required>
+
+            <label for="estado" class="brasileiro-endP">Estado</label>
+            <select id="uf2" name="estado" class="brasileiro-endP uf" required>
+                <option value="">Selecione o Estado</option>
+            </select>
+
+            <label for="municipio" class="brasileiro-endP">Município</label>
+            <select id="municipio2" name="municipio" class="municipio brasileiro-endP" required>
+                <option value="">Selecione o Município</option>
+            </select>
+
+            <label for="municipio" class="estrangeiro-endP">Município</label>
+            <input type="text" class="estrangeiro-endP">
+
+            <label for="logradouro">Logradouro</label>
+            <input type="text" id="logradouro" name="logradouro" required>
+
+            <label for="numero">Número</label>
+            <input type="number" id="numero" name="numero" required>
+
+            <label for="complemento">Complemento</label>
+            <input type="text" id="complemento" name="complemento">
+
+            <label for="bairro">Bairro</label>
+            <input type="text" id="bairro" name="bairro" required>
+
+            <label for="telefone">Telefone</label>
+            <input type="tel" id="telefone" name="telefone">
+
+            <label for="celular">Celular</label>
+            <input type="tel" id="celular" name="celular">
+        </section>
+
+        <div class="bot">
+          <input type="button" value="Cancelar" routerLink="login">
+          <input type="submit" value="Salvar" [disabled]="enderecoForm">
+        </div>
+    </form>
+</section>
+

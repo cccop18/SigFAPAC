@@ -1,0 +1,249 @@
+:root {
+    --verde1: #038E42;
+    --verde2: #2ecc71;
+    --branco: #ffffff;
+    --preto: #000000;
+    --background-color: #41414115;
+    --text-color: #333;
+}
+
+/* Estilo geral da página */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--branco);
+    font-size: 1em;
+    color: var(--text-color);
+}
+
+/* Seções de avisos, mensagens e propostas */
+section {
+    margin-bottom: 30px;
+    padding-left: 10%;
+}
+
+h2 {
+    color: var(--verde1);
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+/* Estilo para avisos e mensagens */
+.avisos p, .mensagens p {
+    margin: 5px 0;
+    font-size: 1.1em;
+    text-align: left;
+}
+
+.alerta {
+    color: #cc3300;
+}
+
+.success {
+    color: var(--verde1);
+}
+
+/* Ícones */
+.icone {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    background-size: contain;
+}
+
+/* Estilo para as propostas */
+.proposta {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: var(--background-color);
+    border-radius: 5px;
+}
+
+.proposta-header {
+    font-weight: bold;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    color: var(--text-color);
+}
+
+/* Corpo da proposta */
+.proposta-body p {
+    margin: 5px 0;
+}
+
+/* Ações (botões) da proposta */
+.proposta-actions {
+    margin-top: 10px;
+}
+
+.proposta-actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.proposta-actions img {
+    width: 20px;
+    height: 20px;
+}
+
+/* Botões de ação dentro das propostas */
+.proposta-actions button {
+    padding: 0.4em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.proposta-actions button:hover {
+    background-color: var(--verde2);
+    color: var(--preto);
+}
+
+.edital-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: var(--background-color);
+    border-radius: 5px;
+  }
+
+  .edital-card h3 {
+    color: var(--verde1);
+    font-size: 1.2em;
+  }
+
+  .edital-card p {
+    font-size: 1em;
+  }
+
+  .edital-card button {
+    padding: 0.5em;
+    background-color: var(--verde2);
+    color: var(--branco);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .edital-card button:hover {
+    background-color: var(--verde1);
+  }
+
+ /* Contêiner de transição para os editais */
+.editais-container {
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    opacity: 1;
+    max-height: 1000px;
+}
+
+.editais-container.hidden {
+    max-height: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.editais-container.visible {
+    max-height: 1000px;
+    opacity: 1;
+}
+/* Estilo do card de edital */
+.edital-card {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 15px;
+    background-color: var(--branco);
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.edital-card .edital-header {
+    background-color: var(--verde1); /* Cor do cabeçalho verde */
+    color: var(--branco);
+    padding: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+    border-radius: 5px 5px 0 0;
+}
+
+.edital-card h3 {
+    color: var(--verde1);
+    font-size: 1.1em;
+    margin: 10px 0;
+}
+
+.edital-card p {
+    color: var(--text-color);
+    font-size: 0.9em;
+    margin: 5px 0;
+}
+
+/* Centraliza as ações (botões) */
+.edital-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.proposta-actions button {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    color: var(--branco);
+}
+
+.proposta-actions .visualizar {
+    background-color: var(--amarelo);
+}
+
+.proposta-actions .editar {
+    background-color: var(--azul);
+}
+
+.proposta-actions .excluir {
+    background-color: var(--vermelho);
+}
+
+/* Hover para os botões */
+.proposta-actions button:hover {
+    opacity: 0.9;
+}
+
+
+/* Hover para os botões */
+.proposta-actions button:hover {
+    opacity: 0.9;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .container {
+        width: 100%;
+        padding: 15px;
+    }
+
+    section {
+        padding-left: 5%;
+    }
+
+    .proposta-header {
+        font-size: 1em;
+    }
+}

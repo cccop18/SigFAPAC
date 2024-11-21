@@ -1,0 +1,109 @@
+
+<app-menu-proposta></app-menu-proposta>
+<br>
+<section id="cadastro">
+  <form (submit)="save()" [formGroup]="formPessoalProposta">
+    <div class="informacoes">
+      <h1>Pessoal</h1>
+      <p>Preencha corretamente os campos abaixo para inserir novo Pessoal</p>
+      <h3>Os campos marcados com <span class="vermelho">*</span> são obrigatórios.</h3>
+    </div>
+    <br>
+    <hr>
+    <section id="diarias" class="dados-edital">
+    <div>
+        <div class="form-group">
+          <label for="funcaoPessoalProposta" class="obrigatorio">Função</label>
+          <input type="text" id="funcaoPessoalProposta" formControlName="funcaoPessoalProposta" class="form-control"/>
+        </div>
+
+
+      <div class="form-group">
+        <label for="formacaoPessoalProposta" class="obrigatorio">Formação Profissional</label>
+        <textarea id="formacaoPessoalProposta" formControlName="formacaoPessoalProposta" class="form-control"></textarea>
+      </div>
+
+      
+      <div class="form-group">
+        <label for="perfilPessoalProposta" class="obrigatorio">Perfil desejado (competências, experiência, titulação etc.)</label>
+        <textarea id="perfilPessoalProposta" formControlName="perfilPessoalProposta" class="form-control"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="periodoPessoalProposta" class="obrigatorio">Período de atuação (meses)</label>
+        <select id="periodoPessoalProposta" formControlName="periodoPessoalProposta" class="form-control" aria-placeholder="Unidade">
+          <option *ngFor="let periodo of periodos" [value]="periodo">{{ periodo }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="inicioPessoalPropostacol" class="obrigatorio">Início (mês)</label>
+        <select id="inicioPessoalPropostacol" formControlName="inicioPessoalPropostacol" class="form-control" aria-placeholder="Unidade">
+          <option *ngFor="let mes of meses" [value]="mes">{{ mes }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="horaSemanaPessoalProposta" class="obrigatorio">Horas/semana</label>
+        <input type="number" id="horaSemanaPessoalProposta" formControlName="horaSemanaPessoalProposta" class="form-control" required
+          placeholder="0" />
+      </div>
+
+      <div class="form-group">
+        <label for="custoHoraPessoalProposta" class="obrigatorio">Custo/hora ou Custo/mês</label>
+        <input type="number" id="custoHoraPessoalProposta" formControlName="custoHoraPessoalProposta" class="form-control" required
+          placeholder="0,00" />
+      </div>
+
+      <div class="form-group">
+        <label for="custoTotalPessoalPropostacol" class="obrigatorio">Custo Total</label>
+        <input type="number" id="custoTotalPessoalPropostacol" formControlName="custoTotalPessoalPropostacol" class="form-control" required
+          placeholder="0,00" />
+      </div>
+
+
+      <div class="form-group">
+        <label for="dataPessoalProposta" class="obrigatorio">Data</label>
+        <input type="text" id="dataPessoalProposta" formControlName="dataPessoalProposta" class="form-control" placeholder="1º Mês" />
+      </div>
+
+      <div class="bot">
+        <input type="button" value="Limpar" />
+        <input type="submit" value="Inserir" [disabled]="formPessoalProposta.invalid" />
+      </div>
+    </div>
+    </section>
+    <br>
+
+    <!-- Diárias Adicionadas -->
+    <section *ngIf="pessoalProposta.length > 0">
+      <hr>
+      <h3>Material de Consumo:</h3>
+      <table class="table table-bordered table-striped">
+        <thead class="bg-success">
+          <tr>
+            <th>Função</th>
+            <th>Formação</th>
+            <th>Custo Total</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pessoal of pessoalProposta">
+              <td>{{ pessoal.funcaoPessoalProposta}}</td>
+              <td>{{ pessoal.formacaoPessoalProposta }}</td>
+              <td>{{ pessoal.custoTotalPessoalPropostacol }}</td>
+              <td>
+                <a href="" class="botao excluir text-danger" (click)="delete(pessoal.idPessoalProposta); $event.preventDefault();" ngbTooltip="Remover diária">Remover</a>
+              </td>
+            </tr>
+          </tbody>
+      </table>
+    </section>
+
+    <div class="bot">
+      <input type="button" value="Cancelar" routerLink="../">
+      <input type="button" value="Salvar" (click)="redirect()" />
+    </div>
+  </form>
+</section>

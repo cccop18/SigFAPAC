@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Propostas</title>
+</head>
+<body>
+    <div class="container">
+        <section class="avisos">
+            <h2>Avisos</h2>
+        </section>
+       <hr>
+        <section class="mensagens">
+            <h2>Últimas Mensagens</h2>
+            <p><span class="icone success"></span>Não há novas mensagens!</p>
+        </section>
+        <hr>
+        <section class="editais">
+            <h2 (click)="toggleEditais()" class="btn">Editais em Aberto <img style="height: 35px; margin-left: 10px;" [src]="menuIcon" alt="Abrir Menu" id="menu-icon"></h2>
+            <!-- Apenas mostra os editais se `mostrarEditais` for verdadeiro -->
+            <div [ngClass]="mostrarEditais ? 'editais-container visible' : 'editais-container hidden'">
+                <div *ngFor="let edital of editais" class="edital-card">
+                    <div class="edital-header">
+                        <span>{{ edital.numeroAnoEdital }}</span>
+                    </div>
+                    <h3>{{ edital.tituloEdital }}</h3>
+                    <p><strong>Programa:</strong> {{ edital.programa.nomePrograma }}</p>
+                    <p><strong>Data de Abertura:</strong> {{ edital.dataAberturaEdital }}  <strong>Hora:</strong>{{ edital.horaAberturaEdital }}</p>
+                    <p><strong>Data de Fechamento:</strong> {{ edital.dataFechamentoEdital }}  <strong>Hora:</strong> {{ edital.horaFechamentoEdital }}</p>
+                    <p><strong>Situação:</strong> {{ edital.situacaoEdital }}</p>
+                    <button (click)="visualizarEdital(edital.idEdital)" class="visualizar">Visualizar</button>
+                </div>
+            </div>
+        </section>
+        <hr>
+        <section class="propostas">
+            <h2>Minhas Propostas/Inscrições em Edição</h2>
+        </section>
+    </div>
+    <script>
+      function toggleEditais() {
+          const menuIcon = document.getElementById('menu-icon');
+          const currentSrc = menuIcon.src;
+
+          // Trocar a imagem
+          if (currentSrc.includes('sinal-de-seta-para-baixo-para-navegar.png')) {
+              menuIcon.src = '../../../../assets/img/sinal-de-seta-para-cima-para-navegar';
+          } else {
+              menuIcon.src = '../../../../assets/img/sinal-de-seta-para-baixo-para-navegar.png';
+          }
+      }
+  </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+
+<app-menu-proposta></app-menu-proposta>
+<br>
+<section id="cadastro">
+  <form (submit)="save()" [formGroup]="formMaterialPermProposta">
+    <div class="informacoes">
+      <h1>Material Permanente e Equipamentos</h1>
+      <p>Preencha corretamente os campos abaixo para adicionar novos Materiais Permanentes</p>
+      <h3>Os campos marcados com <span class="vermelho">*</span> são obrigatórios.</h3>
+      <br>
+      <p class="vermelho">Cadastre apenas o orçamento de menor valor.</p>
+      <p class="vermelho">Obs. Senhor Pesquisador não esqueça de incluir no valor final do equipamento todas as taxas de importação do mesmo, caso seja necessário.</p>
+    </div>
+    <br>
+    <hr>
+    <section id="diarias" class="dados-edital">
+      <!-- Localidade -->
+      <!-- Localidade como label com clique -->
+    <div>
+        <!-- Tipo de Localidade -->
+        <div class="form-group">
+          <label for="especificacaoMaterialPermProposta" class="obrigatorio">Especificação</label>
+          <textarea id="especificacaoMaterialPermProposta" formControlName="especificacaoMaterialPermProposta" class="form-control">
+          </textarea>
+        </div>
+
+        <div class="form-group">
+        <label for="tipoMaterialPermProposta" class="obrigatorio">Tipo</label>
+        <select id="tipoMaterialPermProposta" formControlName="tipoMaterialPermProposta" class="form-control" aria-placeholder="Unidade">
+            <option value="Nacional">Nacional</option>
+            <option value="Importado">Importado</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="quantidadeMaterialPermProposta" class="obrigatorio">Quantidade</label>
+        <input type="number" id="quantidadeMaterialPermProposta" formControlName="quantidadeMaterialPermProposta" class="form-control" required
+          placeholder="1" />
+      </div>
+
+
+      <div class="form-group">
+        <label for="custoMaterialPermProposta" class="obrigatorio">Custo Unitário</label>
+        <input type="number" id="custoMaterialPermProposta" formControlName="custoMaterialPermProposta" class="form-control" required
+          placeholder="0,00" />
+      </div>
+
+      <div class="form-group">
+        <label for="moeda" class="obrigatorio">Moeda</label>
+        <select id="moeda" formControlName="moeda" class="form-control" required>
+          <option *ngFor="let moeda of moedas" [ngValue]="moeda">{{ moeda.nomeMoeda }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="dataMaterialPermProposta" class="obrigatorio">Data</label>
+        <input type="text" id="dataMaterialPermProposta" formControlName="dataMaterialPermProposta" class="form-control" placeholder="1º Mês" />
+      </div>
+
+      <div class="bot">
+        <input type="button" value="Limpar" />
+        <input type="submit" value="Inserir" [disabled]="formMaterialPermProposta.invalid" />
+      </div>
+    </div>
+    </section>
+    <br>
+
+    <!-- Diárias Adicionadas -->
+    <section *ngIf="materialPermProposta.length > 0">
+      <hr>
+      <h3>Material de Consumo:</h3>
+      <table class="table table-bordered table-striped">
+        <thead class="bg-success">
+          <tr>
+            <th>Especificação</th>
+            <th>Mês</th>
+            <th>Quantidade</th>
+            <th>Custo Unitário</th>
+            <th>Custo Total</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let material of materialPermProposta">
+              <td>{{ material.especificacaoMaterialPermProposta}}</td>
+              <td>{{ material.dataMaterialPermProposta }}</td>
+              <td>{{ material.quantidadeMaterialPermProposta }}</td>
+              <td>{{ material.custoMaterialPermProposta }}</td>
+              <td>{{ material.quantidadeMaterialPermProposta * material.custoMaterialPermProposta }}</td>
+              <td>
+                <a href="" class="botao excluir text-danger" (click)="delete(material.idMaterialPermProposta); $event.preventDefault();" ngbTooltip="Remover diária">Remover</a>
+              </td>
+            </tr>
+          </tbody>
+      </table>
+    </section>
+
+    <div class="bot">
+      <input type="button" value="Cancelar" routerLink="../">
+      <input type="button" value="Salvar" [disabled]="formMaterialPermProposta.invalid" />
+    </div>
+  </form>
+</section>

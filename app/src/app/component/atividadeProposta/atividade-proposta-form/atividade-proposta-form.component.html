@@ -1,0 +1,106 @@
+<app-menu-proposta></app-menu-proposta>
+<br>
+<section id="cadastro">
+  <form (submit)="save()" [formGroup]="formAtividadeProposta">
+    <div class="informacoes">
+      <h1>Atividades</h1>
+      <p>Preencha corretamente os campos abaixo para relatar Atividades a seus Colaboradores</p>
+      <h3>Os campos marcados com <span class="vermelho">*</span> são obrigatórios.</h3>
+    </div>
+    <br>
+    <hr>
+    <section id="bolsas" class="dados-edital">
+        <div class="form-group">
+
+            <div class="form-group">
+                <label for="descricaoProposta" class="obrigatorio">Atividade</label>
+                <textarea id="descricaoProposta" formControlName="descricaoProposta" class="form-control" required 
+                [ngClass]="{'is-invalid': form.descricaoProposta.invalid && form.descricaoProposta.touched, 'is-valid': form.descricaoProposta.valid && form.descricaoProposta.touched}"></textarea>
+                <div *ngIf="form.descricaoProposta.hasError('pattern')" class="vermelho">
+                  <small>A descrição deve ter no minimo 3 caracteres validos.</small>
+                </div>
+                <div *ngIf="form.descricaoProposta.hasError('required')" class="vermelho">
+                  <small>Favor preencher a descrição da Atividade.</small>
+                </div>
+            </div>
+          <div class="form-group">
+            <label for="valorAtividdeProposta" class="obrigatorio">Valor(R$)</label>
+            <input type="number" id="valorAtividdeProposta" formControlName="valorAtividdeProposta" class="form-control" required 
+            [ngClass]="{'is-invalid': form.valorAtividdeProposta.invalid && form.valorAtividdeProposta.touched, 'is-valid': form.valorAtividdeProposta.valid && form.valorAtividdeProposta.touched}"
+              placeholder="1,00" />
+              <div *ngIf="form.valorAtividdeProposta.hasError('required')" class="vermelho">
+                <small>Favor preencher o valor da Atividade.</small>
+              </div>
+          </div>
+          <div class="form-group">
+            <label for="mesInicioAtividadeProposta" class="obrigatorio">Mês de Inicio</label>
+            <input type="text" id="mesInicioAtividadeProposta" formControlName="mesInicioAtividadeProposta" class="form-control" placeholder="Digite o mês de inicio"
+            [ngClass]="{'is-invalid': form.mesInicioAtividadeProposta.invalid && form.mesInicioAtividadeProposta.touched, 'is-valid': form.mesInicioAtividadeProposta.valid && form.mesInicioAtividadeProposta.touched}"/>
+            <div *ngIf="form.mesInicioAtividadeProposta.hasError('required')" class="vermelho">
+              <small>Favor preencher o mês de inicio.</small>
+            </div>
+          </div>    
+
+          <div class="form-group">
+            <label for="duracaoAtividadeProposta" class="obrigatorio">Duração (Meses):</label>
+            <input type="text" id="duracaoAtividadeProposta" formControlName="duracaoAtividadeProposta" class="form-control" placeholder="1" 
+            [ngClass]="{'is-invalid': form.duracaoAtividadeProposta.invalid && form.duracaoAtividadeProposta.touched, 'is-valid': form.duracaoAtividadeProposta.valid && form.duracaoAtividadeProposta.touched}"/>
+            <div *ngIf="form.duracaoAtividadeProposta.hasError('required')" class="vermelho">
+              <small>Favor preencher a duração.</small>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label for="membros" class="obrigatorio">Responsavel</label>
+            <select formControlName="membros" id="membros" [ngClass]="{'is-invalid': form.membros.invalid && form.membros.touched, 'is-valid': form.membros.valid && form.membros.touched}">
+                <option *ngFor="let membro of membros" [ngValue]="membro">
+                  {{ membro.pesquisador.nomeCompletoPesquisador }}
+                </option>
+              </select>
+              <div *ngIf="form.duracaoAtividadeProposta.hasError('required')" class="vermelho">
+                <small>Favor selecionar um colaborador.</small>
+              </div>
+          </div>
+
+          <div class="bot">
+            <input type="button" value="Limpar" (click)="formAtividadeProposta.reset()" />
+            <input type="submit" value="Inserir" [disabled]="formAtividadeProposta.invalid" />
+          </div>
+          <hr>
+                    <!-- Tabela para listar as bolsas inseridas, mostrada apenas quando houver registros -->
+            <section *ngIf="atividades.length > 0">
+              <hr>
+              <h2>Atividades Salvas</h2>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Atividade</th>
+                    <th>Valor</th>
+                    <th>Inicio</th>
+                    <th>Duração (meses)</th>
+                    <th>Responsavel</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let atividade of atividades">
+                    <td>{{ atividade.descricaoProposta }}</td>
+                    <td>{{ atividade.valorAtividdeProposta }}</td>
+                    <td>{{ atividade.mesInicioAtividadeProposta }}</td>
+                    <td>{{ atividade.duracaoAtividadeProposta }}</td>
+                    <td>{{ atividade.membros.pesquisador.nomeCompletoPesquisador}}</td>
+                    <td>
+                      <a href="" class="botao excluir text-danger" (click)="delete(atividade.idAtividadeProposta); $event.preventDefault();" ngbTooltip="Remover bolsa">Remover</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+          <div class="bot">
+            <input type="button" value="Cancelar" routerLink="../">
+            <input type="button" value="Salvar" [disabled]="formAtividadeProposta.invalid" (click)="save()" />
+          </div>
+
+  
+

@@ -1,0 +1,275 @@
+:root {
+  --verde1: #038E42;
+  --verde2: #2ecc71;
+  --branco: #ffffff;
+  --preto: #000000;
+  --background-color: #41414115;
+  --text-color: #333;
+}
+
+/*** Configurações gerais da pagina ***/
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+/* Basic styling */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  height: 100%;
+  background-color: var(--background-color);
+}
+
+h1 {
+  font-size: 1.4em;
+  font-weight: bold;
+}
+h2, h3, h4, h5, h6 {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.inativo {
+  display: none;
+}
+
+/*** Configurações do cabeçalho da pagina ***/
+
+header {
+  width: 100%;
+  height: 160px; /* 80% de 200px */
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--branco);
+}
+
+#logo {
+  margin-left: 32px; /* 80% de 40px */
+  padding: 12px 24px; /* 80% de 15px 30px */
+}
+
+#logo img {
+  height: 88px; /* 80% de 110px */
+}
+
+nav {
+  margin: auto;
+  margin-right: 80px; /* 80% de 100px */
+}
+
+nav ul {
+  list-style-type: none;
+  display: flex;
+}
+
+nav ul li {
+  padding: 4px 12px; /* 80% de 5px 15px */
+  font-size: 1.1em; /* 80% de 1.4em */
+}
+
+nav .nav-icon {
+  width: 24px; /* 80% de 30px */
+  display: none;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+  text-align: center;
+}
+
+a:hover {
+  color: rgb(253, 228, 0);
+}
+
+.vertical-line {
+  width: 0.8px; /* 80% de 1px */
+  height: 40px; /* 80% de 50px */
+  background-color: var(--text-color);
+  margin: 0 auto;
+}
+
+.linha-cabecalho {
+  width: 100%;
+  height: 0.8px;
+  background-color: var(--background-color);
+}
+
+/*** Configurações do corpo da pagina ***/
+
+main {
+  width: 100%;
+  min-height: calc(100vb - (161.6px + 160px));
+  align-items: center;
+  display: flex;
+  align-items: stretch;
+  flex-grow: 1;
+}
+
+/*** Configurações do rodapé da pagina ***/
+
+footer {
+  width: 100%;
+  min-width: 520px;
+  height: 120px;
+  padding: 20px 0px;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--branco);
+}
+
+#info-rodape {
+  margin: 40px 80px;
+  width: 52%;
+}
+
+.rodape-line {
+  width: 0.8px;
+  height: 104px;
+  background-color: var(--text-color);
+  margin: 0 auto;
+  margin: 20px 8px;
+}
+
+#redes-rodape {
+  width: 24%;
+}
+
+.redes-sociais {
+  width: 32px;
+  margin: auto;
+}
+
+/*** Configurações de responsividade da pagina ***/
+
+@media screen and (max-width: 920px) {
+  header {
+    display: block;
+    height: 170px;
+  }
+
+  #logo img {
+      height: auto;
+      width: 370px;
+      margin: auto;
+  }
+
+  #logo a {
+      margin: auto;
+      display: flex;
+  }
+
+  #logo {
+      margin: auto;
+      padding: 15px 0px;
+  }
+
+  nav {
+      margin: auto;
+  }
+}
+
+
+@media screen and (max-width: 650px) {
+
+  .inativo-menu {
+      display: none;
+  }
+
+  /*** Configurações de responsividade do cabeçalho da pagina ***/
+  header {
+      min-width: 400px;
+      height: 190px;
+      display: block;
+  }
+
+  #logo img {
+      height: auto;
+      width: 370px;
+      margin: auto;
+  }
+
+  #logo a {
+      margin: auto;
+      display: flex;
+  }
+
+  #logo {
+      margin: auto;
+      padding: 15px 0px;
+  }
+
+  nav {
+      margin-top: 35px;
+      min-width: 400px;
+      width: 100%;
+      position: absolute;
+  }
+
+  nav .nav-icon {
+      display: block;
+      margin: auto;
+  }
+
+  nav ul {
+      display: block;
+      margin: auto;
+      background-color: var(--branco);
+  }
+
+  nav li {
+      margin: auto;
+      width: 350px;
+      text-align: center;
+      border-radius: 7px;
+  }
+
+  nav li:hover {
+      color: white;
+      background-color: #038E42;
+  }
+
+  .vertical-line {
+      display: none;
+  }
+
+  /*** Configurações de responsividade do corpo da pagina ***/
+
+  main {
+      min-width: 400px;
+      height: 100%;
+      min-height: 200px;
+  }
+
+  /*** Configurações de responsividade do rodapé da pagina ***/
+
+  footer {
+      height: auto;
+      min-width: 400px;
+      display: block;
+  }
+
+  #info-rodape {
+      margin: 20px auto;
+      width: 80%;
+      overflow: hidden;
+      word-break: break-word;
+  }
+
+  .rodape-line {
+      display: none;
+  }
+
+  #redes-rodape {
+      align-items: center;
+      width: 100%;
+  }
+}

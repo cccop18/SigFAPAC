@@ -1,0 +1,64 @@
+<h1>Informações do Edital</h1>
+<div class="container mt-4">
+    <div class="row">
+      <!-- Iterar sobre os registros e criar um card para cada um -->
+      <div class="col-md-12 mb-4" *ngFor="let edital of registroEdital">
+        <div class="card text-center h-100 shadow-sm">
+          <div class="card-header bgtitulo text-white">
+            <!-- Campo destaque no cabeçalho -->
+            <strong>{{ edital.tituloEdital }}</strong>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Identificação: {{ edital.identificacaoEdital }}</h5>
+            <p class="card-text">
+              <strong>Código da unidade administrativa:</strong> {{ edital.codUnidadeAdmEdital }}<br>
+              <strong>Edital especial:</strong> {{ edital.editalEspecial ? 'Sim' : 'Não'}}<br>
+              <strong>Programa:</strong> {{ getProgramaNome(edital.programa) }}<br>
+              <strong>Duração do programa:</strong> {{ edital.duracaoPropostaEdital }}<br>
+              <strong>Bolsa para coordenador:</strong> {{ edital.cordenadorBolsaEdital ? 'Sim' : 'Não' }}<br>
+              <strong>Coordenador participa:</strong> {{ edital.cordenadorParticipaEdital ? 'Sim' : 'Não'}}<br>
+              <strong>Obrigatório ter orientador:</strong> {{ edital.obgOrientadorEdital ? 'Sim' : 'Não' }}<br>
+              <strong>Proponente tem bolsa:</strong> {{ edital.proponenteBolsaEdital ? 'Sim' : 'Não' }}<br>
+              <strong>Multiplas propostas:</strong> {{ edital.multiplasPropostaEdital ? 'Sim' : 'Não' }}<br>
+              <strong>Gera patente:</strong> {{ edital.patenteEdital ? 'Sim' : 'Não'}}<br>
+            </p>
+  
+            <!-- Alinhamento dos botões um ao lado do outro -->
+            <div class="d-flex justify-content-center mt-3">
+                <strong>Arquivo em PDF: </strong>
+              <a [href]="urlView + edital.fileEdital"  target="_blank"
+                class="botao view me-2"
+                ngbTooltip="Visualizar edital">
+                <i class="bi bi-eye"></i>
+              </a>
+              <a [href]="urlDownload + edital.fileEdital"
+                     class="botao download"
+                     ngbTooltip="Baixar edital"><i class="bi bi-box-arrow-in-down"></i></a>
+            </div>
+          </div>
+          <div class="card-footer text-muted">
+            <div class="card-header bgret text-white">
+                <strong>Retificações:</strong><br>
+            </div>
+            <div class="card-footer" *ngFor="let ret of registroRetificacao">
+                <strong>Nome da retificação:</strong> {{ ret.nomeRetificacoes}}<br>
+                
+            <strong>Publicação da retificação:</strong> {{ ret.dataRetificacoes | date:'dd/MM/yyyy HH:mm' }}<br>
+                <div class="d-flex justify-content-center mt-3">
+                    <strong>Arquivo em PDF: </strong>
+                  <a [href]="urlViewRetificacao + ret.fileRetificacoes"  target="_blank"
+                    class="botao view me-2"
+                    ngbTooltip="Visualizar edital">
+                    <i class="bi bi-eye"></i>
+                  </a>
+                  <a [href]="urlDownloadRetificacao + ret.fileRetificacoes"
+                         class="botao download"
+                         ngbTooltip="Baixar edital"><i class="bi bi-box-arrow-in-down"></i></a>
+                </div><br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

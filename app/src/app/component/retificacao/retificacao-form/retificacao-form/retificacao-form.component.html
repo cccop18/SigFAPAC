@@ -1,0 +1,100 @@
+<app-menu-edital></app-menu-edital>
+<br>
+<section id="cadastro">
+    <div class="informacoes">
+      <h1>Cadastro de Retificação</h1>
+      <p>Preencha corretamente os campos abaixo para cadastra uma Retificação para Edital especifico.</p>
+      <h3>Os campos marcados com <span class="vermelho">*</span> são obrigatórios.</h3>
+    </div>
+    <br>
+    <hr>
+  <div class="retificacao-form-container">
+      <form [formGroup]="formRetificacoes" (ngSubmit)="save()">
+        <!-- Campo do Nome do Edital (Não editável) -->
+        <div class="form-group">
+          <label for="edital" class="obrigatorio">Nome do Edital</label>
+        <input
+          type="text"
+          id="edital"
+          class="form-control"
+          formControlName="edital"
+          [value]="formRetificacoes.controls['edital'].value?.tituloEdital"
+          readonly
+        />
+        </div>
+        
+    
+        <!-- Campo para o Nome da Retificação -->
+        <div class="form-group">
+          <label for="nomeRetificacoes" class="obrigatorio">Nome da Retificação</label>
+          <small *ngIf="form.nomeRetificacoes.hasError('required')" class="vermelho">Campo
+            obrigatório</small>
+          <input
+            type="text"
+            id="nomeRetificacoes"
+            class="form-control"
+            formControlName="nomeRetificacoes"
+            placeholder="Digite o nome da retificação"
+          />
+          <div *ngIf="form.nomeRetificacoes.hasError('pattern')" class="vermelho">
+            <small>Digite ao menos 3 caracteres (sem considerar espaços em branco)</small>
+          </div>
+        </div>
+        
+    
+        <!-- Campo para Upload de Arquivo -->
+        <div class="form-group">
+          <label for="fileRetificacoes" class="obrigatorio">Arquivo de Retificação</label>
+          <input
+            type="file"
+            id="fileRetificacoes"
+            class="form-control"
+            formControlName="fileRetificacoes"
+          />
+        </div>
+    
+        <!-- Campo para Ativar/Desativar Retificação -->
+        <div class="form-group checkbox-group">
+          <label for="ativoRetificacoes">Ativo</label>
+          <input
+            type="checkbox"
+            id="ativoRetificacoes"
+            formControlName="ativoRetificacoes"
+          />
+        </div>
+        <hr>
+        <!-- Botão de Salvar -->
+        <div class="bot">
+          <input type="button" value="Cancelar" routerLink="/editais">
+          <input type="submit" value="Salvar" [disabled]="formRetificacoes.invalid">
+      </div>
+      </form>
+    </div>
+    <div *ngIf="retificacoes.length > 0">
+      <hr>
+      <h3>Retificações Adicionados:</h3>
+      <table class="table table-bordered table-striped">
+        <thead class="bg-success">
+          <tr>
+            <th>Nome</th>
+            <th>File</th>
+            <th>Data de publicação</th>
+            <th>Arquivo</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ret of retificacoes">
+            <td>{{ ret.nomeRetificacoes }}</td>
+            <td>{{ ret.fileRetificacoes }}</td>
+            <td>{{ ret.dataRetificacoes | date:'dd/MM/yyyy HH:mm'}}</td>
+            <td>{{ ret.ativoRetificacoes ? 'Sim' : 'Não'}}</td>
+            <td>
+              <a href="" class="botao excluir text-danger" (click)="delete(ret.idRetificacoes);$event.preventDefault();"
+                ngbTooltip="Remover faixa de financiamento">Desativar</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</section>

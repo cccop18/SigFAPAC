@@ -1,0 +1,59 @@
+<app-menu-edital></app-menu-edital>
+<br>
+<section id="cadastro">
+  <div class="informacoes">
+    <h1>Abrangência do Edital</h1>
+    <p>Escolha os estados que fazem parte da abrangência desse Edital.</p>
+  </div>
+  <br>
+  <hr>
+  <form [formGroup]="formAbrangencias" (ngSubmit)="save()">
+    <div class="dados-edital">
+      <!-- Radio buttons para seleção de abrangência -->
+      <div class="opcao-abrangencia">
+        <input 
+          type="radio" 
+          id="abrangenciaNacional" 
+          value="NACIONAL" 
+          [checked]="formAbrangencias.get('estados')?.disabled"
+          (change)="onAbrangenciaChange('NACIONAL')"
+        />
+        <label for="abrangenciaNacional">Abrangência Nacional</label>
+      </div>
+
+      <div class="ou-texto">OU</div>
+
+      <div class="opcao-abrangencia">
+        <input 
+          type="radio" 
+          id="abrangenciaEstados" 
+          value="ESTADOS" 
+          [checked]="!formAbrangencias.get('estados')?.disabled"
+          (change)="onAbrangenciaChange('ESTADOS')"
+        />
+        <label for="abrangenciaEstados">Abrangência nos seguintes estados:</label>
+      </div>
+      <hr>
+      <!-- Seleção de estados -->
+      <label for="estados" class="obrigatorio">Estados:</label>
+      <select name="estados" id="estados" required formControlName="estados" class="form-select" multiple>
+        <option *ngFor="let e of estados" [ngValue]="e">{{ e.nomeEstado }}</option>
+      </select>
+      <br>
+      <!-- Exibição de estados selecionados -->
+      <div *ngIf="selectedEstados.length > 0">
+        <h3>Estados Selecionados:</h3>
+        <select name="estados" id="estados" required formControlName="estados" class="form-select" multiple>
+          <option *ngFor="let estado of selectedEstados" [ngValue]="estado">{{ estado.nomeEstado }}</option>
+        </select>
+      </div>
+
+      <hr>
+      <!-- Botões de ação -->
+      <div class="bot">
+        <input type="button" value="Cancelar" routerLink="/editais/">
+        <input type="submit" value="Salvar" [disabled]="formAbrangencias.invalid">
+      </div>
+    </div>
+  </form>
+</section>

@@ -1,0 +1,213 @@
+:root {
+    --verde1: #038E42;
+    --verde2: #2ecc71;
+    --branco: #ffffff;
+    --preto: #000000;
+    --background-color: #41414115;
+    --text-color: #333;
+    --border-radius: 8px; /* Aumentei o valor para mais arredondamento */
+}
+
+/* Configurações gerais */
+body {
+    background-color: var(--background-color);
+    font-family: Arial, sans-serif;
+    color: var(--text-color);
+}
+
+#cadastro {
+    max-width: 650px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: var(--branco);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    font-size: 1.1em;
+    color: var(--text-color);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="checkbox"],
+select {
+    width: 100%;
+    padding: 0.4em;
+    border: 1px solid var(--preto);
+    border-radius: 8px; /* Aumentei um pouco para inputs */
+    transition: border-color 0.3s;
+    font-size: 0.9em;
+}
+
+select {
+    background-color: var(--branco);
+    appearance: none;
+}
+
+/* Caixa de seleção de estados */
+.estados-selecao select {
+    height: auto; /* Altura automática baseada no conteúdo */
+    min-height: 200px; /* Altura mínima maior */
+    padding: 10px; /* Espaçamento interno */
+    border-radius: var(--border-radius); /* Borda arredondada */
+    border: 1px solid var(--preto); /* Bordas escuras */
+    transition: box-shadow 0.3s ease; /* Transição suave */
+}
+
+/* Foco nos campos de seleção */
+select:focus {
+    box-shadow: 0 0 8px var(--verde1);
+    outline: none;
+    border-color: var(--verde1);
+}
+
+/* Estilo das mensagens de erro */
+.text-danger {
+    color: #dc3545;
+    font-size: 0.875em;
+}
+
+/* Lista de estados selecionados */
+.estados-selecionados {
+    list-style-type: none; /* Remover marcadores */
+    padding: 0;
+    margin-top: 20px;
+}
+
+.estados-selecionados li {
+    font-size: 1em;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    background-color: var(--background-color);
+    border-radius: 4px; /* Bordas suaves */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Botão para remover estados */
+.estados-selecionados li button {
+    background-color: #dc3545; /* Vermelho para remover */
+    border: none;
+    color: var(--branco);
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.estados-selecionados li button:hover {
+    background-color: #c82333; /* Sombra no hover */
+}
+
+/* Estilo dos botões */
+.bot {
+    display: flex;
+    justify-content: space-between; /* Distância igual entre os botões */
+    margin-top: 20px;
+}
+
+input[type="button"],
+input[type="submit"] {
+    padding: 0.4em;
+    border: none;
+    border-radius: 4px; /* Botões com bordas mais arredondadas */
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1em;
+    width: 100%; /* Tamanho total do botão */
+}
+
+input[type="submit"] {
+    background-color: var(--verde1);
+    color: var(--branco);
+}
+
+input[type="submit"]:hover {
+    background-color: var(--verde2);
+    color: var(--preto);
+}
+
+input[type="button"] {
+    background-color: #ac0000;
+    color: var(--branco);
+}
+
+input[type="button"]:hover {
+    background-color: #5a0000;
+    color: var(--branco);
+}
+
+/* Centralizar o título */
+.informacoes {
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.informacoes h1 {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.informacoes h3 {
+    font-size: 1em;
+    color: var(--text-color);
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    form {
+      padding: 15px;
+    }
+}
+
+/* Caixa de seleção de abrangência */
+.dados-edital {
+    padding: 20px;
+    border-radius: 8px; /* Borda mais arredondada */
+    background-color: #ffffff;
+}
+
+.opcao-abrangencia {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ou-texto {
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 20px 0;
+    color: var(--verde1);
+}
+
+/* Estilos de botão centralizados */
+.bot input {
+    flex: 1;
+    margin: 0 5px;
+}
+
+/* Responsividade */
+@media screen and (max-width: 768px) {
+    .bot {
+        flex-direction: column;
+    }
+
+    .bot input {
+        margin: 5px 0;
+    }
+}

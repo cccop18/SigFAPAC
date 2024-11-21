@@ -1,0 +1,33 @@
+<section id="cadastro">
+    <div class="informacoes">
+      <h1>Cadastro de Função</h1>
+      <p>Preencha corretamente os campos abaixo para cadastrar uma Função.</p>
+      <h3>Os campos marcados com <span class="vermelho">*</span> são obrigatórios.</h3>
+    </div>
+    <br>
+    <form (submit)="save()" [formGroup]="formFuncao">
+      <section>
+        <!-- Nome da Função -->
+        <div class="form-group">
+          <label for="nomeFuncao" class="obrigatorio">Nome da Função:</label>
+          <input type="text" id="nomeFuncao" formControlName="nomeFuncao" class="form-control" placeholder="Insira o nome da função" />
+          <div *ngIf="form.nomeFuncao.invalid && (form.nomeFuncao.dirty || form.nomeFuncao.touched)" class="text-danger">
+            O nome da função é obrigatório.
+          </div>
+        </div>
+  
+        <!-- Ativo (Checkbox) -->
+        <div class="form-group checkbox-group">
+          <label class="form-check-label" for="ativoFuncao">Ativo</label>
+          <input type="checkbox" id="ativoFuncao" formControlName="ativoFuncao" class="form-check-input" />
+        </div>
+      </section>
+  
+      <!-- Botão de Salvar -->
+      <div class="bot">
+        <input type="button" value="Cancelar" routerLink="/funcao">
+        <input type="submit" value="Salvar" [disabled]="formFuncao.invalid">
+      </div>
+    </form>
+  </section>
+  

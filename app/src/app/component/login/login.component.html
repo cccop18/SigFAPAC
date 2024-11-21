@@ -1,0 +1,17 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login">
+  <div class="grid">
+    <label for="UsuarioLogin">Email</label>
+    <input type="text" id="UsuarioLogin" formControlName="login" required />
+
+    <label for="UsuarioSenha">Senha</label>
+    <input type="password" id="UsuarioSenha" formControlName="senha" required />
+
+    <div class="g-recaptcha" data-sitekey="6LdVWi8UAAAAAJuxXcqhekR5pz7FCyNDAlpzHnYf"></div>
+
+    <button type="submit" class="enviar">Entrar</button>
+    <div class="bot-login">
+      <button type="button" class="enviar">Esqueci a senha</button>
+      <a href="cadastro/brasileiro">Cadastrar</a>
+    </div>
+  </div>
+</form>

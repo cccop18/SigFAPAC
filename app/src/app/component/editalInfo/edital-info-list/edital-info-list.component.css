@@ -1,0 +1,287 @@
+/* Estilos para o título */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #333333;
+}
+
+/* Container para centralizar a tabela */
+.table-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+}
+
+/* Estilo para a barra de comandos */
+#comandos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%; /* Largura da barra de comandos */
+    margin: 20px auto; /* Centraliza a barra */
+    padding: 15px 20px;
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para o botão "Adicionar" */
+#comandos .botao {
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* Estilo para o campo de busca */
+#comandos div {
+    display: flex;
+    align-items: center;
+}
+
+#comandos label {
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+#comandos input[type="search"] {
+    padding: 10px 15px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    background-color: #ffffff;
+    transition: border-color 0.3s;
+    font-size: 1rem;
+}
+
+/* Estilização da tabela */
+table {
+    width: 90%; /* Mantém a largura da tabela consistente com as barras */
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Estilos para cabeçalho da tabela */
+thead th {
+    background-color: #007bff;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    font-size: 1.2rem;
+    white-space: nowrap; /* Impede quebra de texto */
+}
+
+/* Ajuste de alinhamento e largura do cabeçalho */
+thead th:nth-child(1) { /* ID */
+    width: 5%; /* Define uma largura fixa */
+}
+
+thead th:nth-child(2) { /* Nome */
+    width: 25%; /* Define uma largura fixa */
+}
+
+thead th:nth-child(3) { /* Arquivo */
+    width: 30%; /* Define uma largura fixa */
+}
+
+thead th:nth-child(4) { /* Status */
+    width: 10%; /* Define uma largura fixa */
+}
+
+thead th:nth-child(5) { /* Ações */
+    width: 30%; /* Define uma largura fixa */
+}
+
+/* Estilização de linhas da tabela */
+tbody tr {
+    border-bottom: 1px solid #dee2e6;
+    transition: background-color 0.2s ease-in-out;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+tbody tr:hover {
+    background-color: #f1f3f5;
+}
+
+/* Ajuste das células */
+tbody td {
+    padding: 16px 20px;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 1.1rem;
+    color: #333333;
+    white-space: nowrap; /* Impede quebra de texto */
+    overflow: hidden; /* Esconde o texto excedente */
+    text-overflow: ellipsis; /* Adiciona reticências ao texto excedente */
+}
+
+/* Estilos para células específicas */
+tbody td:nth-child(1), /* Coluna ID */
+tbody td:nth-child(4) { /* Coluna Status */
+    text-align: center;
+}
+
+/* Ajuste para colunas com texto */
+tbody td:nth-child(2), /* Coluna Nome */
+tbody td:nth-child(3) { /* Coluna Arquivo */
+    text-align: left; /* Alinha à esquerda */
+}
+
+/* Ajuste para a coluna de ações */
+tbody td:last-child {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Espaçamento entre os botões */
+}
+
+/* Estilos para os botões */
+a.botao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    border-radius: 4px;
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #007bff;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+a.botao.download {
+    background-color: #28a745;
+}
+
+a.botao.download:hover {
+    background-color: #218838;
+}
+
+a.botao.view {
+    background-color: #FFD700;
+}
+
+a.botao.view:hover {
+    background-color: #FFC700;
+}
+
+a.botao:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+a.botao.excluir {
+    background-color: #dc3545;
+}
+
+a.botao.excluir:hover {
+    background-color: #c82333;
+}
+
+a.botao i {
+    font-size: 1.2rem;
+}
+
+/* Estilos para a paginação */
+#paginacao {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 30px auto;
+    padding: 15px 20px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo dos elementos dentro da paginação */
+#paginacao label {
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+#paginacao select {
+    padding: 8px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    background-color: #ffffff;
+    font-size: 1rem;
+    outline: none;
+}
+
+.ngb-pagination {
+    margin: 0;
+}
+
+/* Estilo para mensagens de rodapé */
+tfoot td {
+    padding: 18px;
+    text-align: center;
+    font-weight: bold;
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+}
+
+tfoot span {
+    font-size: 1.1rem;
+}
+
+/* Ajustes gerais */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    padding: 40px;
+}
+
+.container {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+.bgtitulo{
+    background-color: #28a745;
+}
+.bgret{
+    background-color: #FF6347;
+}
+
+/* Ajuste do container de paginação */
+#paginacao {
+    display: flex;
+    justify-content: space-between; /* Um elemento em cada lado */
+    align-items: center;
+    width: 100%;
+    margin: 20px auto;
+    padding: 15px 20px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para o select de itens por página */
+#paginacao .form-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Estilos para os elementos de paginação */
+.ngb-pagination {
+    display: flex;
+    justify-content: flex-end; /* Alinha a paginação à direita */
+    margin-top: 0;
+}

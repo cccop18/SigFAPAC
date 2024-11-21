@@ -1,0 +1,97 @@
+.sidebar {
+  width: 44px;
+  background-color: #fff;
+  transition: width 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+  overflow: visible;
+  z-index: 1000;
+}
+
+.sidebar.expanded {
+  width: 360px;
+  position: absolute;
+  height: 100%;
+  z-index: 1000;
+}
+
+.toggle-btn {
+  font-size: 19.2px;
+  color: black;
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+
+.toggle-btn img {
+  margin: 12px 5.6px;
+  height: 24px;
+}
+
+.menu {
+  list-style-type: none;
+  padding: 0;
+  text-align: left;
+  display: none;
+}
+
+.sidebar.expanded .menu {
+  display: block;
+}
+
+.menu li {
+  color: black;
+  background-color: white;
+  margin: 8px 0px;
+  padding: 12px 0px;
+  text-align: center;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border: solid 0.8px rgba(0, 0, 0, 0.247);
+  position: relative;
+}
+
+.menu li:hover {
+  background-color: #ddd;
+}
+
+.sub-menu {
+  list-style-type: none;
+  display: none;
+}
+
+.has-submenu .sub-menu {
+  display: block;
+}
+
+.menu li .toggle-submenu {
+  position: absolute;
+  right: 12px;
+  cursor: pointer;
+}
+
+li ul li {
+  width: 100%;
+}
+
+.menu li .toggle-submenu img {
+  width: 12px;
+  height: 12px;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.menulateral {
+  width: 80%;
+}
+
+@media screen and (max-width: 650px) {
+  .sidebar.expanded {
+    width: 300px;
+  }
+}

@@ -1,0 +1,27 @@
+<section id="cadastro">
+  <form [formGroup]="senhaForm" (ngSubmit)="onSubmit()">
+
+    <h3>Acesso SIGFAPAC</h3>
+    <section class="dados-pesquisador dados">
+      <label for="senha" class="obrigatorio">Senha</label>
+      <input type="password" id="senha" formControlName="senha" required>
+
+      <label for="confirmar_senha" class="obrigatorio">Confirmar senha</label>
+      <input type="password" id="confirmar_senha" formControlName="confirmar_senha" required>
+
+      <!-- Mensagem de erro se as senhas não forem iguais -->
+      <div *ngIf="senhaNaoCoincide" class="erro">
+        As senhas não coincidem.
+      </div>
+    </section>
+
+    <div class="g-recaptcha" data-sitekey="6LdVWi8UAAAAAJuxXcqhekR5pz7FCyNDAlpzHnYf"></div>
+    <br>
+
+    <div class="bot">
+      <a href="login" class="cancelar">Cancelar</a>
+      <input type="submit" value="Cadastrar" class="enviar" [disabled]="senhaForm.invalid">
+    </div>
+
+  </form>
+</section>

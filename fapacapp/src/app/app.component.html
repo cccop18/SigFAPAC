@@ -1,0 +1,41 @@
+<header>
+  <div id="logo">
+      <a href="login" title="FAPAC">
+          <img src="assets/img/logo_menu.jpeg" alt="LOGO FAPAC">
+      </a>
+  </div>
+  <nav>
+    <img [src]="getIcon()" alt="Menu" class="nav-icon" (click)="toggleMenu()">
+    <ul [ngClass]="{'inativo-menu': !isMenuOpen}">
+      <a href="#" target="_parent"><li>Pagina Inicial</li></a>
+      <hr class="vertical-line">
+      <a href="#" target="_parent"><li>Editais</li></a>
+      <hr class="vertical-line">
+      <a href="#" target="_parent"><li>Propostas</li></a>
+      <hr class="vertical-line">
+      <a href="#" target="_parent"><li>Bloquear Tela</li></a>
+      <hr class="vertical-line">
+      <a href="#" target="_self"><li>English</li></a>
+      <hr class="vertical-line">
+      <a href="login" target="_parent"><li>Sair</li></a>
+    </ul>
+  </nav>
+</header>
+<hr class="linha-cabecalho">
+<main id="main-content">
+  <router-outlet></router-outlet>
+</main>
+<hr class="linha-cabecalho">
+<footer>
+  <div id="info-rodape">
+      <h4>FAPAC - Fundação de Amparo à Pesquisa do Estado do Acre</h4>
+      <p>Rua Major Gesner, n. 177, Distrito Industrial &curren; 69920172 &curren; Rio Branco - AC, Brasil</p>
+      <p>Tel/Fax: (68) 3229-5566 &curren; E-mail: <a href="mailto:documentos.fapac@gmail.com">documentos.fapac&#64;gmail.com</a></p>
+  </div>
+  <hr class="rodape-line">
+  <div id="redes-rodape">
+      <a href="https://www.instagram.com/fapac.acre/" target="_blank">
+          <img class="redes-sociais" src="../../assets/img/instagram.png" alt="Instagram FAPAC">
+      </a>
+  </div>
+</footer>

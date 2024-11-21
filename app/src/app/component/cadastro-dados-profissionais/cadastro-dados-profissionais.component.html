@@ -1,0 +1,63 @@
+<app-alerta></app-alerta>
+  <form (submit)="save()" [formGroup]="formVinculo">
+    <h3>Vinculo institucional</h3>
+    <section id="pessoais" class="">
+      <div class="dados grid">
+
+        <!-- Aqui seleciona a instituicão -->
+        <label for="instituicao" class="obrigatorio">Instituicão/empresa</label>
+        <select name="instituicao" id="instituicao" required formControlName="idInstituicao" class="form-select"
+          [ngClass]="{'is-invalid': form.idInstituicao.invalid && form.idInstituicao.touched, 'is-valid': form.idInstituicao.valid && form.idInstituicao.touched}">
+          <option *ngFor="let e of instituicoes" [ngValue]="e.idInstituicao">{{e.nomeInstituicao}}</option>
+        </select>
+        <!-- Aqui seleciona a unidade -->
+        <label for="unidadeInstituicao" class="obrigatorio">Unidade/Departamento</label>
+        <select name="unidadeInstituicao" id="unidadeInstituicao" required formControlName="idUnidadeInstituicao"
+          class="form-select"
+          [ngClass]="{'is-invalid': form.idUnidadeInstituicao.invalid && form.idUnidadeInstituicao.touched, 'is-valid': form.idUnidadeInstituicao.valid && form.idUnidadeInstituicao.touched}">
+          <option value="" disabled selected>Selecione a unidade</option>
+          <option *ngFor="let u of unidades" [ngValue]="u.id">{{ u.nome_unidade }}</option>
+        </select>
+
+        <label for="vinculo-institucional" class="obrigatorio">Vínculo Institucional</label>
+        <select id="vinculo-institucional" formControlName="vinculoInstitucional" class="form-select">
+          <option value="CLT">CLT</option>
+          <option value="Estatutário">Estatutário</option>
+          <option value="Celetista">Celetista</option>
+        </select>
+
+        <label for="gera-vinculo">Gera Vínculo Empregatício?</label>
+        <div id="gera-vinculo">
+          <div>
+            <label for="sim">Sim</label>
+            <input type="radio" id="sim" formControlName="vinculoEmpregaticio" [value]="true">
+          </div>
+          <div>
+            <label for="nao">Não</label>
+            <input type="radio" id="nao" formControlName="vinculoEmpregaticio" [value]="false">
+          </div>
+        </div>
+
+        <label for="tempo-servico">Tempo de Serviço</label>
+        <input type="text" id="tempo-servico" formControlName="tempoServico" required class="form-control">
+
+        <label for="regime-trabalho">Regime de Trabalho</label>
+        <select id="regime-trabalho" formControlName="regimeTrabalho" class="form-select">
+          <option value="Dedicação Exclusiva">Dedicação Exclusiva</option>
+          <option value="Parcial">Parcial</option>
+          <option value="Integral">Integral</option>
+        </select>
+
+        <label for="funcao-cargo">Função/Cargo Atual</label>
+        <input type="text" id="funcao-cargo" formControlName="funcaoCargo" required class="form-control">
+
+        <label for="tempo-funcao">Tempo na Função</label>
+        <input type="text" id="tempo-funcao" formControlName="tempoDaFuncao" required class="form-control">
+      </div>
+    </section>
+    <div class="bot">
+      <button type="button" class="cancelar btn btn-danger" routerLink="login">Cancelar</button>
+      <button type="submit" class="enviar btn btn-dark"
+        [disabled]="formVinculo.invalid">Adicionar</button>
+    </div>
+  </form>

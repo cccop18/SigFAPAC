@@ -1,0 +1,68 @@
+<app-menu-edital></app-menu-edital>
+<br>
+<section id="cadastro">
+  <div class="informacoes">
+    <h1>Modelos de Arquivos Anexos</h1>
+    <p>Escolha os modelos de arquivos anexo necessarios para as Propostas</p>
+  </div>
+  <hr>
+  <!-- Tabela de arquivos obrigatórios -->
+  <div class="grid-container">
+    <div class="grid-item">
+      <h3>Arquivos Obrigatórios</h3>
+      <div class="arquivo-lista">
+        <ul>
+          <li *ngFor="let arquivo of arquivosObrigatorios">
+            {{ arquivo.nomeArquivo }}
+            <button (click)="adicionarArquivo(arquivo)">+</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="grid-item">
+      <h3>Itens Vinculados</h3>
+      <div class="arquivo-vinculado">
+        <ul>
+          <li *ngFor="let arquivoVinculado of arquivosVinculados">
+            <!-- Exibe o nome do arquivo com base no ID usando a função do TypeScript -->
+            {{ (arquivoVinculado.arquivo.nomeArquivo) }}
+            <button (click)="removerArquivo(arquivoVinculado)">-</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <!-- Tabela de documentos pessoais -->
+  <div class="grid-container">
+    <div class="grid-item">
+      <h3>Documentos Pessoais</h3>
+      <div class="arquivo-lista">
+        <ul>
+          <li *ngFor="let doc of documentosPessoais">
+            {{ (doc.nomeDocPessoal) }}
+            <button (click)="adicionarDocumentoPessoal(doc)">+</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="grid-item">
+      <h3>Itens Vinculados</h3>
+      <div class="arquivo-vinculado">
+        <ul>
+          <li *ngFor="let docVinculado of documentosPessoaisVinculados">
+            <!-- Exibe o nome do documento com base no ID usando a função do TypeScript -->
+            {{ docVinculado.pessoal.nomeDocPessoal }}
+            <button (click)="removerDocumentoPessoal(docVinculado)">-</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <!-- Botões de ação -->
+  <div class="bot">
+    <button type="button" routerLink="/editais/">Cancelar</button>
+    <button type="submit" (click)="redirecionarComId()">Salvar</button>
+  </div>
+</section>

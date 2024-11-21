@@ -1,0 +1,18 @@
+app-login {
+  margin: 20px auto;
+}
+
+app-cadastro-unidade, app-endereco-unidade-form, app-cadastro-dados-br, app-cadastro-dados-es, app-cadastro-senha-pesquisador, app-cadastro-endereco-pesquisadores, app-cadastro-areaconhecimento-pesquisador {
+margin: 40px auto;
+}
+
+
+@media screen and (max-width: 650px) {
+app-login {
+  margin: 20px auto;
+}
+
+app-cadastro-areaconhecimento-pesquisador {
+  width: calc(100% - 50px);
+}
+}

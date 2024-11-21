@@ -1,0 +1,75 @@
+<app-menu-edital></app-menu-edital>
+<br>
+<section id="cadastro"></section>
+<form (submit)="save()" [formGroup]="formEditalChamadas" enctype="multipart/form-data">
+    <div class="informacoes">
+        <h1>Chamada do Edital</h1>
+        <p>Preencha os campos corretamente para configurar a chamada do Edital.</p>
+        <h3>Os campos marcados com <span class="vermelho">*</span> são obrigatórios.</h3>
+    </div>
+    <br>
+    <hr>
+    <section id="chamadas" class="dados-edital">
+        <div class="dados grid">
+            <label for="dataAberturaEdital" class="obrigatorio">Data de Abertura</label>
+            <small *ngIf="form.dataAberturaEdital.hasError('required')" class="vermelho">Campo obrigatório</small>
+            <small class="vermelho" *ngIf="formEditalChamadas.get('dataAberturaEdital')?.hasError('noPastDate') && formEditalChamadas.get('dataAberturaEdital')?.touched">A data de abertura não pode ser retroativa.</small>
+            <input type="date" name="dataAberturaEdital" id="dataAberturaEdital" required formControlName="dataAberturaEdital"
+                class="form-control"
+                [ngClass]="{'is-invalid': form.dataAberturaEdital.invalid && form.dataAberturaEdital.touched, 'is-valid': form.dataAberturaEdital.valid && form.dataAberturaEdital.touched}">
+
+            <label for="horaAberturaEdital" class="obrigatorio">Hora de Abertura</label>
+            <small *ngIf="form.horaAberturaEdital.hasError('required')" class="vermelho">Campo obrigatório</small>
+            <input type="time" name="horaAberturaEdital" id="horaAberturaEdital" required formControlName="horaAberturaEdital"
+                class="form-control"
+                [ngClass]="{'is-invalid': form.horaAberturaEdital.invalid && form.horaAberturaEdital.touched, 'is-valid': form.horaAberturaEdital.valid && form.horaAberturaEdital.touched}">
+
+            <label for="dataFechamentoEdital" class="obrigatorio">Data de Fechamento</label>
+            <small *ngIf="form.dataFechamentoEdital.hasError('required')" class="vermelho">Campo obrigatório</small>
+            <small class="vermelho" *ngIf="formEditalChamadas.get('dataFechamentoEdital')?.hasError('noPastDate') && formEditalChamadas.get('dataFechamentoEdital')?.touched">A data de fechamento não pode ser retroativa.</small>
+            <small class="vermelho" *ngIf="formEditalChamadas.hasError('dateRangeInvalid') && form.dataFechamentoEdital.touched"> A data de abertura não pode ser posterior à data de fechamento </small>
+            <input type="date" name="dataFechamentoEdital" id="dataFechamentoEdital" required formControlName="dataFechamentoEdital"
+                class="form-control"
+                [ngClass]="{'is-invalid': form.dataFechamentoEdital.invalid && form.dataFechamentoEdital.touched, 'is-valid': form.dataFechamentoEdital.valid && form.dataFechamentoEdital.touched}">
+
+            <label for="horaFechamentoEdital" class="obrigatorio">Hora de Fechamento</label>
+            <small *ngIf="form.horaFechamentoEdital.hasError('required')" class="vermelho">Campo obrigatório</small>
+            <input type="time" name="horaFechamentoEdital" id="horaFechamentoEdital" required formControlName="horaFechamentoEdital"
+                class="form-control"
+                [ngClass]="{'is-invalid': form.horaFechamentoEdital.invalid && form.horaFechamentoEdital.touched, 'is-valid': form.horaFechamentoEdital.valid && form.horaFechamentoEdital.touched}">
+            <br>
+            <hr>
+            <label for="dataEnquadramentoEdital" class="obrigatorio">Data de Enquadramento</label>
+            <small *ngIf="form.dataEnquadramentoEdital.hasError('required')" class="vermelho">Campo obrigatório</small>
+            <small class="vermelho" *ngIf="formEditalChamadas.get('dataEnquadramentoEdital')?.hasError('noPastDate') && formEditalChamadas.get('dataEnquadramentoEdital')?.touched">A data de enquadramento não pode ser retroativa.</small>
+            <small class="vermelho" *ngIf="formEditalChamadas.hasError('dateRangeInvalid') && form.dataEnquadramentoEdital.touched"> A data de enquadramento não pode ser anterior à data de abertura </small>
+            <input type="date" name="dataEnquadramentoEdital" id="dataEnquadramentoEdital" required formControlName="dataEnquadramentoEdital"
+                class="form-control"
+                [ngClass]="{'is-invalid': form.dataEnquadramentoEdital.invalid && form.dataEnquadramentoEdital.touched, 'is-valid': form.dataEnquadramentoEdital.valid && form.dataEnquadramentoEdital.touched}">
+
+            <label for="dataRecursoEdital" class="obrigatorio">Data de Recurso</label>
+            <small *ngIf="form.dataRecursoEdital.hasError('required')" class="vermelho">Campo obrigatório</small>
+            <small class="vermelho" *ngIf="formEditalChamadas.get('dataRecursoEdital')?.hasError('noPastDate') && formEditalChamadas.get('dataRecursoEdital')?.touched">A data de recurso não pode ser retroativa.</small>
+            <small class="vermelho" *ngIf="formEditalChamadas.hasError('minimumDaysInvalid') && formEditalChamadas.get('dataRecursoEdital')?.touched">Deve haver um prazo mínimo de 1 dia entre a data de abertura e a data de recurso.</small>
+            <input type="date" name="dataRecursoEdital" id="dataRecursoEdital" required formControlName="dataRecursoEdital"
+                class="form-control"
+                [ngClass]="{'is-invalid': form.dataRecursoEdital.invalid && form.dataRecursoEdital.touched, 'is-valid': form.dataRecursoEdital.valid && form.dataRecursoEdital.touched}">
+
+            <label for="dataResultadoEdital" class="obrigatorio">Data de Resultado</label>
+            <small *ngIf="form.dataResultadoEdital.hasError('required')" class="vermelho">Campo obrigatório</small>
+            <input type="date" name="dataResultadoEdital" id="dataResultadoEdital" required formControlName="dataResultadoEdital"
+                class="form-control"
+                [ngClass]="{'is-invalid': form.dataResultadoEdital.invalid && form.dataResultadoEdital.touched, 'is-valid': form.dataResultadoEdital.valid && form.dataResultadoEdital.touched}">
+            <br>
+            <hr>
+            <label for="informacaoChamadasEdital">Informações adicionais</label>
+            <textarea name="informacaoChamadasEdital" id="informacaoChamadasEdital" rows="5" formControlName="informacaoChamadasEdital"
+                class="form-control"></textarea>
+            <hr>
+            <div class="bot">
+                <input type="button" value="Cancelar" routerLink="/editais/">
+                <input type="submit" value="Salvar" [disabled]="formEditalChamadas.invalid">
+            </div>
+        </div>
+    </section>
+</form>

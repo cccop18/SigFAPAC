@@ -1,0 +1,69 @@
+<app-menu-proposta></app-menu-proposta>
+<br>
+<section id="cadastro">
+  <form (submit)="save()" [formGroup]="formEncargoProposta">
+    <div class="informacoes">
+      <h1>Encargo Proposta</h1>
+      <p>Preencha corretamente os campos abaixo para adicionar um Encargo à sua Proposta.</p>
+      <h3>Os campos marcados com <span class="vermelho">*</span> são obrigatórios.</h3>
+    </div>
+    <br>
+    <hr>
+    <section id="encargos" class="dados-edital">
+      <div class="form-group">
+        <label for="especificacaoEncargoProposta" class="obrigatorio">Especificações</label>
+        <textarea id="especificacaoEncargoProposta" formControlName="especificacaoEncargoProposta" class="form-control" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="custoTotalProposta" class="obrigatorio">Custo Total</label>
+        <input type="number" id="custoTotalProposta" formControlName="custoTotalProposta" class="form-control" required placeholder="0,00" />
+      </div>  
+
+      <div class="form-group">
+        <label for="moeda" class="obrigatorio">Moeda</label>
+        <select id="moeda" formControlName="moeda" class="form-control" required>
+          <option *ngFor="let moeda of moedas" [ngValue]="moeda">{{ moeda.nomeMoeda }}</option>
+        </select>
+      </div>
+      <div class="bot">
+        <input type="button" value="Limpar" (click)="formEncargoProposta.reset()" />
+        <input type="submit" value="Inserir" [disabled]="formEncargoProposta.invalid" />
+      </div>
+    </section>
+        <!-- Tabela para listar os encargos inseridos, mostrada apenas quando houver registros -->
+    <section *ngIf="encargosProposta.length > 0">
+      <hr>
+      <h2>Encargos Proposta Salvos</h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Especificações</th>
+            <th>Custo Total</th>
+            <th>Moeda</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let encargo of encargosProposta">
+            <td>{{ encargo.idEncargoProposta }}</td>
+            <td>{{ encargo.especificacaoEncargoProposta }}</td>
+            <td>{{ encargo.custoTotalProposta }}</td>
+            <td>{{ encargo.moeda.nomeMoeda }}</td>
+            <td>
+              <a href="" class="botao excluir text-danger" (click)="delete(encargo.idEncargoProposta); $event.preventDefault();" ngbTooltip="Remover diária">Remover</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <br>
+    <div class="bot">
+      <input type="button" value="Cancelar" routerLink="../">
+      <input type="button" value="Salvar" [disabled]="formEncargoProposta.invalid" (click)="save()" />
+    </div>
+  </form>
+</section>
+
+

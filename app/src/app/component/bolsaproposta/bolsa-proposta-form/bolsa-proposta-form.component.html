@@ -1,0 +1,78 @@
+<app-menu-proposta></app-menu-proposta>
+<br>
+<section id="cadastro">
+  <form (submit)="save()" [formGroup]="formBolsaProposta">
+    <div class="informacoes">
+      <h1>Bolsas</h1>
+      <p>Preencha corretamente os campos abaixo para adicionar novos Materiais de Consumo</p>
+      <h3>Os campos marcados com <span class="vermelho">*</span> são obrigatórios.</h3>
+    </div>
+    <br>
+    <hr>
+    <section id="bolsas" class="dados-edital">
+        <div class="form-group">
+            <label for="modalidadeBolsaProposta" class="obrigatorio">Modalidade</label>
+            <input type="text" id="modalidadeBolsaProposta" formControlName="modalidadeBolsaProposta" class="form-control" placeholder="Digite a modalidade" />
+          </div>
+          <div class="form-group">
+            <label for="quantidadeBolsaProposta" class="obrigatorio">Quantidade</label>
+            <input type="number" id="quantidadeBolsaProposta" formControlName="quantidadeBolsaProposta" class="form-control" required
+              placeholder="1" />
+          </div>
+          <div class="form-group">
+            <label for="duracaoBolsaProposta" class="obrigatorio">Duração (meses)</label>
+            <input type="number" id="duracaoBolsaProposta" formControlName="duracaoBolsaProposta" class="form-control" placeholder="Digite a duração em meses" min="1" />
+          </div>    
+
+          <div class="form-group">
+            <label for="bolsaMesBolsaProposta" class="obrigatorio">Bolsa/Mês:</label>
+            <input type="text" id="bolsaMesBolsaProposta" formControlName="bolsaMesBolsaProposta" class="form-control" placeholder="0,00" />
+          </div>
+          <div class="form-group">
+            <label for="moeda" class="obrigatorio">Moeda</label>
+            <select id="moeda" formControlName="moeda" class="form-control" required>
+              <option *ngFor="let moeda of moedas" [ngValue]="moeda">{{ moeda.nomeMoeda }}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="areaBolsaProposta" class="obrigatorio">Área de atuação</label>
+            <textarea id="areaBolsaProposta" formControlName="areaBolsaProposta" class="form-control" required></textarea>
+          </div>
+          <div class="bot">
+            <input type="button" value="Limpar" (click)="formBolsaProposta.reset()" />
+            <input type="submit" value="Inserir" [disabled]="formBolsaProposta.invalid" />
+          </div>
+          <hr>
+                    <!-- Tabela para listar as bolsas inseridas, mostrada apenas quando houver registros -->
+            <section *ngIf="bolsaProposta.length > 0">
+              <hr>
+              <h2>Bolsas Proposta Salvas</h2>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Modalidade</th>
+                    <th>Quantidade</th>
+                    <th>Duração (meses)</th>
+                    <th>Bolsa/Mês</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let bolsa of bolsaProposta">
+                    <td>{{ bolsa.modalidadeBolsaProposta }}</td>
+                    <td>{{ bolsa.quantidadeBolsaProposta }}</td>
+                    <td>{{ bolsa.duracaoBolsaProposta }}</td>
+                    <td>{{ bolsa.bolsaMesBolsaProposta }}</td>
+                    <td>
+                      <a href="" class="botao excluir text-danger" (click)="delete(bolsa.idBolsaProposta); $event.preventDefault();" ngbTooltip="Remover bolsa">Remover</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+          <div class="bot">
+            <input type="button" value="Cancelar" routerLink="../">
+            <input type="button" value="Salvar" [disabled]="formBolsaProposta.invalid" (click)="save()" />
+          </div>
+
+  

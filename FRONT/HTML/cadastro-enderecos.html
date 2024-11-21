@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIG FAPAC - Cadastro de Endereço Pesquisador</title>
+
+    <link rel="stylesheet" href="../CSS/css-base.css">
+    <link rel="stylesheet" href="../CSS/form-login-cadastro.css">
+    <link rel="stylesheet" href="../CSS/cadastro.css">
+
+    <script src="../JAVASCRIPT/pais-select.js" defer></script>
+    <script src="../JAVASCRIPT/estados-select.js" defer></script>
+    <script src="../JAVASCRIPT/menu-responsivo.js" defer></script>
+
+</head>
+<body>
+    <header>
+        <div id="logo">
+            <a href="http://sig.fapac.ac.gov.br/" title="FAPAC">
+                <img src="../IMAGENS/WhatsApp Image 2024-09-03 at 16.53.42 (1).jpeg" alt="LOGO FAPAC">
+            </a>
+        </div>
+        <nav>
+            <img src="../IMAGENS/menu-abrir.png" alt="Menu" class="nav-icon" id="nav-icon">
+            <ul class="inativo-menu">
+                <a href="#"><li>English</li></a>
+            </ul>
+        </nav>
+    </header>
+    <a href="../HTML/cadastro-dados-br.html" class="voltar"><img src="../IMAGENS/voltar.png" alt="Voltar a página anterior"></a>
+    <main>
+        <section id="cadastro">
+            <div class="informacoes">
+                <h1>Cadastro de Pesquisador</h1>
+                <p>Preencha corretamente os campos abaixo para fazer parte da comunidade de pesquisadores da FAPAC.</p>
+                <h3>Os campos marcados com <span class="vermelho">*</span> são obrigatórios.</h3>
+            </div>
+            
+            <br>
+            <form action="">
+                <!-- Endereço Residencial -->
+                <h3>Endereço Residencial</h3>
+                <section class="dados-pesquisador dados">
+                    <label for="pais" class="obrigatorio">País</label>
+                    <select id="pais" name="pais" required>
+                        <option value="BR">Brasil</option>
+                    </select>
+                
+                    <label for="cep" class="obrigatorio brasileiro-endR">CEP</label>
+                    <input type="text" id="cep" name="cep" class="obrigatorio brasileiro-endR" required>
+                                        
+                    <label for="estado" class="obrigatorio brasileiro-endR">Estado</label>
+                    <select id="uf1" name="estado" class="obrigatorio brasileiro-endR uf" required>
+                        <option value="">Selecione o Estado</option>
+                    </select>
+                    
+                    <label for="municipio" class="obrigatorio brasileiro-endR">Município</label>
+                    <select id="municipio1" name="municipio" class="municipio brasileiro-endR" required>
+                        <option value="">Selecione o Município</option>
+                    </select>
+                    
+                    <label for="logradouro" class="obrigatorio">Logradouro</label>
+                    <input type="text" id="logradouro" name="logradouro" required>
+                    
+                    <label for="numero" class="obrigatorio">Número</label>
+                    <input type="number" id="numero" name="numero" required>
+                    
+                    <label for="complemento">Complemento</label>
+                    <input type="text" id="complemento" name="complemento">
+                    
+                    <label for="bairro" class="obrigatorio">Bairro</label>
+                    <input type="text" id="bairro" name="bairro" required>
+                
+                    <label for="telefone">Telefone</label>
+                    <input type="tel" id="telefone" name="telefone">
+                    
+                    <label for="celular">Celular</label>
+                    <input type="tel" id="celular" name="celular">
+                </section>
+
+                <!-- Endereço Profissional -->
+                <h3>Endereço Profissional</h3>
+                <section class="dados-pesquisador dados">
+                    <label for="pais-prof" class="obrigatorio">País</label>
+                    <select id="pais-prof" name="pais" required>
+                        <option value="BR">Brasil</option>
+                    </select>
+                
+                    <label for="cep" class="obrigatorio brasileiro-endP">CEP</label>
+                    <input type="text" id="cep" name="cep" class="obrigatorio brasileiro-endP" required>
+                    
+                    <label for="estado" class="obrigatorio brasileiro-endP">Estado</label>
+                    <select id="uf2" name="estado" class="obrigatorio brasileiro-endP uf" required>
+                        <option value="">Selecione o Estado</option>
+                    </select>
+                    
+                    <label for="municipio" class="obrigatorio brasileiro-endP">Município</label>
+                    <select id="municipio2" name="municipio" class="municipio brasileiro-endP" required>
+                        <option value="">Selecione o Município</option>
+                    </select>
+                    
+                    <label for="logradouro" class="obrigatorio">Logradouro</label>
+                    <input type="text" id="logradouro" name="logradouro" required>
+                    
+                    <label for="numero" class="obrigatorio">Número</label>
+                    <input type="number" id="numero" name="numero" required>
+                    
+                    <label for="complemento">Complemento</label>
+                    <input type="text" id="complemento" name="complemento">
+                    
+                    <label for="bairro" class="obrigatorio">Bairro</label>
+                    <input type="text" id="bairro" name="bairro" required>
+                    
+                    <label for="telefone">Telefone</label>
+                    <input type="tel" id="telefone" name="telefone">
+                    
+                    <label for="celular">Celular</label>
+                    <input type="tel" id="celular" name="celular">
+                </section>
+
+                <h3>Correspondência</h3>
+                <section class="dados-pesquisador dados correspondencia">
+                    <label for="endereco_pref" class="correspondecia">
+                        Endereço preferencial para correspondência &nbsp;
+                        <br>
+                        <input type="radio" name="endereco_pref" id="endereco_pref_res" value="0" checked> Residencial
+                        <input type="radio" name="endereco_pref" id="endereco_pref_ins" value="1"> Profissional
+                    </label>
+                    <label for="informativo">
+                        Deseja receber Informativo da Fundação?
+                        <br>
+                        <input type="radio" name="informativo" id="informativo_sim" value="1" checked> Sim
+                        <input type="radio" name="informativo" id="informativo_nao" value="0"> Não
+                    </label>                    
+                </section>
+
+                <div class="g-recaptcha" data-sitekey="6LdVWi8UAAAAAJuxXcqhekR5pz7FCyNDAlpzHnYf"></div>
+                <br>
+
+                <div class="bot">
+                    <a href="../HTML/index.html" class="cancelar">Cancelar</a>
+                    <a href="../HTML/cadastro-senha.html" class="enviar">Proximo</a>
+                </div>
+                <br><br>
+                
+            </form>
+        </section>
+    </main>
+    <footer>
+        <div id="info-rodape">
+            <h4>FAPAC - Fundação de Amparo à Pesquisa do Estado do Acre</h4>
+            <p>Rua Major Gesner , n. 177 , Distrito Industrial; &curren; 69920172 &curren; Rio Branco - AC, Brasil</p>
+            <p>Tel/Fax: (68)3229-5566 &curren; E-mail: documentos.fapac@gmail.com</p>
+        </div>
+        <span class="rodape-line"></span>
+        <div id="redes-rodape">
+            <a href="https://www.instagram.com/fapac.acre/" target="_blank"><img class="redes-sociais" src="../IMAGENS/instagram.png" alt="Instagram FAPAC"></a>
+        </div>
+    </footer>
+</body>
+</html>

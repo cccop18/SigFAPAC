@@ -1,0 +1,94 @@
+.sidebar {
+    width: 44px; /* 80% de 55px */
+    background-color: #fff;
+    transition: width 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%; /* Certifique-se de que a sidebar sempre tenha altura */
+}
+
+.sidebar.expanded {
+    width: 360px; /* 80% de 450px */
+    position: absolute;
+    height: 100%; /* A altura ainda será ajustada pelo JS */
+}
+
+.toggle-btn {
+    font-size: 19.2px; /* 80% de 24px */
+    color: black;
+    cursor: pointer;
+    margin-bottom: 16px; /* 80% de 20px */
+}
+
+.toggle-btn img {
+    margin: 12px 5.6px; /* 80% de 15px 7px */
+    height: 24px; /* 80% de 30px */
+}
+
+.menu {
+    list-style-type: none;
+    padding: 0;
+    text-align: left;
+    display: none;
+}
+
+.sidebar.expanded .menu {
+    display: block;
+}
+
+.menu li {
+    color: black;
+    background-color: white;
+    margin: 8px 0px; /* 80% de 10px 0px */
+    padding: 12px 0px; /* 80% de 15px 0px */
+    text-align: center;
+    border-radius: 4px; /* 80% de 5px */
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border: solid 0.8px rgba(0, 0, 0, 0.247); /* 80% de 1px */
+    position: relative;
+}
+
+.menu li:hover {
+    background-color: #ddd;
+}
+
+.menu li .sub-menu {
+    list-style-type: none;
+    display: none;
+}
+
+.menu li.expanded .sub-menu {
+    display: block;
+}
+
+.menu li .toggle-submenu {
+    position: absolute;
+    right: 12px; /* 80% de 15px */
+    cursor: pointer;
+}
+
+li ul li {
+    width: 100%;
+}
+
+.menu li .toggle-submenu img {
+    width: 12px; /* 80% de 12px */
+    height: 12px; /* 80% de 12px */
+}
+
+.content {
+    flex-grow: 1;
+    padding: 20px; /* 80% de 20px */
+}
+
+.menulateral {
+    width: 80%; /* 80% de 80% */
+}
+
+@media screen and (max-width: 650px) {
+    .sidebar.expanded {
+        width: 300px; /* 80% de 300px */
+    }
+}

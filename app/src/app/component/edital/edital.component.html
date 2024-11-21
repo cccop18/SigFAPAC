@@ -1,0 +1,82 @@
+<h1>Editais</h1>
+<!-- Barra de comandos para busca -->
+<app-barra-comandos (eventoBusca)="get($event)"></app-barra-comandos>
+
+<!-- Container para os cards -->
+<div class="container mt-4">
+  <div class="row">
+    <!-- Iterar sobre os registros e criar um card para cada um -->
+    <div class="col-md-12 mb-4" *ngFor="let item of registros">
+      <div class="card text-center h-100 shadow-sm">
+        <div class="card-header bgtitulo text-white">
+          <!-- Campo destaque no cabeçalho -->
+          <strong>{{ item.identificacaoEdital }}</strong>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Título: {{ item.tituloEdital }}</h5>
+          <p class="card-text">
+            <strong>Programa:</strong> {{ item.programa.nomePrograma }}<br>
+            <strong>Data de Criação:</strong> {{ item.dataCriacaoEdital | date:'dd/MM/yyyy HH:mm' }}<br>
+            <strong>Situação:</strong> {{ item.situacaoEdital }}
+          </p>
+
+          <!-- Alinhamento dos botões um ao lado do outro -->
+          <div class="d-flex justify-content-center mt-3">
+            <!-- Botão de ação principal -->
+            <a routerLink="/editatinfs/" 
+            [queryParams]="{id: item.idEdital}"
+              class="botao view me-2"
+              ngbTooltip="Visualizar edital">
+              <i class="bi bi-eye"></i>
+            </a>
+            <a routerLink="/editais/form"
+                   [queryParams]="{id: item.idEdital}"
+                   class="botao me-2"
+                   ngbTooltip="Editar edital"><i class="bi bi-pencil-square"></i></a>
+            <a href=""
+              class="botao excluir me-2"
+              (click)="delete(item.idEdital); $event.preventDefault();"
+              ngbTooltip="Excluir edital">
+              <i class="bi bi-x-square"></i>
+            </a>
+            <a routerLink="/propostatitulo/form"
+                   [queryParams]="{idEdital: item.idEdital}"
+                   class="botao me-3"
+                   ngbTooltip="Submeter proposta"><i class="bi bi-bookmark-check"></i></a>
+          </div>
+        </div>
+        <div class="card-footer text-muted">
+          <!-- Informações do footer -->
+          <!-- Substituir `item.situacaoEdital` pelo valor correto de data -->
+          Vigência: 
+          <!-- Verificar se `item.vigenciaInicio` e `item.vigenciaFim` são datas antes de aplicar o pipe -->
+          <!-- {{ item.vigenciaInicio ? (item.vigenciaInicio | date:'dd/MM/yyyy') : '-' }} - 
+          {{ item.vigenciaFim ? (item.vigenciaFim | date:'dd/MM/yyyy') : '-' }} -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Paginação -->
+<div id="paginacao" class="mt-4">
+  <div class="form-group">
+    <label for="tamanhoPagina" class="form-label">Itens por página</label>
+    <select name="tamanhoPagina"
+            id="tamanhoPagina"
+            [(ngModel)]="requisicaoPaginada.size"
+            (change)="mudarTamanhoPagina()"
+            class="form-select">
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="20">20</option>
+    </select>
+  </div>
+  <ngb-pagination
+    [collectionSize]="respostaPaginada.totalElements"
+    [pageSize]="respostaPaginada.size"
+    (pageChange)="mudarPagina($event)"
+    [boundaryLinks]="true"
+    class="ngb-pagination">
+  </ngb-pagination>
+</div>

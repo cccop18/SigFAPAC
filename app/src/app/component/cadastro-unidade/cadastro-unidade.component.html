@@ -1,0 +1,75 @@
+<app-alerta></app-alerta>
+<section id="cadastro">
+       <div class="informacoes">
+         <h1>Cadastro de Unidade</h1>
+         <h3>Os campos marcados com <span class="vermelho">*</span> são obrigatórios.</h3>
+       </div>
+       <br>
+     
+         <form (submit)="save()" [formGroup]="formUnidade">
+           <section id="pessoais" class=" cadastro">
+             <div class="dados grid">
+                 <label for="nomeUnidade" class="obrigatorio">Nome</label>
+                 <input type="text" name="nomeUnidade" id="nomeUnidade" required
+                        formControlName="nomeUnidade" class="form-control"
+                        [ngClass]="{'is-invalid': form.nomeUnidade.invalid && form.nomeUnidade.touched, 'is-valid': form.nomeUnidade.valid && form.nomeUnidade.touched}">
+     
+                 <label for="emailUnidade"  class="obrigatorio">E-mail</label>
+                 <input type="email" name="emailUnidade" id="emailUnidade" required
+                        formControlName="emailUnidade" class="form-control"
+                        [ngClass]="{'is-invalid': form.emailUnidade.invalid && form.emailUnidade.touched, 'is-valid': form.emailUnidade.valid && form.emailUnidade.touched}">
+                 <small *ngIf="form.emailUnidade.hasError('email')">Formato inválido</small>
+     
+                 <label for="telefoneUnidade" class="obrigatorio">Telefone</label>
+                 <input type="text" name="telefoneUnidade" id="telefoneUnidade" required
+                        formControlName="telefoneUnidade" class="form-control"
+                        [ngClass]="{'is-invalid': form.telefoneUnidade.invalid && form.telefoneUnidade.touched, 'is-valid': form.telefoneUnidade.valid && form.telefoneUnidade.touched}">
+                 <small *ngIf="form.telefoneUnidade.hasError('pattern')">Telefone deve seguir o formato (55) 55555-5555</small>
+     
+                 <label for="instituicao"  class="obrigatorio">Instituicão</label>
+                 <select name="instituicao" id="instituicao" required
+                         formControlName="idInstituicao" class="form-select"
+                         [ngClass]="{'is-invalid': form.idInstituicao.invalid && form.idInstituicao.touched, 'is-valid': form.idInstituicao.valid && form.idInstituicao.touched}">
+                     <option *ngFor="let e of instituicao" [ngValue]="e.idInstituicao">{{e.nomeInstituicao}}</option>
+                 </select>
+     
+                 <label for="cepEnderecoUnidade" class="obrigatorio">Cep</label>
+                 <input type="text" name="cepEnderecoUnidade" id="cepEnderecoUnidade" required
+                        formControlName="cepEnderecoUnidade" class="form-control" (blur)="verificarCep()"
+                        [ngClass]="{'is-invalid': form.cepEnderecoUnidade.invalid && form.cepEnderecoUnidade.touched, 'is-valid': form.cepEnderecoUnidade.valid && form.cepEnderecoUnidade.touched}">
+                 <small *ngIf="formUnidade.get('cepEnderecoUnidade')?.hasError('cepInvalido')">CEP inválido </small>
+     
+                 <label for="nomeUnidade" class="obrigatorio">Logradouro</label>
+                 <input type="text" name="logradouroEnderecoUnidade" id="logradouroEnderecoUnidade" required
+                        formControlName="logradouroEnderecoUnidade" class="form-control"
+                        [ngClass]="{'is-invalid': form.logradouroEnderecoUnidade.invalid && form.logradouroEnderecoUnidade.touched, 'is-valid': form.logradouroEnderecoUnidade.valid && form.logradouroEnderecoUnidade.touched}">
+     
+                 <label for="numeroEnderecoUnidade" class="obrigatorio">Número</label>
+                 <input type="text" name="numeroEnderecoUnidade" id="numeroEnderecoUnidade" required
+                        formControlName="numeroEnderecoUnidade" class="form-control"
+                        [ngClass]="{'is-invalid': form.numeroEnderecoUnidade.invalid && form.numeroEnderecoUnidade.touched, 'is-valid': form.numeroEnderecoUnidade.valid && form.numeroEnderecoUnidade.touched}">
+     
+                 <label for="bairroEnderecoUnidade" class="obrigatorio">Bairro</label>
+                 <input type="text" name="bairroEnderecoUnidade" id="bairroEnderecoUnidade" required
+                        formControlName="bairroEnderecoUnidade" class="form-control"
+                        [ngClass]="{'is-invalid': form.bairroEnderecoUnidade.invalid && form.bairroEnderecoUnidade.touched, 'is-valid': form.bairroEnderecoUnidade.valid && form.bairroEnderecoUnidade.touched}">
+     
+                 <label for="estadoEnderecoUnidade" class="obrigatorio">Estado</label>
+                 <input type="text" name="estadoEnderecoUnidade" id="estadoEnderecoUnidade" required
+                        formControlName="estadoEnderecoUnidade" class="form-control"
+                        [ngClass]="{'is-invalid': form.estadoEnderecoUnidade.invalid && form.estadoEnderecoUnidade.touched, 'is-valid': form.estadoEnderecoUnidade.valid && form.estadoEnderecoUnidade.touched}">
+     
+                 <label for="paisEnderecoUnidade" class="obrigatorio">Pais</label>
+                 <input type="text" name="paisEnderecoUnidade" id="paisEnderecoUnidade" required
+                        formControlName="paisEnderecoUnidade" class="form-control"
+                        [ngClass]="{'is-invalid': form.paisEnderecoUnidade.invalid && form.paisEnderecoUnidade.touched, 'is-valid': form.paisEnderecoUnidade.valid && form.paisEnderecoUnidade.touched}">
+             </div>
+           </section>
+           <div class="bot">
+              <input type="button" value="Cancelar" routerLink="../instituicao" class="cancelar">
+              <input type="submit" value="Adicionar" [disabled]="formUnidade.invalid" class="enviar">
+            </div>
+         </form>
+         
+     
+     </section>

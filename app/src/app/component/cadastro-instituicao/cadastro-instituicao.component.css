@@ -1,0 +1,112 @@
+:root {
+    --verde1: #038E42;
+    --verde2: #2ecc71;
+    --branco: #ffffff;
+    --preto: #000000;
+    --background-color: #41414115;
+    --text-color: #333;
+  }
+
+  /*** Configurações do formulario de login ***/
+  .vermelho {
+    color: red;
+  }
+
+  .bot {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.64em;
+  }
+
+
+  input, select {
+    border-radius: 4px;
+    padding: 0.4em;
+    border: 1px solid var(--preto);
+    font-size: 0.9em;
+    min-width: 200px;
+  }
+
+  .enviar, .cancelar {
+    background-color: var(--verde1);
+    color: var(--branco);
+    border-radius: 4px;
+    padding: 0.4em;
+    border: none;
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 9.6px;
+  }
+
+  .enviar:hover {
+    background-color: var(--verde2);
+    color: var(--preto);
+  }
+
+  #cadastro {
+    width: 100%;
+    padding: 0px 10%;
+  }
+
+  form {
+    width: 100%;
+    margin: auto;
+  }
+
+  .dados-pesquisador {
+    margin: 10px 0px 50px;
+    display: inline-flex;
+    border: 1.6px solid black;
+    width: 100%;
+  }
+
+  .dados {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 0.8em;
+    padding: 12px;
+    font-size: 1em;
+    width: 100%;
+  }
+
+  .obrigatorio::after {
+    content: "*";
+    color: red;
+  }
+
+  .cancelar {
+    background-color: #ac0000;
+  }
+
+  .cancelar:hover {
+    background-color: #5a0000;
+    color: white;
+  }
+
+  @media screen and (max-width: 900px) {
+    #cadastro {
+      margin: 0px;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    #cadastro {
+      margin: 0px;
+    }
+  }
+
+  @media screen and (max-width: 750px) {
+
+    .dados {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media screen and (max-width: 650px) {
+    .bot {
+      grid-template-columns: 1fr;
+    }
+
+    #cadastro {
+      width: 400px;
+    }
+  }

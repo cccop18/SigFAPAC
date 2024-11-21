@@ -1,0 +1,86 @@
+<section id="cadastro">
+  <div class="informacoes">
+    <h1>Cadastro de Pesquisador</h1>
+    <p>Preencha corretamente os campos abaixo para fazer parte da comunidade de pesquisadores da FAPAC.</p>
+    <h3>Os campos marcados com <span class="vermelho">*</span> são obrigatórios.</h3>
+  </div>
+  <br>
+
+  <div class="bot">
+    <a href=".cadastro/brasileiro" class="enviar">Pesquisador Brasileiro</a>
+    <a href=".cadastro/estrangeiro" class="enviar pesquisador">Pesquisador Estrangeiro</a>
+  </div>
+  <br>
+
+  <form>
+    <h3>Dados Pessoais</h3>
+    <section id="pessoais" class="dados-pesquisador cadastro">
+      <div class="dados">
+        <label for="nomeCompleto" class="obrigatorio">Nome Completo</label>
+        <input type="text" id="nomeCompleto" name="nomeCompleto" class="obrigatorio" required />
+
+        <label for="passaport" class="obrigatorio estrangeiro">Passaporte</label>
+        <input type="text" name="passaporte" id="passaport" class="obrigatorio estrangeiro" required />
+
+        <label for="rgestrangeiro" class="obrigatorio estrangeiro">RG Estrangeiro</label>
+        <input type="text" id="rgestrangeiro" name="rgestrangeiro" class="obrigatorio estrangeiro" required />
+
+        <label for="email" class="obrigatorio">E-mail</label>
+        <input type="email" id="email" name="email" class="obrigatorio" required />
+
+        <label for="sexo" class="obrigatorio">Sexo</label>
+        <select id="sexo" name="sexo" class="obrigatorio" required>
+          <option value="">Selecione</option>
+          <option value="M">Masculino</option>
+          <option value="F">Feminino</option>
+        </select>
+
+        <label for="dataNascimento" class="obrigatorio">Data de Nascimento</label>
+        <input type="date" id="dataNascimento" name="dataNascimento" required />
+
+        <label for="racaCor">Raça/Cor</label>
+        <select id="racaCor" name="racaCor">
+          <option value="-1">Selecione</option>
+          <option value="3">Amarela</option>
+          <option value="2">Branca</option>
+          <option value="4">Indígena</option>
+          <option value="5">Parda</option>
+          <option value="1">Preta</option>
+        </select>
+
+        <label for="nomeMae" class="obrigatorio">Nome da Mãe</label>
+        <input type="text" id="nomeMae" name="nomeMae" class="obrigatorio" required />
+
+        <label for="nomePai">Nome do Pai</label>
+        <input type="text" id="nomePai" name="nomePai" />
+
+        <label for="linkLattes" class="obrigatorio">Link Currículo Lattes</label>
+        <input type="text" id="linkLattes" name="linkLattes" class="obrigatorio" required />
+
+        <label for="nivelAcademico" class="obrigatorio">Nível Acadêmico</label>
+        <select id="nivelAcademico" name="nivelAcademico" class="obrigatorio" required>
+          <option value="-1">Selecione</option>
+          <option value="140900">Ensino Fundamental</option>
+          <option value="140901">Ensino Médio</option>
+          <option value="140902">Ensino Superior</option>
+          <option value="140903">Especialização</option>
+          <option value="140904">Mestrado</option>
+          <option value="140905">Doutorado</option>
+          <option value="1409061">Pós-doutorado</option>
+        </select>
+      </div>
+
+      <div id="foto">
+        <div id="preview"></div>
+        <label for="imageUpload">Foto</label>
+        <input type="file" id="imageUpload" (change)="handleImageUpload($event)" accept="image/*" />
+      </div>
+    </section>
+
+    <div class="bot">
+      <a href="login" class="cancelar">Cancelar</a>
+      <a href="cadastro/endereco" class="enviar">Próximo</a>
+    </div>
+    <br /><br />
+  </form>
+</section>

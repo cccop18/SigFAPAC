@@ -1,0 +1,72 @@
+<app-alerta></app-alerta>
+<section id="cadastro">
+    <div class="informacoes">
+      <h1>Cadastro de instituicao</h1>
+      <h3>Os campos marcados com <span class="vermelho">*</span> são obrigatórios.</h3>
+    </div>
+    <br>
+    <form (submit)="save()" [formGroup]="formInstituicao">
+      <section id="pessoais" class="cadastro">
+        <div class="dados grid">
+          <label for="cnpjInstituicao" class="obrigatorio">CNPJ</label>
+          <div>
+            <input style="height: 35px;" type="text" id="cnpjInstituicao" name="cnpj" required
+                  formControlName="cnpjInstituicao" class="form-control"
+                  [ngClass]="{'is-invalid': form.cnpjInstituicao.invalid && form.cnpjInstituicao.touched, 'is-valid': form.cnpjInstituicao.valid && form.cnpjInstituicao.touched}">
+            <small *ngIf="form.cnpjInstituicao.hasError('invalidCNPJ')">CNPJ inválido deve ser no formato: 55.555.555/0001-55</small>
+          </div>
+
+
+          <label for="estrangeiraInstituicao">Estrangeiro</label>
+          <input style="height: 25px;" type="checkbox" name="estrangeiraInstituicao" id="estrangeiraInstituicao"
+                 formControlName="estrangeiraInstituicao">
+
+          <label for="nomeInstituicao" class="obrigatorio">Nome</label>
+          <input style="height: 35px;" type="text" name="nomeInstituicao" id="nomeInstituicao" required
+                 formControlName="nomeInstituicao" class="form-control"
+                 [ngClass]="{'is-invalid': form.nomeInstituicao.invalid && form.nomeInstituicao.touched, 'is-valid': form.nomeInstituicao.valid && form.nomeInstituicao.touched}">
+
+          <label for="siglaInstituicao" class="obrigatorio">Sigla</label>
+          <input style="height: 35px;" type="text" id="siglaInstituicao" name="siglaInstituicao" required
+                 formControlName="siglaInstituicao" class="form-control"
+                 [ngClass]="{'is-invalid': form.siglaInstituicao.invalid && form.siglaInstituicao.touched, 'is-valid': form.siglaInstituicao.valid && form.siglaInstituicao.touched}">
+
+          <!-- Campo de País Condicional -->
+
+            <label *ngIf="formInstituicao.get('estrangeiraInstituicao')?.value" for="paisInstituicao">País</label>
+            <input style="height: 35px;" *ngIf="formInstituicao.get('estrangeiraInstituicao')?.value" type="text" id="paisInstituicao" name="paisInstituicao" formControlName="paisInstituicao"
+              class="form-control"
+              [ngClass]="{'is-invalid': form.paisInstituicao.invalid && form.paisInstituicao.touched, 'is-valid': form.paisInstituicao.valid && form.paisInstituicao.touched}">
+
+
+          <label for="dependenciaAdmInstituicao" class="obrigatorio">Dependência Administrativa</label>
+          <select style="height: 35px;" id="dependenciaAdmInstituicao" name="dependenciaAdmInstituicao" required
+                  formControlName="dependenciaAdmInstituicao" class="form-select"
+                  [ngClass]="{'is-invalid': form.dependenciaAdmInstituicao.invalid && form.dependenciaAdmInstituicao.touched, 'is-valid': form.dependenciaAdmInstituicao.valid && form.dependenciaAdmInstituicao.touched}">
+            <option value="">Selecione</option>
+            <option value="PublicaMunicipal">Pública/Municipal</option>
+            <option value="PublicaEstadual">Pública/Estadual</option>
+            <option value="PublicaFederal">Pública/Federal</option>
+            <option value="Privada">Privada</option>
+            <option value="ONGNacional">ONG Nacional</option>
+            <option value="ONGInternacional">ONG Internacional</option>
+          </select>
+
+          <label>IES (Inst. de Ensino Superior)</label>
+          <input style="height: 25px;" type="checkbox" name="ensinoSuperiorInstituicao"
+                 formControlName="ensinoSuperiorInstituicao">
+          <label>Fins Lucrativos</label>
+          <input style="height: 25px;" type="checkbox" name="finsLucrativosLnstituicao"
+                 formControlName="finsLucrativosLnstituicao">
+
+          <div class="g-recaptcha" data-sitekey="6LdVWi8UAAAAAJuxXcqhekR5pz7FCyNDAlpzHnYf"></div>
+        </div>
+      </section>
+      <div class="bot">
+        <input type="button" value="Cancelar" routerLink="../" class="cancelar">
+        <input type="submit" value="Salvar" [disabled]="formInstituicao.invalid" class="enviar">
+      </div>
+    </form>
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  </section>

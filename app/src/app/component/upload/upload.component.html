@@ -1,0 +1,9 @@
+<form (submit)="onSubmit()" enctype="multipart/form-data">
+  <input type="file" (change)="onFileSelected($event)" />
+  <button type="submit">Upload</button>
+</form>
+
+<h3>Uploaded Images:</h3>
+<div *ngFor="let file of fileList">
+  <img [src]="'http://localhost:9000/fapacapi/files/view/' + file" alt="{{ file }}" width="200px" />
+</div>

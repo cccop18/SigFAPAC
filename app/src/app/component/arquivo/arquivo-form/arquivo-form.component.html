@@ -1,0 +1,34 @@
+<section id="cadastro"></section>
+<div class="informacoes">
+    <h1>Envio de Arquivos</h1>
+    <p>Envie os anexos requeridos e faça a atribuição dos tipos para continuar.</p>
+    <h3>Os campos marcados com <span class="vermelho">*</span> são obrigatórios.</h3>
+</div>
+<br>
+<form (submit)="save()" [formGroup]="formArquivo" enctype="multipart/form-data">
+    <section id="pessoais" class="dados-pesquisador">
+        <div class="dados grid">
+           
+            <label for="nomeArquivo" class="obrigatorio">Nome do Arquivo</label>
+            <input type="text" id="nomeArquivo" formControlName="nomeArquivo" class="form-control" required
+                [ngClass]="{'is-invalid': form.nomeArquivo.invalid && form.nomeArquivo.touched, 'is-valid': form.nomeArquivo.valid && form.nomeArquivo.touched}" />
+            <div *ngIf="form.nomeArquivo.invalid && (form.nomeArquivo.dirty || form.nomeArquivo.touched)">
+                <small class="text-danger">Nome é obrigatório.</small>
+            </div>
+            
+            <label for="fileArquivo" class="obrigatorio">File:</label>
+            <input type="file" id="fileArquivo" required class="form-control"
+                [ngClass]="{'is-invalid': form.fileArquivo.invalid && form.fileArquivo.touched, 'is-valid': form.fileArquivo.valid && form.fileArquivo.touched}">
+            <small *ngIf="form.fileArquivo.hasError('required')">Campo obrigatório</small>
+            <br>
+            <div class="form-group checkbox-group">
+                <label for="ativoArquivo" class="obrigatorio">Ativo</label>
+                <input type="checkbox" id="ativoArquivo" formControlName="ativoArquivo" required class="form-check-input" />
+            </div>
+            <div class="bot">
+                <input type="button" value="Cancelar" routerLink="../">
+                <input type="submit" value="Salvar" [disabled]="formArquivo.invalid">
+            </div>
+        </div>
+    </section>
+</form>

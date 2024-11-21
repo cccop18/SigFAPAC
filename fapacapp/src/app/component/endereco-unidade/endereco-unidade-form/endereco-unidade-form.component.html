@@ -1,0 +1,46 @@
+<form (submit)="save()" [formGroup]="formEnderecoUnidade">
+
+    <div class="grid">
+
+       <label for="nome">Cep:</label>
+       <input type="text" name="cepEnderecoUnidade" id="cepEnderecoUnidade" required
+              formControlName="cepEnderecoUnidade" class="form-control"
+              [ngClass]="{'is-invalid': form.cepEnderecoUnidade.invalid && form.cepEnderecoUnidade.touched, 'is-valid': form.cepEnderecoUnidade.valid && form.cepEnderecoUnidade.touched}">
+       <small *ngIf="form.cepEnderecoUnidade.hasError('required')">Campo obrigatório</small>
+
+       <label for="razaoSocial">Logradouro:</label>
+       <input type="text" name="logradouroEnderecoUnidade" id="logradouroEnderecoUnidade" required
+              formControlName="logradouroEnderecoUnidade" class="form-control"
+              [ngClass]="{'is-invalid': form.logradouroEnderecoUnidade.invalid && form.logradouroEnderecoUnidade.touched, 'is-valid': form.logradouroEnderecoUnidade.valid && form.logradouroEnderecoUnidade.touched}">
+       <small *ngIf="form.logradouroEnderecoUnidade.hasError('required')">Campo obrigatório</small>
+
+       <label for="cnpj">Número:</label>
+       <input type="text" name="numeroEnderecoUnidade" id="numeroEnderecoUnidade" required
+              formControlName="numeroEnderecoUnidade" class="form-control"
+              [ngClass]="{'is-invalid': form.numeroEnderecoUnidade.invalid && form.numeroEnderecoUnidade.touched, 'is-valid': form.numeroEnderecoUnidade.valid && form.numeroEnderecoUnidade.touched}">
+       <small *ngIf="form.numeroEnderecoUnidade.hasError('required')">Campo obrigatório</small>
+
+       <label for="representante">Bairro:</label>
+       <input type="text" name="bairroEnderecoUnidade" id="bairroEnderecoUnidade" required
+              formControlName="bairroEnderecoUnidade" class="form-control"
+              [ngClass]="{'is-invalid': form.bairroEnderecoUnidade.invalid && form.bairroEnderecoUnidade.touched, 'is-valid': form.bairroEnderecoUnidade.valid && form.bairroEnderecoUnidade.touched}">
+       <small *ngIf="form.bairroEnderecoUnidade.hasError('required')">Campo obrigatório</small>
+
+       <label for="representante">Estado:</label>
+       <input type="text" name="estadoEnderecoUnidade" id="estadoEnderecoUnidade" required
+              formControlName="estadoEnderecoUnidade" class="form-control"
+              [ngClass]="{'is-invalid': form.estadoEnderecoUnidade.invalid && form.estadoEnderecoUnidade.touched, 'is-valid': form.estadoEnderecoUnidade.valid && form.estadoEnderecoUnidade.touched}">
+       <small *ngIf="form.estadoEnderecoUnidade.hasError('required')">Campo obrigatório</small>
+
+       <label for="representante">Pais</label>
+       <input type="text" name="paisEnderecoUnidade" id="paisEnderecoUnidade" required
+              formControlName="paisEnderecoUnidade" class="form-control"
+              [ngClass]="{'is-invalid': form.paisEnderecoUnidade.invalid && form.paisEnderecoUnidade.touched, 'is-valid': form.paisEnderecoUnidade.valid && form.paisEnderecoUnidade.touched}">
+       <small *ngIf="form.paisEnderecoUnidade.hasError('required')">Campo obrigatório</small>
+        
+    </div>
+
+    <input type="button" value="Cancelar" routerLink="../">
+    <input type="submit" value="Salvar" [disabled]="formEnderecoUnidade.invalid">
+    
+</form>

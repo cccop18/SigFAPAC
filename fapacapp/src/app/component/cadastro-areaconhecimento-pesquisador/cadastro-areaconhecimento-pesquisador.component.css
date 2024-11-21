@@ -1,0 +1,148 @@
+:root {
+  --verde1: #038E42;
+  --verde2: #2ecc71;
+  --branco: #ffffff;
+  --preto: #000000;
+  --background-color: #41414115;
+  --text-color: #333;
+}
+
+/******* Configurações do formulario de login *******/
+
+.bot {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.64em;
+}
+
+.vermelho {
+  color: red;
+}
+
+input, select {
+  border-radius: 4px;
+  padding: 0.4em;
+  border: 1px solid var(--preto);
+  font-size: 0.9em;
+}
+
+.lbn-cmt {
+  display: none;
+}
+
+.enviar, .cancelar, .adicionar {
+  background-color: var(--verde1);
+  color: var(--branco);
+  border-radius: 4px;
+  padding: 0.4em;
+  border: none;
+  font-size: 1em;
+  font-weight: bold;
+  margin-top: 9.6px;
+}
+
+.enviar:hover, .adicionar:hover, .pesquisador {
+  background-color: var(--verde2);
+  color: var(--preto);
+}
+
+.pesquisador:hover {
+  background-color: var(--verde1);
+  color: var(--branco);
+}
+
+.dados-pesquisador {
+  margin: 10px 0px 70px;
+  display: inline-flex;
+  border: 1.6px solid black;
+}
+
+.dados {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 0.8em;
+  padding: 12px;
+  font-size: 1em;
+}
+
+.obrigatorio::after {
+  content: "*";
+  color: red;
+}
+
+.cancelar {
+  background-color: #ac0000;
+}
+
+.cancelar:hover {
+  background-color: #5a0000;
+  color: white;
+}
+
+.conteiner-centro {
+  width: 60px;
+  height: 60px;
+  margin: auto;
+}
+
+.conteiner-centro > button {
+  width: 50px;
+  height: 50px;
+  border: solid 1px black;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 2em;
+  background-image: url(../../../assets/img/plus.png);
+  background-size: 60%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 1050px) {
+  #pessoais {
+      display: block;
+  }
+
+  .informacoes {
+    padding: 25px;
+  }
+
+  form {
+    margin: auto;
+  }
+
+  .dados-pesquisador {
+    padding: 20px;
+  }
+
+  #cadastro {
+    width: calc(100% - 50px);
+    margin: auto;
+  }
+}
+
+
+@media screen and (max-width: 650px) {
+  .lbn-cmtg {
+    display: none;
+  }
+
+  .lbn-cmt {
+    display: block;
+  }
+
+  .dados {
+    grid-template-columns: 1fr;
+    gap: 0.4em;
+    width: 100%;
+  }
+
+  .dados-pesquisador {
+    width: calc(100% - 50px);
+    display: block;
+  }
+
+  .bot {
+    grid-template-columns: 1fr;
+  }
+}

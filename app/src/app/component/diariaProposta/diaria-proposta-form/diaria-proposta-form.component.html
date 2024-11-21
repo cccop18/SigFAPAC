@@ -1,0 +1,175 @@
+<app-menu-proposta></app-menu-proposta>
+<br>
+<section id="cadastro">
+  <form (submit)="save()" [formGroup]="formDiariaProposta">
+    <div class="informacoes">
+      <h1>Diárias</h1>
+      <p>Preencha corretamente os campos abaixo para adicionar uma Diária a sua Proposta.</p>
+      <h3>Os campos marcados com <span class="vermelho">*</span> são obrigatórios.</h3>
+    </div>
+    <br>
+    <hr>
+    <section id="diarias" class="dados-edital">
+      <!-- Localidade -->
+      <!-- Localidade como label com clique -->
+    <div>
+        <!-- Tipo de Localidade -->
+        <div class="form-group">
+          <label for="tipoLocalidade" class="obrigatorio">Tipo de Localidade</label>
+          <select id="tipoLocalidade" formControlName="tipoLocalidadeDiariaProposta" class="form-control" (change)="onTipoLocalidadeChange()"
+          [ngClass]="{'is-invalid': form.tipoLocalidadeDiariaProposta.invalid && form.tipoLocalidadeDiariaProposta.touched, 'is-valid': form.tipoLocalidadeDiariaProposta.valid && form.tipoLocalidadeDiariaProposta.touched}">
+            <option value="Nacional">Nacional</option>
+            <option value="Internacional">Internacional</option>
+          </select>
+          <div *ngIf="form.tipoLocalidadeDiariaProposta.hasError('required')" class="vermelho">
+            <small>Favor selecionar o tipo de Localidade.</small>
+          </div>
+        </div>
+      
+        <!-- Campos para Internacional -->
+        <div *ngIf="formDiariaProposta.get('tipoLocalidadeDiariaProposta')?.value === 'Internacional'">
+          <div class="form-group">
+            <label for="paisDiariaProposta" class="obrigatorio">País</label>
+            <input type="text" id="paisDiariaProposta" formControlName="paisDiariaProposta" class="form-control"
+              placeholder="Informe o país" 
+              [ngClass]="{'is-invalid': form.paisDiariaProposta.invalid && form.paisDiariaProposta.touched, 'is-valid': form.paisDiariaProposta.valid && form.paisDiariaProposta.touched}"/>
+              <div *ngIf="form.paisDiariaProposta.hasError('required')" class="vermelho">
+                <small>Favor preencher o País.</small>
+              </div>
+          </div>
+          <div class="form-group">
+            <label for="estadoDiariaProposta" class="obrigatorio">Estado</label>
+            <input type="text" id="estadoDiariaProposta" formControlName="estadoDiariaProposta" class="form-control"
+              placeholder="Informe o estado ou província" 
+              [ngClass]="{'is-invalid': form.estadoDiariaProposta.invalid && form.estadoDiariaProposta.touched, 'is-valid': form.estadoDiariaProposta.valid && form.estadoDiariaProposta.touched}"/>
+              <div *ngIf="form.estadoDiariaProposta.hasError('required')" class="vermelho">
+                <small>Favor preencher o Estado.</small>
+              </div>
+          </div>
+          <div class="form-group">
+            <label for="provinciaDiariaProposta">Provincia</label>
+            <input type="text" id="provinciaDiariaProposta" formControlName="provinciaDiariaProposta" class="form-control"
+              placeholder="Informe a provincia" />
+          </div>
+        </div>
+      
+        <!-- Campos para Nacional -->
+        <div *ngIf="formDiariaProposta.get('tipoLocalidadeDiariaProposta')?.value === 'Nacional'">
+          <div class="form-group">
+            <label for="estadoDiariaProposta" class="obrigatorio">Estado</label>
+            <select id="estadoDiariaProposta" formControlName="estadoDiariaProposta" class="form-control" (change)="onEstadoChange()"
+            [ngClass]="{'is-invalid': form.estadoDiariaProposta.invalid && form.estadoDiariaProposta.touched, 'is-valid': form.estadoDiariaProposta.valid && form.estadoDiariaProposta.touched}">
+              <option *ngFor="let estado of estados" [value]="estado.sigla">{{ estado.nome }}</option>
+            </select>
+            <div *ngIf="form.estadoDiariaProposta.hasError('required')" class="vermelho">
+              <small>Favor selecionar o Estado.</small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="municipioDiariaProposta" class="obrigatorio">Município</label>
+            <select id="municipioDiariaProposta" formControlName="municipioDiariaProposta" class="form-control"
+            [ngClass]="{'is-invalid': form.municipioDiariaProposta.invalid && form.municipioDiariaProposta.touched, 'is-valid': form.municipioDiariaProposta.valid && form.municipioDiariaProposta.touched}">
+              <option *ngFor="let municipio of municipios" [value]="municipio">{{ municipio }}</option>
+            </select>
+            <div *ngIf="form.municipioDiariaProposta.hasError('required')" class="vermelho">
+              <small>Favor selecionar o Município</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Outros campos de diárias -->
+      <div class="form-group">
+        <label for="numeroDiariaProposta" class="obrigatorio">Nº de Diárias</label>
+        <input type="number" id="numeroDiariaProposta" formControlName="numeroDiariaProposta" class="form-control" required
+          placeholder="1" 
+          [ngClass]="{'is-invalid': form.numeroDiariaProposta.invalid && form.numeroDiariaProposta.touched, 'is-valid': form.numeroDiariaProposta.valid && form.numeroDiariaProposta.touched}"/>
+          <div *ngIf="form.numeroDiariaProposta.hasError('required')" class="vermelho">
+            <small>Favor preencher o Número de Diárias</small>
+          </div>
+      </div>
+
+      <div class="form-group">
+        <label for="custoUnitDiariaProposta" class="obrigatorio">Custo Unitário</label>
+        <input type="number" id="custoUnitDiariaProposta" formControlName="custoUnitDiariaProposta" class="form-control" required
+          placeholder="0,00"
+          [ngClass]="{'is-invalid': form.custoUnitDiariaProposta.invalid && form.custoUnitDiariaProposta.touched, 'is-valid': form.custoUnitDiariaProposta.valid && form.custoUnitDiariaProposta.touched}"/>
+          <div *ngIf="form.custoUnitDiariaProposta.hasError('required')" class="vermelho">
+            <small>Favor preencher o Custo Unitário</small>
+          </div>
+      </div>
+
+      <div class="form-group">
+        <label for="moeda" class="obrigatorio">Moeda</label>
+        <select id="moeda" formControlName="moeda" class="form-control" required
+        [ngClass]="{'is-invalid': form.moeda.invalid && form.moeda.touched, 'is-valid': form.moeda.valid && form.moeda.touched}">
+          <option *ngFor="let moeda of moedas" [ngValue]="moeda">{{ moeda.nomeMoeda }}</option>
+        </select>
+        <div *ngIf="form.moeda.hasError('required')" class="vermelho">
+          <small>Favor selecionar uma Moeda Válida.</small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="data" class="obrigatorio">Data (Mês)</label>
+        <input type="text" id="data" formControlName="data" class="form-control" placeholder="1º Mês" 
+        [ngClass]="{'is-invalid': form.data.invalid && form.data.touched, 'is-valid': form.data.valid && form.data.touched}"/>
+        <div *ngIf="form.data.hasError('required')" class="vermelho">
+          <small>Favor preencher a Data.</small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="justicativa">Justificativa</label>
+        <textarea type="text" id="justicativa" formControlName="justicativa" class="form-control"></textarea>
+      </div>
+
+
+      <div class="bot">
+        <input type="button" value="Limpar" />
+        <input type="submit" value="Inserir" [disabled]="formDiariaProposta.invalid" />
+      </div>
+    </section>
+    <br>
+
+    <!-- Diárias Adicionadas -->
+    <section *ngIf="diariaProposta.length > 0">
+      <hr>
+      <h3>Diárias Adicionadas:</h3>
+      <table class="table table-bordered table-striped">
+        <thead class="bg-success">
+          <tr>
+            <th>Localidade</th>
+            <th>Mês</th>
+            <th>Quantidade</th>
+            <th>Custo Unitário</th>
+            <th>Custo Total</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let diaria of diariaProposta">
+              <td>
+                {{ diaria.paisDiariaProposta }} - 
+                {{ diaria.estadoDiariaProposta }} - 
+                <!-- Verifica se é Internacional e exibe a província, caso contrário, o município -->
+                {{ diaria.tipoLocalidadeDiariaProposta === 'Internacional' ? diaria.provinciaDiariaProposta : diaria.municipioDiariaProposta }}
+              </td>
+              <td>{{ diaria.data }}</td>
+              <td>{{ diaria.numeroDiariaProposta }}</td>
+              <td>{{ diaria.custoUnitDiariaProposta }}</td>
+              <td>{{ diaria.numeroDiariaProposta * diaria.custoUnitDiariaProposta }}</td>
+              <td>
+                <a href="" class="botao excluir text-danger" (click)="delete(diaria.idDiariaProposta); $event.preventDefault();" ngbTooltip="Remover diária">Remover</a>
+              </td>
+            </tr>
+          </tbody>
+      </table>
+    </section>
+
+    <div class="bot">
+      <input type="button" value="Cancelar" routerLink="../">
+      <input type="button" value="Salvar" (click)="redirect()" />
+    </div>
+  </form>
+</section>

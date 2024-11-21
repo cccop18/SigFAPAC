@@ -1,0 +1,161 @@
+:root {
+  --verde1: #038E42;
+  --secondary-color: #2ecc71;
+  --background-color: #f4f4f4;
+  --text-color: #333;
+}
+
+/******* Configurações do fomrulario *******/
+
+app-cadastro-dados-br, app-cadastro-dados-es {
+margin: 50px auto;
+}
+
+app-cadastro-endereco-pesquisadores {
+  margin: auto;
+}
+
+form {
+  border: none;
+  width: 100%;
+}
+
+.vermelho {
+  color: red;
+}
+
+#cadastro {
+  width: 800px;
+  margin: auto;
+}
+
+.cadastro {
+  width: 100%;
+}
+
+.dados-pesquisador {
+  margin: 10px 0px 70px;
+  display: inline-flex;
+  border: 1.6px solid black;
+}
+
+.dados {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 0.8em;
+  padding: 12px;
+  font-size: 1em;
+}
+
+.conhecimento {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  width: calc(100% - 60px);
+}
+
+.conteiner-centro {
+  width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#addEspecialidadeBtn {
+  font-size: 2.4em;
+  border: solid black 1.6px;
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+}
+
+.correspondencia {
+  grid-template-columns: 1fr;
+}
+
+.obrigatorio::after {
+  content: "*";
+  color: red;
+}
+
+/******* Configurações da foto do fomrulario *******/
+#preview {
+  width: 120px;
+  height: 160px;
+  border: 1.6px solid #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8px;
+  background-color: #0000001c;
+}
+
+#foto, #foto input {
+  align-content: center;
+  border: none;
+}
+
+#foto > * {
+  margin: auto;
+}
+
+#preview img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/******* Configurações dos botões do fomrulario *******/
+
+.desativar {
+  display: none;
+}
+
+.cancelar {
+  background-color: #ac0000;
+}
+
+.cancelar:hover {
+  background-color: #5a0000;
+  color: white;
+}
+
+/******* Configurações de responsividade do fomrulario *******/
+@media screen and (max-width: 1050px) {
+
+  app-cadastro-dados-br, app-cadastro-dados-es, app-cadastro-endereco-pesquisadores {
+    width: calc(100% - 50px);
+    min-width: 356px;
+  }
+
+  app-cadastro-dados-br #cadastro, app-cadastro-dados-es #cadastro, app-cadastro-endereco-pesquisadores #cadastro {
+    width: calc(100% - 50px);
+    min-width: 356px;
+  }
+
+  .informacoes {
+    padding: 25px;
+  }
+
+  form {
+    width: calc(100% - 20px);
+    margin: auto;
+  }
+
+  .dados-pesquisador {
+    padding: 20px;
+  }
+}
+
+@media screen and (max-width: 850px) {
+
+  .dados {
+    grid-template-columns: 1fr;
+    gap: 0.4em;
+  }
+
+  .correspondecia {
+    display: block;
+  }
+
+  .cadastro {
+    width: calc(100% - 40px);
+  }
+}

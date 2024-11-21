@@ -1,0 +1,35 @@
+<section id="cadastro"></section>
+  <div class="informacoes">
+    <h1>Cadastro de Entidade Bancária</h1>
+    <p>Preencha corretamente os campos abaixo para cadastra um Banco.</p>
+    <h3>Os campos marcados com <span class="vermelho">*</span> são obrigatórios.</h3>
+  </div>
+  <br>
+<form (submit)="save()" [formGroup]="formBanco">
+  <section id="pessoais" class="dados-pesquisador">
+    <div class="dados grid">
+      <label for="nomeBanco" class="obrigatorio">Nome do Banco</label>
+      <input type="text" id="nomeBanco" formControlName="nomeBanco" class="form-control" required 
+      [ngClass]="{'is-invalid': form.nomeBanco.invalid && form.nomeBanco.touched, 'is-valid': form.nomeBanco.valid && form.nomeBanco.touched}"/>
+      <div *ngIf="form.nomeBanco.invalid && (form.nomeBanco.dirty || form.nomeBanco.touched)">
+        <small class="text-danger">Nome é obrigatório.</small>
+      </div>
+      <label for="numeroBanco" class="obrigatorio">Número do Banco</label>
+      <input type="number" id="numeroBanco" formControlName="numeroBanco" class="form-control" 
+      [ngClass]="{'is-invalid': form.numeroBanco.invalid && form.numeroBanco.touched, 'is-valid': form.numeroBanco.valid && form.numeroBanco.touched}"/>
+      <div *ngIf="form.numeroBanco.invalid && (form.numeroBanco.dirty || form.numeroBanco.touched)">
+        <small class="text-danger">Número inválido.</small>
+      </div>
+      <br>
+      <div class="form-group checkbox-group">
+        <label for="ativoBanco" class="">Ativo</label>
+        <input type="checkbox" id="ativoBanco" formControlName="ativoBanco" class="form-check-input" />
+      </div>
+        <div class="bot">
+          <input type="button" value="Cancelar" routerLink="../">
+          <input type="submit" value="Salvar" [disabled]="formBanco.invalid">
+        </div>
+      </div>
+  </section>
+</form>
+

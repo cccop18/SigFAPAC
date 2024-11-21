@@ -1,0 +1,37 @@
+@media screen and (max-width: 936px) { /* 80% de 1170px */
+    header {
+        display: block;
+    }
+
+    #logo img {
+        height: auto;
+        width: 370px; /* 80% de 370px */
+        margin: auto;
+    }
+
+    #logo a {
+        margin: auto;
+        display: flex;
+    }
+
+    #logo {
+        margin: auto;
+        padding: 15px 0px; /* 80% de 15px */
+    }
+
+    nav {
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 680px) { /* 80% de 850px */
+    header {
+        height: 250px; /* 80% de 250px */
+    }
+}
+
+@media screen and (max-width: 520px) { /* 80% de 650px */
+    header {
+        height: 200px; /* 80% de 200px */
+    }
+}

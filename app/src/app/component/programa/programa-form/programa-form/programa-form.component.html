@@ -1,0 +1,32 @@
+<section id="cadastro">
+    <div class="informacoes">
+      <h1>Cadastro de Programa</h1>
+      <p>Preencha corretamente os campos abaixo para cadastra um Programa.</p>
+      <h3>Os campos marcados com <span class="vermelho">*</span> são obrigatórios.</h3>
+    </div>
+    <br>
+    <form (submit)="save()" [formGroup]="formPrograma">
+        <section>
+            <div>
+                <label for="nome" class="obrigatorio">Nome</label>
+                 <input type="text" name="nomePrograma" id="nomePrograma" required
+                        formControlName="nomePrograma" class="form-control"
+                        [ngClass]="{'is-invalid': form.nomePrograma.invalid && form.nomePrograma.touched, 'is-valid': form.nomePrograma.valid && form.nomePrograma.touched}">
+            </div>
+            <div *ngIf="form.nomePrograma.invalid && (form.nomePrograma.dirty || form.nomePrograma.touched)">
+                <small class="text-danger">Nome é obrigatório.</small>
+              </div>
+            <!-- Ativo (Checkbox) -->
+             <br>
+            <div class="form-group checkbox-group">
+                <label class="form-check-label" for="ativo">Ativo</label>
+                <input type="checkbox" id="ativoPrograma" formControlName="ativoPrograma" class="form-check-input" />
+            </div>
+            <!-- Botão de Salvar -->
+            <div class="bot">
+                <input type="button" value="Cancelar" routerLink="/programa">
+                <input type="submit" value="Salvar" [disabled]="formPrograma.invalid">
+            </div>
+        </section>
+    </form>
+</section>

@@ -1,0 +1,62 @@
+<section id="cadastro">
+  <div class="informacoes">
+    <h1>Cadastro de uma Diárias</h1>
+    <p>Preencha corretamente os campos abaixo para cadastra uma Diária.</p>
+    <h3>Os campos marcados com <span class="vermelho">*</span> são obrigatórios.</h3>
+  </div>
+  <br>
+    <form (submit)="save()" [formGroup]="formDiarias">
+        <section>
+            <div class="">
+                <label for="nivelAcademicoDiaria" class="obrigatorio">Nível Acadêmico:</label>
+                <select id="nivelAcademicoDiaria" formControlName="nivelAcademicoDiaria" class="form-control">
+                <option value="" disabled selected>Selecione</option>
+                <option value="fundamental">Ensino Fundamental</option>
+                <option value="medio">Ensino Médio</option>
+                <option value="superior">Ensino Superior</option>
+                <option value="especializacao">Especialização</option>
+                <option value="mestrado">Mestrado</option>
+                <option value="doutorado">Doutorado</option>
+                <option value="posDoutorado">Pós-doutorado</option>
+                </select>
+                <div *ngIf="form.nivelAcademicoDiaria.invalid && (form.nivelAcademicoDiaria.dirty || form.nivelAcademicoDiaria.touched)" class="text-danger">
+                O nível acadêmico é obrigatório.
+                </div>
+            </div>
+        
+            <!-- Tipo de Viagem -->
+            <div class="form-group">
+                <label for="tipoDiaria" class="obrigatorio">Tipo de Viagem:</label>
+                <select id="tipoDiaria" formControlName="tipoDiaria" class="form-control">
+                <option value="" disabled selected>Selecione</option>
+                <option value="dentroEstado">Viagem dentro do Estado</option>
+                <option value="foraEstado">Viagem fora do Estado</option>
+                </select>
+                <div *ngIf="form.tipoDiaria.invalid && (form.tipoDiaria.dirty || form.tipoDiaria.touched)" class="text-danger">
+                O tipo de viagem é obrigatório.
+                </div>
+            </div>
+        
+            <!-- Valor da Diária -->
+            <div class="form-group">
+                <label for="valorDiaria" class="obrigatorio">Valor da Diária:</label>
+                <input type="number" id="valorDiaria" formControlName="valorDiaria" class="form-control" placeholder="Insira o valor da diária" />
+                <div *ngIf="form.valorDiaria.invalid && (form.valorDiaria.dirty || form.valorDiaria.touched)" class="text-danger">
+                O valor da diária é obrigatório.
+                </div>
+            </div>
+        
+            <!-- Ativo (Checkbox) -->
+            <div class="form-group checkbox-group">
+                <label class="form-check-label" for="ativo">Ativo</label>
+                <input type="checkbox" id="ativo" formControlName="ativo" class="form-check-input" />
+            </div>
+      </section>
+       <!-- Botão de Salvar -->
+        <div class="bot">
+            <input type="button" value="Cancelar" routerLink="/diarias">
+            <input type="submit" value="Salvar" [disabled]="formDiarias.invalid">
+        </div>
+    </form>
+</section>
+  

@@ -1,0 +1,95 @@
+app-menu-lateral .sidebar {
+  width: 44px;
+  background-color: #fff;
+  transition: width 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+  overflow: visible;
+}
+
+app-menu-lateral .sidebar.expanded {
+  width: 360px;
+  position: absolute;
+  height: 100%;
+}
+
+app-menu-lateral .toggle-btn {
+  font-size: 19.2px;
+  color: black;
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+
+app-menu-lateral .toggle-btn img {
+  margin: 12px 5.6px;
+  height: 24px;
+}
+
+app-menu-lateral .menu {
+  list-style-type: none;
+  padding: 0;
+  text-align: left;
+  display: none;
+}
+
+app-menu-lateral .sidebar.expanded .menu {
+  display: block;
+}
+
+app-menu-lateral .menu li {
+  color: black;
+  background-color: white;
+  margin: 8px 0px;
+  padding: 12px 0px;
+  text-align: center;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border: solid 0.8px rgba(0, 0, 0, 0.247);
+  position: relative;
+}
+
+app-menu-lateral .menu li:hover {
+  background-color: #ddd;
+}
+
+app-menu-lateral .sub-menu {
+  list-style-type: none;
+  display: none;
+}
+
+app-menu-lateral .has-submenu .sub-menu {
+  display: block;
+}
+
+app-menu-lateral .menu li .toggle-submenu {
+  position: absolute;
+  right: 12px;
+  cursor: pointer;
+}
+
+app-menu-lateral li ul li {
+  width: 100%;
+}
+
+app-menu-lateral .menu li .toggle-submenu img {
+  width: 12px;
+  height: 12px;
+}
+
+app-menu-lateral .content {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+app-menu-lateral .menulateral {
+  width: 80%;
+}
+
+@media screen and (max-width: 650px) {
+  app-menu-lateral .sidebar.expanded {
+    width: 300px;
+  }
+}

@@ -1,0 +1,46 @@
+<app-menu-proposta></app-menu-proposta>
+<section id="cadastro">
+    <div class="informacoes">
+      <h1>Abrangência</h1>
+      <p>Selecione o estado e municipios que abrangem sua proposta.</p>
+    </div>
+    <br>
+    <hr>
+    <form [formGroup]="formAbrangencias" (ngSubmit)="save()">
+      <div class="dados-edital">
+        <!-- Seleção de estados -->
+        <label for="estado" class="obrigatorio">Estado:</label>
+        <select name="estado" id="estado" formControlName="estado" class="form-select" (change)="onEstadoChange()">
+          <option *ngFor="let estado of estados" [ngValue]="estado">{{ estado.nomeEstado }}</option>
+        </select>
+  
+        <!-- Seleção de municípios -->
+        <label for="" class="obrigatorio">Município:</label>
+        <div class="municipio-select">
+          <select name="municipioAbrangenciaProposta" id="municipioAbrangenciaProposta" formControlName="municipioAbrangenciaProposta" class="form-select">
+            <option *ngFor="let municipio of municipios" [value]="municipio">{{ municipio }}</option>
+          </select>
+          <div class="municipio-buttons">
+            <input type="button" value="Adicionar" class="btn-add" (click)="adicionarMunicipio()">
+            <input type="button" value="Remover" class="btn-remove" (click)="removerMunicipio()">
+        </div>
+        </div>
+  
+        <!-- Exibição de municípios selecionados -->
+        <label for="municipiosSelecionados">Municípios Selecionados:</label>
+        <ul class="municipios-list">
+          <li *ngFor="let municipio of municipiosSelecionados">
+            {{ municipio }}
+            <input type="btn" value="Remover" class="btn-remove-small" (click)="removerMunicipioSelecionado(municipio)">
+          </li>
+        </ul>
+        <hr>
+        <!-- Navegação -->
+        <div class="bot">
+          <input type="button" value="Cancelar" routerLink="/editais/">
+          <input type="submit" value="Salvar" [disabled]="formAbrangencias.invalid">
+        </div>
+      </div>
+    </form>
+  </section>
+  

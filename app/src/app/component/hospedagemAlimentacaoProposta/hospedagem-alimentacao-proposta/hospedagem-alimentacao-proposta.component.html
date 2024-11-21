@@ -1,0 +1,115 @@
+<app-menu-proposta></app-menu-proposta>
+<br>
+<section id="cadastro">
+  <form (submit)="save()" [formGroup]="formHospedagemAlimenProposta">
+    <div class="informacoes">
+      <h1>Hospedagem/Alimentação</h1>
+      <p>Preencha corretamente os campos abaixo para adicionar uma Hospedagem a sua Proposta.</p>
+      <h3>Os campos marcados com <span class="vermelho">*</span> são obrigatórios.</h3>
+    </div>
+    <br>
+    <hr>
+    <section id="hospedagemalimentacao" class="dados-edital">
+        <!-- Localidade -->
+        <!-- Localidade como label com clique -->
+      <div>
+          <!-- Tipo de Localidade -->
+          <div class="form-group">
+            <label for="tipoLocalidade" class="obrigatorio">Tipo de Localidade</label>
+            <select id="tipoLocalidade" formControlName="tipoLocalidadeHopsProposta" class="form-control" (change)="onTipoLocalidadeChange()">
+              <option value="Nacional">Nacional</option>
+              <option value="Internacional">Internacional</option>
+            </select>
+          </div>
+        
+          <!-- Campos para Internacional -->
+          <div *ngIf="formHospedagemAlimenProposta.get('tipoLocalidadeHopsProposta')?.value === 'Internacional'">
+            <div class="form-group">
+              <label for="paisHospedagemAlimentacaoProposta" class="obrigatorio">País</label>
+              <input type="text" id="paisHospedagemAlimentacaoProposta" formControlName="paisHospedagemAlimentacaoProposta" class="form-control"
+                placeholder="Informe o país" />
+            </div>
+            <div class="form-group">
+              <label for="estadoHospedagemAlimentacaoProposta" class="obrigatorio">Estado</label>
+              <input type="text" id="estadoHospedagemAlimentacaoProposta" formControlName="estadoHospedagemAlimentacaoProposta" class="form-control"
+                placeholder="Informe o estado ou província" />
+            </div>
+          </div>
+            <!-- Campos para Nacional -->
+          <div *ngIf="formHospedagemAlimenProposta.get('tipoLocalidadeHopsProposta')?.value === 'Nacional'">
+            <div class="form-group">
+              <label for="estadoHospedagemAlimentacaoProposta" class="obrigatorio">Estado</label>
+              <select id="estadoHospedagemAlimentacaoProposta" formControlName="estadoHospedagemAlimentacaoProposta" class="form-control" (change)="onEstadoChange()">
+                <option *ngFor="let estado of estados" [value]="estado.sigla">{{ estado.nome }}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="municipioHospedagemAlimentacaoProposta" class="obrigatorio">Município</label>
+              <select id="municipioHospedagemAlimentacaoProposta" formControlName="municipioHospedagemAlimentacaoProposta" class="form-control">
+                <option *ngFor="let municipio of municipios" [value]="municipio">{{ municipio }}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+          <div class="form-group">
+            <label for="especificacaoHospedagemAlimentacaoProposta" class="obrigatorio">Especificações</label>
+            <textarea id="especificacaoHospedagemAlimentacaoProposta" formControlName="especificacaoHospedagemAlimentacaoProposta" class="form-control" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="quantidadeHospedagemAlimentacaoProposta" class="obrigatorio">Quantidade</label>
+            <input type="number" id="quantidadeHospedagemAlimentacaoProposta" formControlName="quantidadeHospedagemAlimentacaoProposta" class="form-control" required
+              placeholder="1" />
+          </div>
+          <div class="form-group">
+            <label for="custoHospedagemAlimentacaoProposta" class="obrigatorio">Custo Unitário</label>
+            <input type="number" id="custoHospedagemAlimentacaoProposta" formControlName="custoHospedagemAlimentacaoProposta" class="form-control" required
+              placeholder="0,00" />
+          </div>
+          <div class="form-group">
+            <label for="moeda" class="obrigatorio">Moeda</label>
+            <select id="moeda" formControlName="moeda" class="form-control" required>
+              <option *ngFor="let moeda of moedas" [ngValue]="moeda">{{ moeda.nomeMoeda }}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="dataHospedagemAlimentacaoProposta" class="obrigatorio">Data</label>
+            <input type="text" id="dataHospedagemAlimentacaoProposta" formControlName="dataHospedagemAlimentacaoProposta" class="form-control" placeholder="1º Mês" />
+          </div>
+          <div class="bot">
+            <input type="button" value="Limpar" />
+            <input type="submit" value="Inserir" [disabled]="formHospedagemAlimenProposta.invalid" />
+          </div>
+        </section>
+        <br>
+        <!-- Hospedagem  Adicionadas -->
+<section *ngIf="hospedagemalimentacaoProposta.length > 0">
+    <hr>
+    <h3>Diárias Adicionadas:</h3>
+    <table class="table table-bordered table-striped">
+      <thead class="bg-success">
+        <tr>
+          <th>Localidade</th>
+          <th>Mês</th>
+          <th>Quantidade</th>
+          <th>Custo Unitário</th>
+          <th>Custo Total</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let hospedagem of hospedagemalimentacaoProposta">
+          <td>
+            {{ hospedagem.estadoHospedagemAlimentacaoProposta }} <!-- Substitua por hospedagem.paisHospedagemAlimentacaoProposta e hospedagem.estadoHospedagemAlimentacaoProposta se necessário -->
+          </td>
+          <td>{{ hospedagem.dataHospedagemAlimentacaoProposta }}</td>
+          <td>{{ hospedagem.quantidadeHospedagemAlimentacaoProposta }}</td>
+          <td>{{ hospedagem.custoHospedagemAlimentacaoProposta }}</td>
+          <td>{{ hospedagem.quantidadeHospedagemAlimentacaoProposta* hospedagem.custoHospedagemAlimentacaoProposta }}</td>
+          <td>
+            <a href="" class="botao excluir text-danger" (click)="delete(hospedagem.idHospedagemAlimentacaoProposta); $event.preventDefault();" ngbTooltip="Remover diária">Remover</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>

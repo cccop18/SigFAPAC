@@ -1,0 +1,30 @@
+app-login {
+  margin: 20px auto;
+}
+
+app-cadastro-unidade, app-endereco-unidade-form, app-cadastro-dados-br, app-cadastro-dados-es, app-cadastro-senha-pesquisador, app-cadastro-endereco-pesquisadores, app-cadastro-areaconhecimento-pesquisador, app-cadastro-dados-profissionais, app-cadastro-instituicao, app-banco-form, app-diaria-form, app-diaria-list,app-banco-list, app-arquivo-form, app-programa-form, app-programa-list, app-arquivo-list, app-retificacao-form, app-edital, app-funcao-list, app-funcao-form, app-pesquisador-es-form, app-doc-pessoais-form, app-moeda-form, app-moeda-list, app-edital-chamadas-form, app-abrangencia-form, app-edital-plano-apresentacao, app-edital-modelo-form, app-retificacao-form, app-edital-restricoes-form, app-faixafinanciamento-form, app-faixafinanciamento-form, app-edital-prestacao-form, app-pesquisador-main, app-abrangencia-proposta-form, app-titulo-proposta-form, app-pesquisador-br-form, app-diaria-proposta-form, app-material-proposta-form, app-servico-proposta-form,app-material-perm-proposta-form, app-passagem-proposta-form, app-encargo-proposta-form, app-parcerias-proposta-form, app-pessoal-proposta-form, app-proposta-membros-form, app-edital-info-list, app-bolsa-proposta-form, app-atividade-proposta-form, app-hospedagem-alimentacao-proposta{
+  margin: 40px auto;
+}
+
+app-edital-restricoes, app-edital-orcamento-form, app-editaldados-form, app-edital-chamadas-form, app-abrangencia-form, app-edital-plano-apresentacao, app-edital-modelo-form, app-retificacao-form, app-edital-restricoes-form,app-faixafinanciamento-form, app-edital-prestacao-form, app-pesquisador-main, app-abrangencia-proposta-form, app-titulo-proposta-form, app-pesquisador-br-form, app-diaria-proposta-form, app-material-proposta-form, app-servico-proposta-form, app-material-perm-proposta-form, app-passagem-proposta-form, app-encargo-proposta-form, app-parcerias-proposta-form, app-pessoal-proposta-form, app-proposta-membros-form, app-bolsa-proposta-form, app-atividade-proposta-form, app-hospedagem-alimentacao-proposta{
+  width: 100%;
+  min-width: 400px;
+}
+app-edital-restricoes #cadastro, app-edital-orcamento-form #cadastro, app-editaldados-form #cadastro , app-doc-pessoais-form #cadastro, app-edital-chamadas-form #cadastro, app-abrangencia-form #cadastro, app-edital-plano-apresentacao #cadastro, app-edital-modelo-form #cadastro, app-retificacao-form #cadastro, app-edital-restricoes-form #cadastro, app-faixafinanciamento-form #cadastro, app-edital-prestacao-form #cadastro, app-abrangencia-proposta-form #cadastro, app-titulo-proposta-form #cadastro, app-pesquisador-br-form #cadastro, app-diaria-proposta-form #cadastro, app-material-proposta-form #cadastro, app-servico-proposta-form #cadastro, app-material-perm-proposta-form #cadastro, app-passagem-proposta-form #cadastro, app-encargo-proposta-form #cadastro, app-parcerias-proposta-form #cadastro, app-pessoal-proposta-form #cadastro, app-proposta-membros-form #cadastro, app-bolsa-proposta-form #cadastro, app-atividade-proposta-form #cadastro, app-hospedagem-alimentacao-proposta #cadastro{
+  margin: auto;
+}
+
+app-menu-edital {
+  width: 100%;
+  min-width: 400px;
+}
+
+@media screen and (max-width: 650px) {
+app-login {
+  margin: 20px auto;
+}
+
+app-cadastro-areaconhecimento-pesquisador {
+  width: calc(100% - 50px);
+}
+}

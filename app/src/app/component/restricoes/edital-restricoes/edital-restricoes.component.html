@@ -1,0 +1,58 @@
+<app-menu-edital></app-menu-edital>
+<section id="cadastro">
+  <form [formGroup]="restricoesForm">
+
+    <div class="informacoes" style="text-align: center;">
+      <h1>Plano de Apresentação do Edital</h1>
+      <h3>Os campos marcados com <span class="vermelho">*</span> são obrigatórios.</h3>
+    </div>
+    <br>
+    <hr><br>
+
+    <h3>Currículo Lattes</h3>
+    <p>Escolha a configuração de restrição da obrigatoriedade do Currículo Lattes para o Proponente e para os outros membros da equipe.</p>
+    <div class="grid">
+        <input type="checkbox" id="proponenteCurriculoEdital" formControlName="proponenteCurriculoEdital" class="form-check-input" /><label for="">Obrigatório o Proponente ter Currículo Lattes.</label>
+
+        <input type="checkbox" id="equipeCurriculoEdital" formControlName="equipeCurriculoEdital" class="form-check-input" /><label for="">Obrigatório os membros da equipe terem Currículo Lattes.</label>
+    </div>
+    <br><hr><br>
+
+    <h3>Vínculo Empregaticio</h3>
+    <p>Escolha se o coordenador é obrigado a ter ou não Vínculo empregatício com a instituição.</p>
+
+    <input type="checkbox" id="habilitarVinculoEmpregaticio" formControlName="habilitarVinculoEmpregaticio" class="form-check-input" (change)="toggleEmpregadoSection($event)" /> Habilitar restrição de vínculo empregatício <br>
+
+    <div [class.inativo]="!empregadoAtivo" class="grid">
+      <input type="radio" id="proponenteComVinculo" formControlName="proponenteComVinculo" value="COM_VINCULO" [disabled]="!restricoesForm.get('habilitarVinculoEmpregaticio')?.value" />
+      <label for="proponenteComVinculo">Obrigatório o Proponente ter vínculo empregatício com a instituição.</label>
+
+      <input type="radio" id="proponenteSemVinculo" formControlName="proponenteComVinculo" value="SEM_VINCULO" [disabled]="!restricoesForm.get('habilitarVinculoEmpregaticio')?.value" />
+      <label for="proponenteSemVinculo">Obrigatório o Proponente NÃO ter vínculo empregatício com a instituição.</label>
+
+    </div>
+
+    <br><hr><br>
+
+    <h3>Gestor Institucional</h3>
+    <p>Escolha a configuração de restrição de necessidade do Gestor Institucional liberar a submissão de propostas.</p>
+    <input type="checkbox" id="habilitaVinculoInstituicaoEdital" formControlName="habilitaVinculoInstituicaoEdital" class="form-check-input" (change)="toggleGestorSection($event)" /> Habilitar restrição de Vínculo Institucional <br>
+
+    <div [class.inativob]="!gestorAtivo" class="grid">
+      <input type="radio" id="proponenteVinculoInstituicaoEdital" formControlName="proponenteVinculoInstituicaoEdital" value="COM_VINCULO" [disabled]="!restricoesForm.get('habilitaVinculoInstituicaoEdital')?.value" />
+      <label for="proponenteVinculoInstituicaoEdital">Obrigatório o Proponente ter Vínculo institucional com a instituição.</label>
+
+      <input type="radio" id="proponenteNivelAcademicoEdital" formControlName="proponenteVinculoInstituicaoEdital" value="SEM_VINCULO" [disabled]="!restricoesForm.get('habilitaVinculoInstituicaoEdital')?.value" />
+      <label for="proponenteNivelAcademicoEdital">Obrigatório o Proponente NÃO ter Vínculo institucional com a instituição.</label>
+
+    </div>
+    <br><hr><br>
+
+    <!-- Contêiner dos botões de ação -->
+    <div class="bot">
+      <input type="button" class="cancelar" value="Cancelar" routerLink="../">
+      <input type="submit" class="enviar" value="Salvar" [disabled]="restricoesForm.invalid">
+    </div>
+
+  </form>
+</section>

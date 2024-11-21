@@ -1,0 +1,171 @@
+:root {
+    --verde1: #038E42;
+    --verde2: #2ecc71;
+    --branco: #ffffff;
+    --preto: #000000;
+    --background-color: #41414115;
+    --text-color: #333;
+  }
+  
+  /* Contêiner principal do plano de apresentação */
+  #plano-apresentacao {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: var(--branco);
+    border-radius: 8px;
+    max-width: 600px;
+  }
+  
+  /* Estilo para o contêiner dos dados (checkboxes) */
+  .dados {
+    background-color: var(--branco);
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 20px 0;
+  }
+  
+  /* Estilo para os rótulos */
+  label {
+    display: flex;
+    align-items: center;
+    font-size: 1em;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    color: var(--text-color);
+  }
+  
+  /* Estilo dos checkboxes */
+  input[type="checkbox"] {
+    margin-right: 10px;
+  }
+  
+  /* Estilo dos botões */
+  .bot {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.64em;
+    margin-top: 20px;
+  }
+  
+  .bot input[type="button"],
+  .bot input[type="submit"] {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1em;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  /* Obrigatorios */
+
+  .vermelho {
+    color: red;
+  }
+
+  .obrigatorio::after {
+    content: "*";
+    color: red;
+  }
+
+    .bot {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.64em;
+      margin-top: 20px;
+  }
+
+      
+  /* Botão de cancelar */
+  .bot input[type="button"] {
+    background-color: #ac0000;
+    color: var(--branco);
+  }
+  
+  .bot input[type="button"]:hover {
+    background-color: #5a0000;
+  }
+  
+  /* Botão de salvar */
+  .bot input[type="submit"] {
+    background-color: var(--verde1);
+    color: var(--branco);
+  }
+  
+  .bot input[type="submit"]:hover {
+    background-color: var(--verde2);
+    color: var(--preto);
+  }
+  
+  /* Botão desabilitado */
+  .bot input[type="submit"]:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+  }
+  
+  /* Centralizar informações */
+  .informacoes {
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .informacoes h1 {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .informacoes h3 {
+    font-size: 1em;
+    color: var(--text-color);
+  }
+  
+  /* Estilo de erro */
+  .vermelho {
+    color: red;
+  }
+  
+  /* Obrigatoriedade */
+  .obrigatorio::after {
+    content: "*";
+    color: red;
+  }
+
+  #cadastro {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: transparent; /* Remover o fundo branco */
+    border-radius: 8px;
+    box-shadow: none; /* Remover a sombra ao redor */
+    font-size: 1em;
+    color: var(--text-color);
+    background-color: var(--branco);
+}
+  
+  /* Responsividade */
+  @media (max-width: 600px) {
+    #plano-apresentacao {
+      padding: 15px;
+    }
+  
+    .bot {
+      flex-direction: column;
+    }
+  
+    .bot input[type="button"],
+    .bot input[type="submit"] {
+      width: 100%;
+      margin: 5px 0;
+    }
+  }
+  

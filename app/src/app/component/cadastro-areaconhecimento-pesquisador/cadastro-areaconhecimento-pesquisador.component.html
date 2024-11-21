@@ -1,0 +1,60 @@
+<app-alerta></app-alerta>
+  <form [formGroup]="formPesquisadorConhecimento" (ngSubmit)="salvarAreasConhecimento()">
+    <h3>Área de Conhecimento</h3>
+
+    <div class="form-group">
+      <!-- Campo para seleção da Área de Conhecimento -->
+
+      <label for="idAreaConhecimento" class="obrigatorio">Área Principal</label>
+      <select formControlName="idAreaConhecimento" id="idAreaConhecimento" class="form-control"
+        (change)="onAreaConhecimentoChange($event)">
+        <option value="">Escolher</option>
+        <option *ngFor="let area of areasConhecimento" [value]="area.idAreaConhecimento">{{ area.nomeAreaConhecimento }}
+        </option>
+      </select>
+      <div
+        *ngIf="formPesquisadorConhecimento.get('idAreaConhecimento')?.invalid && formPesquisadorConhecimento.get('idAreaConhecimento')?.touched">
+        <small class="text-danger">Campo obrigatório</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <!-- Campo para seleção da Primeira Subárea -->
+      <label for="idPrimeiraSubArea" class="obrigatorio">Sub Área 1</label>
+      <select formControlName="idPrimeiraSubArea" id="idPrimeiraSubArea" class="form-control"
+        (change)="onPrimeiraSubAreaChange($event)">
+        <option value="">Escolher</option>
+        <option *ngFor="let subArea of primeiraSubAreas" [value]="subArea.id">{{ subArea.nomePrimeiraSub }}</option>
+      </select>
+      <div
+        *ngIf="formPesquisadorConhecimento.get('idPrimeiraSubArea')?.invalid && formPesquisadorConhecimento.get('idPrimeiraSubArea')?.touched">
+        <small class="text-danger">Campo obrigatório</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <!-- Campo para seleção da Segunda Subárea -->
+      <label for="idSegundaSubArea">Sub Área 2</label>
+      <select formControlName="idSegundaSubArea" id="idSegundaSubArea" class="form-control"
+        (change)="onSegundaSubAreaChange($event)">
+        <option value="">Escolher</option>
+        <option *ngFor="let subArea of segundaSubAreas" [value]="subArea.idSegundaSubArea">{{ subArea.nomeSegundaSub }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <!-- Campo para seleção da Terceira Subárea -->
+      <label for="idTerceiraSubArea">Sub Área 3</label>
+      <select formControlName="idTerceiraSubArea" id="idTerceiraSubArea" class="form-control">
+        <option value="">Escolher</option>
+        <option *ngFor="let subArea of terceiraSubAreas" [value]="subArea.id">{{ subArea.nomeTerceiraSub }}</option>
+      </select>
+    </div>
+    <!-- Botões de navegação -->
+    <div class="bot">
+      <button type="button" class="cancelar btn btn-danger" routerLink="login">Cancelar</button>
+      <button type="submit" class="enviar btn btn-dark"
+        [disabled]="formPesquisadorConhecimento.invalid">Adicionar</button>
+    </div>
+  </form>

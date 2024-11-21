@@ -1,0 +1,87 @@
+:root {
+    --verde1: #038E42;
+    --verde2: #2ecc71;
+    --branco: #ffffff;
+    --preto: #000000;
+    --background-color: #41414115;
+}
+
+/* Estilo do container de comandos */
+#comandos {
+    display: flex;
+    justify-content: space-between; /* Distribui os elementos uniformemente */
+    align-items: center; /* Centraliza verticalmente */
+    margin-bottom: 20px; /* Espaçamento inferior */
+    padding: 15px 20px; /* Espaçamento interno */
+    background-color: var(--background-color); /* Cor de fundo consistente */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+/* Estilo do botão "Adicionar" */
+#comandos .botao {
+    display: inline-block;
+    padding: 12px 18px;
+    border-radius: 4px; /* Bordas arredondadas */
+    color: var(--branco);
+    text-decoration: none;
+    background-color: var(--verde1); /* Cor de fundo consistente */
+    font-size: 1.1rem; /* Tamanho da fonte */
+    font-weight: 500; /* Peso da fonte */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s; /* Transição suave */
+}
+
+#comandos .botao:hover {
+    background-color: var(--verde2);
+    transform: scale(1.05);
+}
+
+/* Estilo do campo de busca */
+#comandos div {
+    display: flex;
+    align-items: center; /* Centraliza verticalmente */
+}
+
+#comandos label {
+    font-weight: bold; /* Peso da fonte */
+    margin-right: 10px; /* Espaço entre o label e o campo */
+}
+
+#comandos input[type="search"] {
+    padding: 10px 15px;
+    border: 1px solid var(--preto);
+    border-radius: 4px; /* Bordas arredondadas */
+    background-color: var(--branco); /* Cor de fundo */
+    transition: border-color 0.3s;
+    font-size: 1rem;
+    outline: none;
+}
+
+/* Estilo ao focar no campo de busca */
+#comandos input[type="search"]:focus {
+    border-color: var(--verde1); /* Cor da borda ao focar */
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.2); /* Sombra ao focar */
+}
+
+/* Ajuste de layout para dispositivos móveis */
+@media (max-width: 768px) {
+    #comandos {
+        flex-direction: column; /* Alinha os elementos verticalmente */
+        align-items: flex-start; /* Alinha ao início */
+        padding: 20px;
+    }
+
+    #comandos .botao {
+        margin-bottom: 15px; /* Espaço entre o botão e a busca */
+    }
+
+    #comandos div {
+        width: 100%; /* Ocupa a largura total */
+    }
+
+    #comandos input[type="search"] {
+        width: 100%; /* Campo de busca ocupa a largura total */
+    }
+}

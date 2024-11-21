@@ -1,0 +1,271 @@
+:root {
+    --verde1: #038E42;
+    --verde2: #2ecc71;
+    --branco: #ffffff;
+    --preto: #000000;
+    --background-color: #41414115;
+    --text-color: #333;
+}
+
+/* Estilos para o título */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+/* Container para centralizar a tabela */
+.table-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+}
+
+/* Estilo para a barra de comandos */
+#comandos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 20px auto;
+    padding: 15px 20px;
+    background-color: var(--background-color);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para o botão "Adicionar" */
+#comandos .botao {
+    padding: 12px 18px;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    background-color: var(--verde1);
+    color: var(--branco);
+    border: none;
+    cursor: pointer;
+}
+
+#comandos .botao:hover {
+    background-color: var(--verde2);
+    color: var(--preto);
+}
+
+/* Estilo para o campo de busca */
+#comandos div {
+    display: flex;
+    align-items: center;
+}
+
+#comandos label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+#comandos input[type="search"] {
+    padding: 10px 15px;
+    border: 1px solid var(--preto);
+    border-radius: 4px;
+    background-color: var(--branco);
+    transition: border-color 0.3s;
+    font-size: 1rem;
+}
+
+/* Estilização da tabela */
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: var(--branco);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Estilos para cabeçalho da tabela */
+thead th {
+    background-color: var(--verde1);
+    color: var(--branco);
+    text-align: center;
+    padding: 20px;
+    font-size: 1.2rem;
+    white-space: nowrap;
+}
+
+/* Ajuste de alinhamento e largura do cabeçalho */
+thead th:nth-child(1) { /* ID */
+    width: 5%;
+}
+
+thead th:nth-child(2) { /* Nome */
+    width: 25%;
+}
+
+thead th:nth-child(3) { /* Arquivo */
+    width: 30%;
+}
+
+thead th:nth-child(4) { /* Status */
+    width: 10%;
+}
+
+thead th:nth-child(5) { /* Ações */
+    width: 30%;
+}
+
+/* Estilização de linhas da tabela */
+tbody tr {
+    border-bottom: 1px solid #dee2e6;
+    transition: background-color 0.2s ease-in-out;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+tbody tr:hover {
+    background-color: #f1f3f5;
+}
+
+/* Ajuste das células */
+tbody td {
+    padding: 16px 20px;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--text-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Estilos para células específicas */
+tbody td:nth-child(1), /* Coluna ID */
+tbody td:nth-child(4) { /* Coluna Status */
+    text-align: center;
+}
+
+/* Ajuste para colunas com texto */
+tbody td:nth-child(2), /* Coluna Nome */
+tbody td:nth-child(3) { /* Coluna Arquivo */
+    text-align: left;
+}
+
+/* Ajuste para a coluna de ações */
+tbody td:last-child {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Estilos para os botões */
+a.botao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    border-radius: 4px;
+    color: var(--branco);
+    text-decoration: none;
+    background-color: var(--verde1);
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+a.botao.download {
+    background-color: var(--verde1);
+}
+
+a.botao.download:hover {
+    background-color: var(--verde2);
+}
+
+a.botao.view {
+    background-color: #FFD700;
+}
+
+a.botao.view:hover {
+    background-color: #FFC700;
+}
+
+a.botao:hover {
+    background-color: var(--verde2);
+    transform: scale(1.05);
+}
+
+a.botao.excluir {
+    background-color: #dc3545;
+}
+
+a.botao.excluir:hover {
+    background-color: #c82333;
+}
+
+a.botao i {
+    font-size: 1.2rem;
+}
+
+/* Estilos para a paginação */
+#paginacao {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 30px auto;
+    padding: 15px 20px;
+    background-color: var(--background-color);
+    border-top: 1px solid #dee2e6;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo dos elementos dentro da paginação */
+#paginacao label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+#paginacao select {
+    padding: 8px 12px;
+    border: 1px solid var(--preto);
+    border-radius: 4px;
+    background-color: var(--branco);
+    font-size: 1rem;
+    outline: none;
+}
+
+.ngb-pagination {
+    margin: 0;
+}
+
+/* Estilo para mensagens de rodapé */
+tfoot td {
+    padding: 18px;
+    text-align: center;
+    font-weight: bold;
+    background-color: var(--background-color);
+    border-top: 1px solid #dee2e6;
+}
+
+tfoot span {
+    font-size: 1.1rem;
+}
+
+/* Ajustes gerais */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    padding: 40px;
+}
+
+.container {
+    background-color: var(--branco);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}

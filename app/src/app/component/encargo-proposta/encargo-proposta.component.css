@@ -1,0 +1,166 @@
+:root {
+    --verde1: #038E42;
+    --verde2: #2ecc71;
+    --branco: #ffffff;
+    --preto: #000000;
+    --background-color: #41414115;
+    --text-color: #333;
+}
+
+/* Geral */
+body {
+    font-family: sans-serif; /* Define uma fonte padrão */
+    margin: 0; /* Remove as margens padrão do body */
+    background-color: var(--background-color);
+}
+
+/* Formulário */
+form {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: var(--branco);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    font-size: 1em;
+    color: var(--text-color);
+}
+
+/* Campos e Rótulos */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    padding: 0.4em;
+    border: 1px solid var(--preto);
+    border-radius: 4px;
+    box-sizing: border-box; /* Inclui padding e border no tamanho total */
+    transition: border-color 0.3s;
+    font-size: 0.9em;
+}
+
+select {
+    background-color: var(--branco);
+    appearance: none; /* Remove a seta padrão do select */
+    -webkit-appearance: none; /* Para navegadores WebKit (Safari, Chrome) */
+    -moz-appearance: none; /* Para Firefox */
+}
+
+
+/*  Placeholder */
+input::placeholder {
+    color: #999; /* Cor mais clara para o placeholder */
+}
+
+/* Foco */
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--verde1);
+    outline: none;
+}
+
+/* Textarea */
+textarea {
+    resize: vertical; /* Permite redimensionar verticalmente */
+    min-height: 100px; /* Define uma altura mínima */
+}
+
+/* Botões */
+.bot {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.64em;
+    margin-top: 20px;
+}
+
+input[type="button"],
+input[type="submit"] {
+    padding: 0.4em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+input[type="submit"] {
+    background-color: var(--verde1);
+    color: var(--branco);
+}
+
+input[type="submit"]:hover {
+    background-color: var(--verde2);
+    color: var(--preto);
+}
+
+input[type="button"] {
+    background-color: #ac0000;
+    color: var(--branco);
+}
+
+input[type="button"]:hover {
+    background-color: #5a0000;
+    color: var(--branco);
+}
+
+
+/* Obrigatórios */
+.vermelho {
+    color: red;
+}
+
+.obrigatorio::after {
+    content: "*";
+    color: red;
+}
+
+/* Informações */
+.informacoes {
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.informacoes h1 {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.informacoes h3 {
+    font-size: 1em;
+    color: var(--text-color);
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    form {
+        padding: 15px;
+    }
+    .bot {
+        grid-template-columns: 1fr; /* Botões em uma única coluna */
+    }
+}
+
+#encargos { /* Estilização para a seção de encargos */
+    margin-top: 20px;
+}
+
+#cadastro {
+    padding: 10px; /* Adiciona um espaçamento interno à seção cadastro */
+}

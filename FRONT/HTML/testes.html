@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIG FAPAC</title>
+    <link rel="stylesheet" href="../CSS/cadastro.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            margin-top: 10px;
+            padding: 8px 12px;
+        }
+        #newFields {
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div id="logo">
+            <a href="http://sig.fapac.ac.gov.br/" title="FAPAC">
+                <img src="../IMAGENS/WhatsApp Image 2024-09-03 at 16.53.42 (1).jpeg" alt="LOGO FAPAC">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">English</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h1>Formulário de Cadastro</h1>
+    <form>
+        <div class="form-group">
+            <label for="areaConhecimento">Área de Conhecimento *</label>
+            <input type="text" id="areaConhecimento" name="areaConhecimento" readonly required>
+        </div>
+
+        <button type="button" id="addButton">Adicionar Área de Conhecimento</button>
+
+        <div id="newFields">
+            <div class="form-group">
+                <label for="areaPrincipal">Área Principal *</label>
+                <select id="areaPrincipal" required>
+                    <option value="">Escolher</option>
+                    <!-- Adicione opções reais aqui -->
+                    <option value="Ciencia da Computacao">Ciência da Computação</option>
+                    <option value="Engenharia">Engenharia</option>
+                    <option value="Matematica">Matemática</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="subArea1">Subárea 1</label>
+                <select id="subArea1">
+                    <option value="">Escolher</option>
+                    <!-- Adicione opções reais aqui -->
+                    <option value="Algoritmos">Algoritmos</option>
+                    <option value="Redes de Computadores">Redes de Computadores</option>
+                    <option value="Inteligencia Artificial">Inteligência Artificial</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="subArea2">Subárea 2</label>
+                <select id="subArea2">
+                    <option value="">Escolher</option>
+                    <!-- Adicione opções reais aqui -->
+                    <option value="Banco de Dados">Banco de Dados</option>
+                    <option value="Seguranca">Segurança</option>
+                    <option value="Robótica">Robótica</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="subArea3">Subárea 3</label>
+                <select id="subArea3">
+                    <option value="">Escolher</option>
+                    <!-- Adicione opções reais aqui -->
+                    <option value="Engenharia de Software">Engenharia de Software</option>
+                    <option value="Teoria da Computacao">Teoria da Computação</option>
+                    <option value="Ciencia de Dados">Ciência de Dados</option>
+                </select>
+            </div>
+            <button type="button" id="saveButton">Salvar</button>
+        </div>
+    </form>
+
+    <script>
+        document.getElementById('addButton').addEventListener('click', function() {
+            // Exibir os novos campos de seleção
+            document.getElementById('newFields').style.display = 'block';
+            document.getElementById('addButton').style.display = 'none';
+        });
+
+        document.getElementById('saveButton').addEventListener('click', function() {
+            // Coletar os valores selecionados
+            const areaPrincipal = document.getElementById('areaPrincipal').value;
+            const subArea1 = document.getElementById('subArea1').value;
+            const subArea2 = document.getElementById('subArea2').value;
+            const subArea3 = document.getElementById('subArea3').value;
+
+            // Preencher o campo Área de Conhecimento com as seleções
+            const areaConhecimento = areaPrincipal;
+            const subAreas = [subArea1, subArea2, subArea3].filter(Boolean).join(', ');
+
+            document.getElementById('areaConhecimento').value = subAreas ? `${areaConhecimento}: ${subAreas}` : areaConhecimento;
+
+            // Esconder os campos de seleção e mostrar o botão de adicionar novamente
+            document.getElementById('newFields').style.display = 'none';
+            document.getElementById('addButton').style.display = 'block';
+        });
+    </script>
+
+</body>
+</html>

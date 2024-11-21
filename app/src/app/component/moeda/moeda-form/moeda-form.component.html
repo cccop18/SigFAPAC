@@ -1,0 +1,33 @@
+<section id="cadastro">
+    <div class="informacoes">
+      <h1>Cadastro de Moeda</h1>
+      <p>Preencha corretamente os campos abaixo para cadastrar uma Moeda.</p>
+      <h3>Os campos marcados com <span class="vermelho">*</span> são obrigatórios.</h3>
+    </div>
+    <br>
+    <form (submit)="save()" [formGroup]="formMoeda">
+      <section>
+        <!-- Nome da Moeda -->
+        <div class="form-group">
+          <label for="nomeMoeda" class="obrigatorio">Nome da Moeda:</label>
+          <input type="text" id="nomeMoeda" formControlName="nomeMoeda" class="form-control" placeholder="Insira o nome da moeda" />
+          <div *ngIf="form.nomeMoeda.invalid && (form.nomeMoeda.dirty || form.nomeMoeda.touched)" class="text-danger">
+            O nome da moeda é obrigatório.
+          </div>
+        </div>
+  
+        <!-- Ativo (Checkbox) -->
+        <div class="form-group checkbox-group">
+          <label class="form-check-label" for="ativaMoeda">Ativo</label>
+          <input type="checkbox" id="ativaMoeda" formControlName="ativaMoeda" class="form-check-input" />
+        </div>
+      </section>
+  
+      <!-- Botão de Salvar -->
+      <div class="bot">
+        <input type="button" value="Cancelar" routerLink="/moeda">
+        <input type="submit" value="Salvar" [disabled]="formMoeda.invalid">
+      </div>
+    </form>
+  </section>
+  

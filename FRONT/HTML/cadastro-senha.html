@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIG FAPAC</title>
+
+    <link rel="stylesheet" href="../CSS/css-base.css">
+    <link rel="stylesheet" href="../CSS/form-login-cadastro.css">
+    <link rel="stylesheet" href="../CSS/cadastro.css">
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js" defer></script>
+    <script src="../JAVASCRIPT/scripts.js" defer></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="../JAVASCRIPT/menu-responsivo.js" defer></script>
+
+</head>
+<body>
+    <header>
+        <div id="logo">
+            <a href="http://sig.fapac.ac.gov.br/" title="FAPAC">
+                <img src="../IMAGENS/WhatsApp Image 2024-09-03 at 16.53.42 (1).jpeg" alt="LOGO FAPAC">
+            </a>
+        </div>
+        <nav>
+            <img src="../IMAGENS/menu-abrir.png" alt="Menu" class="nav-icon" id="nav-icon">
+            <ul class="inativo-menu">
+                <a href="#"><li>English</li></a>
+            </ul>
+        </nav>
+    </header>
+    <a href="../HTML/cadastro-enderecos.html" class="voltar"><img src="../IMAGENS/voltar.png" alt="Voltar a página anterior"></a>
+    <main>
+        <section id="cadastro">
+            <br>
+            <form action="">
+
+                <h3>Acesso SIGFAPAC</h3>
+                <section class="dados-pesquisador dados correspondencia">
+                    <label for="senha" class="obrigatorio">Senha</label>
+                    <input type="password" id="senha" name="senha" required>
+            
+                    <label for="confirmar_senha" class="obrigatorio">Confirmar senha</label>
+                    <input type="password" id="confirmar_senha" name="confirmar_senha" required>            
+                </section>
+
+                <div class="g-recaptcha" data-sitekey="6LdVWi8UAAAAAJuxXcqhekR5pz7FCyNDAlpzHnYf"></div>
+                <br>
+
+                <div class="bot">
+                    <a href="../HTML/index.html" class="cancelar">Cancelar</a>
+                    <input type="submit" value="Cadastrar" class="enviar">
+                </div>
+                <br><br>
+                
+            </form>
+        </section>
+    </main>
+    <footer>
+        <div id="info-rodape">
+            <h4>FAPAC - Fundação de Amparo à Pesquisa do Estado do Acre</h4>
+            <p>Rua Major Gesner , n. 177 , Distrito Industrial; &curren; 69920172 &curren; Rio Branco - AC, Brasil</p>
+            <p>Tel/Fax: (68)3229-5566 &curren; E-mail: documentos.fapac@gmail.com</p>
+        </div>
+        <span class="rodape-line"></span>
+        <div id="redes-rodape">
+            <a href="https://www.instagram.com/fapac.acre/" target="_blank"><img class="redes-sociais" src="../IMAGENS/instagram.png" alt="Instagram FAPAC"></a>
+        </div>
+    </footer>
+</body>
+</html>

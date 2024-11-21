@@ -1,0 +1,114 @@
+<app-menu-edital></app-menu-edital>
+<br>
+<section id="cadastro">
+    <div class="informacoes">
+        <h1>Plano de Apresentação Proposta</h1>
+        <p>Preencha os campos que devem ser necessarios para a Apresentação das Propostas para esse Edital.</p>
+    </div>
+    <br>
+    <hr>
+<form (submit)="save()" [formGroup]="formEditalPlanoApresentacao" enctype="multipart/form-data">
+        <div class="dados grid">
+            <label for="planoApresentacao">Configurações do Plano de Apresentação das Propostas: </label>
+
+            <label for="experienciaCordenadorEdital">
+                <input type="checkbox" formControlName="experienciaCordenadorEdital" id="experienciaCordenadorEdital">
+                Experiência do Coordenador
+            </label>
+            
+            <label for="objetivoGeralEdital">
+                <input type="checkbox" formControlName="objetivoGeralEdital" id="objetivoGeralEdital">
+                Objetivo Geral
+            </label>
+
+            <label for="objetivoEspecificoEdital">
+                <input type="checkbox" formControlName="objetivoEspecificoEdital" id="objetivoEspecificoEdital">
+                Objetivos Específicos
+            </label>
+
+            <label for="metodologiaEdital">
+                <input type="checkbox" formControlName="metodologiaEdital" id="metodologiaEdital">
+                Metodologia
+            </label>
+
+            <label for="metodoMatEdital">
+                <input type="checkbox" formControlName="metodoMatEdital" id="metodoMatEdital">
+                Métodos e Materiais
+            </label>
+
+            <label for="resultadosEdital">
+                <input type="checkbox" formControlName="resultadosEdital" id="resultadosEdital">
+                Resultados Esperados
+            </label>
+
+            <label for="impactoEsperadoEdital">
+                <input type="checkbox" formControlName="impactoEsperadoEdital" id="impactoEsperadoEdital">
+                Impactos Esperados
+            </label>
+
+            <label for="impactoDiscriminadoEdital">
+                <input type="checkbox" formControlName="impactoDiscriminadoEdital" id="impactoDiscriminadoEdital">
+                Impactos Esperados (Discriminado: Científico, Tecnológico, Econômico, Social e Ambiental)
+            </label>
+
+            <label for="riscoAtividadeEdital">
+                <input type="checkbox" formControlName="riscoAtividadeEdital" id="riscoAtividadeEdital">
+                Riscos e Atividades
+            </label>
+
+            <label for="referenciaBlibEdital">
+                <input type="checkbox" formControlName="referenciaBlibEdital" id="referenciaBlibEdital">
+                Referência Bibliográfica
+            </label>
+
+            <label for="estadoArteEdital">
+                <input type="checkbox" formControlName="estadoArteEdital" id="estadoArteEdital">
+                O Estado da Arte da proposta e justificativa
+            </label>
+
+            <label for="justCopInterEdital">
+                <input type="checkbox" formControlName="justCopInterEdital" id="justCopInterEdital">
+                Justificativa para a Cooperação Internacional
+            </label>
+
+            <label for="qualiParceriasEdital">
+                <input type="checkbox" formControlName="qualiParceriasEdital" id="qualiParceriasEdital">
+                Interação e Qualificação das Parcerias
+            </label>
+
+            <label for="obrasInstalEdital">
+                <input type="checkbox" formControlName="obrasInstalEdital" id="obrasInstalEdital">
+                Obras e Instalações Novas
+            </label>
+            
+            <hr>
+            <label>Estimativa de Indicadores de Produção</label>
+
+            <label for="prodBlibEdital">
+                <input type="checkbox" formControlName="prodBlibEdital" id="prodBlibEdital">
+                Produção Bibliográfica
+            </label>
+
+            <label for="prodCulturaEdital">
+                <input type="checkbox" formControlName="prodCulturaEdital" id="prodCulturaEdital">
+                Produção Cultural
+            </label>
+
+            <label for="prodTecEdital">
+                <input type="checkbox" formControlName="prodTecEdital" id="prodTecEdital">
+                Produção Técnica ou Tecnológica
+            </label>
+
+            <label for="prodDifuEdital">
+                <input type="checkbox" formControlName="prodDifuEdital" id="prodDifuEdital">
+                Difusão de Ciência e Tecnologia - Participação em Eventos
+            </label>
+            <hr>
+
+            <div class="bot">
+                <input type="button" value="Cancelar" routerLink="/editais/">
+                <input type="submit" value="Salvar" [disabled]="formEditalPlanoApresentacao.invalid">
+            </div>
+        </div>
+    </form>
+</section>

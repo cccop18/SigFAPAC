@@ -1,0 +1,98 @@
+<app-menu-edital></app-menu-edital>
+<br>
+<section id="cadastro">
+  <form (submit)="save()" [formGroup]="formEditalRestricoes" enctype="multipart/form-data">
+    <div class="informacoes">
+      <h1>Restrições do Edital</h1>
+      <p>Preencha os campos corretamente para configurar as restrições do Edital.</p>
+      <h3>Os campos marcados com <span class="vermelho">*</span> são obrigatórios.</h3>
+    </div>
+    <br>
+    <hr>
+    <h3>Currículo Lattes</h3>
+    <p>Escolha a configuração de restrição da obrigatoriedade do Currículo Lattes para o Proponente e para os outros membros da equipe.</p>
+    <div class="grid">
+      <label for="proponenteCurriculoEdital">
+        <input type="checkbox" id="proponenteCurriculoEdital" formControlName="proponenteCurriculoEdital"/>
+        Obrigatório o Proponente ter Currículo Lattes.
+      </label>
+
+      <label for="membroCurriculoEdital">
+        <input type="checkbox" id="membroCurriculoEdital" formControlName="membroCurriculoEdital"/>
+        Obrigatório os membros da equipe terem Currículo Lattes.
+      </label>
+    </div>
+    
+    <br><hr><br>
+
+    <h3>Vínculo Empregatício</h3>
+    <p>Escolha se o coordenador é obrigado a ter ou não vínculo empregatício com a instituição.</p>
+    <label for="habilitaVinculoEmpregaEdital">
+      <input type="checkbox" id="habilitaVinculoEmpregaEdital" formControlName="habilitaVinculoEmpregaEdital"/>
+      Habilitar restrição de vínculo empregatício
+    </label>
+
+    <br>
+
+    <div [class.inativo]="!form.habilitaVinculoEmpregaEdital.value" class="grid">
+      <label for="proponenteVinculoEmpregaEditalCom">
+        <input type="radio" id="proponenteVinculoEmpregaEditalCom" formControlName="proponenteVinculoEmpregaEdital" value="true" [disabled]="!form.habilitaVinculoEmpregaEdital.value"/>
+        Obrigatório o Proponente ter vínculo empregatício com a instituição.
+      </label>
+
+      <label for="proponenteVinculoEmpregaEditalSem">
+        <input type="radio" id="proponenteVinculoEmpregaEditalSem" formControlName="proponenteVinculoEmpregaEdital" value="false" [disabled]="!form.habilitaVinculoEmpregaEdital.value"/>
+        Obrigatório o Proponente NÃO ter vínculo empregatício com a instituição.
+      </label>
+    </div>
+
+    <br><hr><br>
+
+    <h3>Gestor Institucional</h3>
+    <p>Escolha a configuração de restrição de necessidade do Gestor Institucional liberar a submissão de propostas.</p>
+    <label for="habilitaVinculoInstituicaoEdital">
+      <input type="checkbox" id="habilitaVinculoInstituicaoEdital" formControlName="habilitaVinculoInstituicaoEdital" class="form-check-input"/>
+      Habilitar restrição de vínculo institucional
+    </label>
+
+    <br>
+
+    <div [class.inativo]="!form.habilitaVinculoInstituicaoEdital.value" class="grid">
+      <label for="proponenteVinculoInstituicaoCom">
+        <input type="radio" id="proponenteVinculoInstituicaoCom" formControlName="proponenteVinculoInstituicaoEdital" value="true" [disabled]="!form.habilitaVinculoInstituicaoEdital.value"/>
+        Obrigatório o Proponente ter vínculo institucional com a instituição.
+      </label>
+
+      <label for="proponenteVinculoInstituicaoSem">
+        <input type="radio" id="proponenteVinculoInstituicaoSem" formControlName="proponenteVinculoInstituicaoEdital" value="false" [disabled]="!form.habilitaVinculoInstituicaoEdital.value"/>
+        Obrigatório o Proponente NÃO ter vínculo institucional com a instituição.
+      </label>
+    </div>
+
+    <br><hr><br>
+
+    <h3>Nível Acadêmico</h3>
+    <p>Informe o nível acadêmico exigido para o Proponente.</p>
+    <div class="grid">
+      <label for="proponenteNivelAcademicoEdital">Nível Acadêmico:</label>
+      <select id="proponenteNivelAcademicoEdital" formControlName="proponenteNivelAcademicoEdital" class="form-select">
+        <option value="SEM_RESTRICAO">Sem Restrição</option>
+        <option value="ENSINO_MEDIO">Ensino Médio (normal e profissionalizante)</option>
+        <option value="GRADUACAO">Graduação</option>
+        <option value="ESPECIALIZACAO">Especialização</option>
+        <option value="MESTRADO">Mestrado</option>
+        <option value="DOUTORADO">Doutorado</option>
+        <option value="POS_DOUTORADO">Pós-doutorado</option>
+      </select>
+    </div>
+    <br>
+    <hr>
+    <br>
+
+    <!-- Contêiner dos botões de ação -->
+    <div class="bot">
+      <input type="button" value="Cancelar" routerLink="/editais/">
+      <input type="submit" value="Salvar" [disabled]="formEditalRestricoes.invalid">
+    </div>
+  </form>
+</section>

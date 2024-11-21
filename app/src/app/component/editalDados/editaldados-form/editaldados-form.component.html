@@ -1,0 +1,190 @@
+<app-menu-edital></app-menu-edital>
+<br>
+<section id="cadastro">
+<form (submit)="save()" [formGroup]="formEditalDados" enctype="multipart/form-data">
+    <div class="informacoes">
+        <h1>Dados do edital</h1>
+        <p>Preencha os campos corretamente para configurar os Dados do Edital.</p>
+        <h3>Os campos marcados com <span class="vermelho">*</span> são obrigatórios.</h3>
+    </div>
+    <br>
+    <hr>
+    <section id="pessoais" class="dados-pesquisador">
+        <div class="dados grid">
+            <label for="tituloEdital" class="obrigatorio">Título do edital</label>
+            <small *ngIf="form.tituloEdital.hasError('required')" class="vermelho">Campo obrigatório</small>
+            <input type="text" name="tituloEdital" id="tituloEdital" required formControlName="tituloEdital"
+                class="form-control"
+                [ngClass]="{'is-invalid': form.tituloEdital.invalid && form.tituloEdital.touched, 'is-valid': form.tituloEdital.valid && form.tituloEdital.touched}">
+
+            <div *ngIf="form.tituloEdital.hasError('pattern')" class="vermelho">
+                <small>Digite ao menos 3 caracteres (sem considerar espaços em branco)</small>
+            </div>
+            <label for="identificacaoEdital" class="obrigatorio">Identificação</label>
+            <small *ngIf="form.identificacaoEdital.hasError('required')" class="vermelho">Campo
+                obrigatório</small>
+            <input type="text" name="identificacaoEdital" id="identificacaoEdital" required
+                formControlName="identificacaoEdital" class="form-control"
+                [ngClass]="{'is-invalid': form.identificacaoEdital.invalid && form.identificacaoEdital.touched, 'is-valid': form.identificacaoEdital.valid && form.identificacaoEdital.touched}">
+            <hr>
+            <div *ngIf="registro.fileEdital && !novoArquivo">
+                <p><strong>Arquivo Atual:</strong> {{ registro.fileEdital }}</p>
+
+                <!-- Link para visualizar o arquivo existente -->
+                <a [href]="urlView + registro.fileEdital"  target="_blank"
+                    class="btn btn-info">
+                    Visualizar Arquivo
+                </a>
+
+                <!-- Botão para remover o arquivo existente e ativar upload de novo arquivo -->
+                <button type="button" (click)="removerArquivo()" class="btn btn-warning">Adicionar novo file</button>
+            </div>
+            
+            <!-- Campo de upload de arquivo, visível apenas quando novoArquivo for true -->
+            <div *ngIf="novoArquivo">
+                <label for="fileEdital" class="obrigatorio">File:</label>
+                <small *ngIf="form.fileEdital.hasError('required')" class="vermelho">Campo obrigatório</small>
+                <input type="file" name="fileEdital" id="fileEdital" formControlName="fileEdital" class="form-control"
+                    [ngClass]="{'is-invalid': form.fileEdital.invalid && form.fileEdital.touched, 'is-valid': form.fileEdital.valid && form.fileEdital.touched}">
+            </div>
+            <hr>
+            <label for="numeroAnoEdital">Número/Ano</label>
+            <input type="text" name="numeroAnoEdital" id="numeroAnoEdital" formControlName="numeroAnoEdital"
+                class="form-control">
+
+            <label for="programa" class="obrigatorio">Programa</label>
+            <small *ngIf="form.programa.hasError('required')" class="vermelho">Campo obrigatório</small>
+            <select name="programa" id="programa" required formControlName="programa" class="form-select"
+                [ngClass]="{'is-invalid': form.programa.invalid && form.programa.touched, 'is-valid': form.programa.valid && form.programa.touched}">
+                <option *ngFor="let p of programas" [ngValue]="p.idPrograma">{{p.nomePrograma}}</option>
+            </select>
+
+            <label for="nomeFormularioEdital">Nome do formulário</label>
+            <small *ngIf="form.nomeFormularioEdital.hasError('required')" class="vermelho">Campo
+                obrigatório</small>
+            <input type="text" name="nomeFormularioEdital" id="nomeFormularioEdital" required
+                formControlName="nomeFormularioEdital" class="form-control"
+                [ngClass]="{'is-invalid': form.nomeFormularioEdital.invalid && form.nomeFormularioEdital.touched, 'is-valid': form.nomeFormularioEdital.valid && form.nomeFormularioEdital.touched}">
+            
+            <div *ngIf="form.nomeFormularioEdital.hasError('pattern')" class="vermelho">
+                <small>Digite ao menos 3 caracteres (sem considerar espaços em branco)</small>
+            </div>
+            <label for="codUnidadeAdmEdital">Código unidade Administrativa</label>
+            <input type="number" name="codUnidadeAdmEdital" id="codUnidadeAdmEdital"
+                formControlName="codUnidadeAdmEdital" class="form-control">
+
+            <label for="textoChamadaEdital">Texto chamada</label>
+            <textarea name="textoChamadaEdital" id="textoChamadaEdital" rows="5" formControlName="textoChamadaEdital"
+                class="form-control">
+            </textarea>
+
+            <hr>
+            <label for="duracaoPropostaEdital" class="obrigatorio">Duração da proposta (Meses)</label>
+            <small *ngIf="form.duracaoPropostaEdital.value == null" class="vermelho">Campo obrigatório</small>
+            <select name="duracaoPropostaEdital" id="duracaoPropostaEdital" required
+                formControlName="duracaoPropostaEdital" class="form-select"
+                [ngClass]="{'is-invalid': form.duracaoPropostaEdital.invalid && form.duracaoPropostaEdital.touched, 'is-valid': form.duracaoPropostaEdital.valid && form.duracaoPropostaEdital.touched}">
+                <!-- Gera opções de 1 a 120 meses -->
+                <option *ngFor="let mes of meses" [value]="mes">{{ mes }} meses</option>
+            </select>
+
+
+            <div class="form-group checkbox-group row align-items-center">
+                <!-- Primeira Coluna -->
+                <div class="col-md-6 col-sm-12">
+                    <div class="form-check d-flex align-items-center">
+                        <input type="checkbox" id="multiplasPropostaEdital" formControlName="multiplasPropostaEdital"
+                            class="form-check-input" />
+                        <label for="multiplasPropostaEdital" class="form-check-label">Multiplas propostas</label>
+                    </div>
+                    <div class="form-check d-flex align-items-center">
+                        <input type="checkbox" id="cordenadorParticipaEdital"
+                            formControlName="cordenadorParticipaEdital" class="form-check-input" />
+                        <label for="cordenadorParticipaEdital" class="form-check-label">Coordenador Participa</label>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-12">
+                    <div class="form-check d-flex align-items-center">
+                        <input type="checkbox" id="cargaHorariaEdital" formControlName="cargaHorariaEdital"
+                            class="form-check-input" />
+                        <label for="cargaHorariaEdital" class="form-check-label">Cargo horária</label>
+                    </div>
+                    <div class="form-check d-flex align-items-center">
+                        <input type="checkbox" id="escolheDuracaoEdital" formControlName="escolheDuracaoEdital"
+                            class="form-check-input" />
+                        <label for="escolheDuracaoEdital" class="form-check-label">Escolher duração</label>
+                    </div>
+                </div>
+
+                <!-- Segunda Coluna -->
+                <div class="col-md-6 col-sm-12">
+                    <div class="form-check d-flex align-items-center">
+                        <input type="checkbox" id="obgOrientadorEdital" formControlName="obgOrientadorEdital"
+                            class="form-check-input" />
+                        <label for="obgOrientadorEdital" class="form-check-label">Obrigado orientador</label>
+                    </div>
+                    <div class="form-check d-flex align-items-center">
+                        <input type="checkbox" id="cordenadorBolsaEdital" formControlName="cordenadorBolsaEdital"
+                            class="form-check-input" />
+                        <label for="cordenadorBolsaEdital" class="form-check-label">Coordenador tem bolsa</label>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-12">
+                    <div class="form-check d-flex align-items-center">
+                        <input type="checkbox" id="editalEspecial" formControlName="editalEspecial"
+                            class="form-check-input" />
+                        <label for="editalEspecial" class="form-check-label">Edital Especial</label>
+                    </div>
+                    <div class="form-check d-flex align-items-center">
+                        <input type="checkbox" id="proponenteBolsaEdital" formControlName="proponenteBolsaEdital"
+                            class="form-check-input" />
+                        <label for="proponenteBolsaEdital" class="form-check-label">Proponente de bolsa</label>
+                    </div>
+                </div>
+
+                <!-- Terceira Coluna -->
+                <div class="col-md-6 col-sm-12">
+                    <div class="form-check d-flex align-items-center">
+                        <input type="checkbox" id="patenteEdital" formControlName="patenteEdital"
+                            class="form-check-input" />
+                        <label for="patenteEdital" class="form-check-label">Gera patente</label>
+                    </div>
+                    <div class="form-check d-flex align-items-center">
+                        <input type="checkbox" id="inovacaoTecEdital" formControlName="inovacaoTecEdital"
+                            class="form-check-input" />
+                        <label for="inovacaoTecEdital" class="form-check-label">Gera inovação tecnológica</label>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-12">
+                    <div class="form-check d-flex align-items-center">
+                        <input type="checkbox" id="autoEticaEdital" formControlName="autoEticaEdital"
+                            class="form-check-input" />
+                        <label for="autoEticaEdital" class="form-check-label">Auto ética</label>
+                    </div>
+                    <div class="form-check d-flex align-items-center">
+                        <input type="checkbox" id="termoAceiteBooleanEdital" formControlName="termoAceiteBooleanEdital"
+                            class="form-check-input" />
+                        <label for="termoAceiteBooleanEdital" class="form-check-label">Termo de aceite</label>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <!-- Campo de texto adicional para o Termo de Aceite -->
+            <div class="form-group mt-3" *ngIf="form.termoAceiteBooleanEdital.value">
+                <label for="termoAceiteTextoEdital">Termo de aceite do edital</label>
+                <textarea name="termoAceiteTextoEdital" id="termoAceiteTextoEdital" rows="5"
+                    formControlName="termoAceiteTextoEdital" class="form-control"></textarea>
+            </div>
+
+
+            <div class="bot">
+                <input type="button" value="Cancelar" routerLink="/editais/">
+                <input type="submit" value="Salvar" [disabled]="formEditalDados.invalid">
+            </div>
+        </div>
+    </section>
+</form>
+</section>

@@ -1,0 +1,15 @@
+package fapacapi.repository;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import fapacapi.model.FaixaFinanciamento;
+
+public interface FaixaFinanciamentoRepository extends JpaRepository<FaixaFinanciamento, Long> {
+    @Query("SELECT ff FROM FaixaFinanciamento ff WHERE ff.nomeFaixaFinanciamento LIKE %?1%")
+    Page<FaixaFinanciamento> busca(String termoBusca, Pageable page);
+}
+
+

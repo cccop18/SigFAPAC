@@ -1,0 +1,78 @@
+:root {
+  --verde1: #038E42;
+  --verde2: #2ecc71;
+  --branco: #ffffff;
+  --preto: #000000;
+}
+
+/******* Configurações do formulario de login *******/
+form {
+  border: 8px solid var(--verde1);
+  width: 360px;
+  margin: auto;
+  border-radius: 15px;
+}
+
+form label::after {
+  content: ":";
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.64em;
+  padding: 12px;
+  align-items: center;
+  font-size: 1em;
+  background-color: var(--branco);
+  border-radius: 7px;
+}
+
+.bot, .bot-login {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.64em;
+}
+
+input, select {
+  border-radius: 4px;
+  padding: 0.4em;
+  border: 1px solid var(--preto);
+  font-size: 0.9em;
+}
+
+.enviar, .cancelar, .adicionar, form a {
+  background-color: var(--verde1);
+  color: var(--branco);
+  border-radius: 4px;
+  padding: 0.4em;
+  border: none;
+  font-size: 1em;
+  font-weight: bold;
+  margin-top: 9.6px;
+}
+
+.enviar:hover, .cancelar:hover, .adicionar:hover, form a:hover {
+  background-color: var(--verde2);
+  color: var(--preto);
+}
+
+button > a {
+  width: 400px;
+}
+
+
+/******* Configurações de responsividade do formulario de login *******/
+@media screen and (max-width: 650px) {
+  #cadastro {
+      width: calc(100% - 50px);
+  }
+
+  .grid {
+      font-size: 1.05em;
+  }
+
+  .bot {
+      grid-template-columns: 1fr;
+  }
+}

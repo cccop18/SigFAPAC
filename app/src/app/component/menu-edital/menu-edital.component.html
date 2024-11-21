@@ -1,0 +1,98 @@
+<div class="menu-edital">
+  <div class="breadcrumb">
+    <span>Editais » Editar Edital</span>
+  </div>
+
+  <ul class="menu-list">
+    <li>
+      <a [routerLink]="['/editais/form']"
+         [queryParams]="{ id: registro.idEdital }"
+         routerLinkActive="active"
+         [routerLinkActiveOptions]="{ exact: true }"
+         class="btn">
+         Dados
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/editalfaixa/form']"
+         [queryParams]="{ id: registro.idEdital }"
+         routerLinkActive="active"
+         [routerLinkActiveOptions]="{ exact: true }"
+         class="btn">
+         Faixas de financiamento
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/editalChamadas/form']"
+         [queryParams]="{ id: registro.idEdital }"
+         routerLinkActive="active"
+         [routerLinkActiveOptions]="{ exact: true }"
+         class="btn">
+         Chamadas
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/editalabrangencia/form']"
+         [queryParams]="{ id: registro.idEdital }"
+         routerLinkActive="active"
+         [routerLinkActiveOptions]="{ exact: true }"
+         class="btn">
+         Abrangência
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/editalorcamento/form']"
+         [queryParams]="{ id: registro.idEdital }"
+         routerLinkActive="active"
+         [routerLinkActiveOptions]="{ exact: true }"
+         class="btn">
+         Orçamentos
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/editalrestricao/form']"
+         [queryParams]="{ id: registro.idEdital }"
+         routerLinkActive="active"
+         [routerLinkActiveOptions]="{ exact: true }"
+         class="btn">
+         Restrições
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/editalprestacao/form']"
+         [queryParams]="{ id: registro.idEdital }"
+         routerLinkActive="active"
+         [routerLinkActiveOptions]="{ exact: true }"
+         class="btn">
+         Prestação de contas
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/editalplanoapresentacao/form']"
+         [queryParams]="{ id: registro.idEdital }"
+         routerLinkActive="active"
+         [routerLinkActiveOptions]="{ exact: true }"
+         class="btn">
+         Plano de Apresentação
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/editalmodelo/form']"
+         [queryParams]="{ id: registro.idEdital }"
+         routerLinkActive="active"
+         [routerLinkActiveOptions]="{ exact: true }"
+         class="btn">
+         Modelos
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/retificacao/form']"
+         [queryParams]="{ id: registro.idEdital }"
+         routerLinkActive="active"
+         [routerLinkActiveOptions]="{ exact: true }"
+         class="btn">
+         Retificações
+      </a>
+    </li>
+  </ul>
+</div>

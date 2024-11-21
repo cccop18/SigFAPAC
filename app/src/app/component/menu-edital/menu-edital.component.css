@@ -1,0 +1,65 @@
+/* Ajustes no CSS */
+
+.menu-edital {
+  background-color: #ffffff;
+  border-bottom: 2px solid #008080;
+  overflow-x: hidden;
+  transition: height 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  padding: 15px;
+  width: 100%;
+  min-width: 400px;
+}
+
+.breadcrumb {
+  font-size: 16px;
+  color: #333;
+  padding: 20px 35px;
+  margin-bottom: 30px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  width: 100%;
+}
+
+.menu-list {
+  display: flex;
+  justify-content: space-around; /* Espalhar melhor os itens no menu */
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  overflow-x: auto;
+  width: 100%;
+  min-width: 400px;
+}
+
+.menu-list li {
+  position: relative;
+  margin: 0 20px; /* Aumentar a margem entre os itens */
+  padding: 15px 20px; /* Aumentar padding */
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.menu-list li:hover {
+  color: #ffffff;
+}
+
+.menu-list li a {
+  text-decoration: none;
+  font-size: 16px; /* Aumentar o tamanho da fonte */
+  color: #333;
+  font-weight: bold;
+}
+
+.menu-list li a:hover {
+  background-color: #005555;
+  color: #ffffff;
+}
+
+.menu-list li a.active {
+  color: #008080;
+  font-weight: bold;
+  background-color: transparent; /* Remover o fundo verde */
+}

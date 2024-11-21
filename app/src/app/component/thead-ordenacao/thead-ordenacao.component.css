@@ -1,0 +1,37 @@
+/* Estilos para o cabeçalho da tabela */
+th {
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px;
+    background-color: #f8f9fa; /* Cor de fundo cinza claro */
+    color: var(--text-color); /* Cor do texto, usando a variável de cor de texto padrão */
+    border-bottom: 2px solid #41414115; /* Linha de divisão no fundo do cabeçalho */
+    cursor: pointer; /* Mostra o cursor como ponteiro ao passar sobre o cabeçalho */
+    white-space: nowrap; /* Impede quebra de linha */
+    min-width: 100px; /* Define uma largura mínima para as colunas */
+    transition: background-color 0.3s ease-in-out; /* Transição suave para hover */
+}
+
+/* Adiciona uma cor de fundo ao passar o mouse */
+th:hover {
+    background-color: #41414115; /* Cor de hover em cinza mais escuro */
+}
+
+/* Estilos dinâmicos de ordenação */
+.th-asc::after {
+    content: "▲"; /* Indicador de ordenação ascendente */
+    padding-left: 5px;
+}
+
+.th-desc::after {
+    content: "▼"; /* Indicador de ordenação descendente */
+    padding-left: 5px;
+}
+
+/* Estilos para o cabeçalho da coluna atualmente ordenada */
+.ordenacao-ativa {
+    background-color: #4b4b4b; /* Cor de fundo escura quando ativo */
+    color: white; /* Cor do texto branco para contraste */
+}
+
+

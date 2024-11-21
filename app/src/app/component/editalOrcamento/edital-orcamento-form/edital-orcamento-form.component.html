@@ -1,0 +1,94 @@
+<app-menu-edital></app-menu-edital>
+<br>
+<section id="cadastro">
+  <form (submit)="save()" [formGroup]="formEditalOrcamento" enctype="multipart/form-data">
+    <div class="informacoes">
+      <h1>Orçamento do edital</h1>
+      <p>Preencha os campos corretamente para configurar o orçamento do Edital.</p>
+      <h3>Os campos marcados com <span class="vermelho">*</span> são obrigatórios.</h3>
+    </div>
+
+    <hr>
+
+    <h3>Quantificação de Atividades</h3>
+    <p>Configurações relacionadas à quantificação das atividades do projeto</p>
+    <label for="cordenadorConfigOrcamentoEdital">
+      <input type="checkbox" formControlName="cordenadorConfigOrcamentoEdital" id="cordenadorConfigOrcamentoEdital">
+      O coordenador deve atribuir valores às atividades do projeto
+    </label>
+
+    <label for="moeda">Restrição da Moeda Estrangeira</label>
+    <input type="checkbox"> Definir Tipo da Moeda Estrangeira.
+    <select name="moeda" id="moeda" required formControlName="moeda" class="form-select"
+        [ngClass]="{'is-invalid': form.moeda.invalid && form.moeda.touched, 'is-valid': form.moeda.valid && form.moeda.touched}">
+        <option *ngFor="let m of moedas" [ngValue]="m.idMoeda">{{m.nomeMoeda}}</option>
+    </select>
+
+    <hr><br>
+
+    <!-- <h3>Rubricas Disponíveis</h3>
+    <p>Escolha as rubricas que estarão disponíveis ao proponente durante a submissão da proposta.</p>
+    <div formArrayName="rubricasArray">
+      <div *ngFor="let rubricaControl of rubricasArray.controls; let i = index" [formGroupName]="i">
+        <label>
+          <input type="checkbox" formControlName="selecionado" />
+          {{ rubricaControl.value.nome }}
+        </label>
+      </div>
+    </div> -->
+
+    <br><hr><br>
+
+    <h3>Rubricas Disponíveis</h3>
+    <p>Escolha as rubricas que estarão disponíveis ao proponente durante a submissão da proposta.</p>
+    <div formArrayName="rubricasArray">
+      <div *ngFor="let rubricaControl of rubricasArray.controls; let i = index" [formGroupName]="i">
+        <label>
+          <input type="checkbox" formControlName="selecionado" />
+          {{ rubricaControl.value.nome }}
+        </label>
+        <label for="porcentagemRubricaEdital-{{i}}">Porcentagem:</label>
+        <input type="number" formControlName="porcentagemRubricaEdital" id="porcentagemRubricaEdital-{{i}}"
+              placeholder="0%" min="0" max="100" step="0.1" />
+      </div>
+    </div>
+
+    <hr>
+
+    <h3>Limite Anual</h3>
+    <p>Um valor ou porcentagem do orçamento pode ser definida como máximo para cada ano. A porcentagem é calculada em relação ao total de recursos de cada projeto.</p>
+    <div class="limite-anual">
+      <label for="limiteAnualPrimeiroAno">
+        Primeiro Ano:
+        <input type="number" formControlName="limiteAnualPrimeiroAno" id="limiteAnualPrimeiroAno" step="0.01" placeholder="0,00 R$">
+      </label>
+
+      <label for="limiteAnualSegundoAno">
+        Segundo Ano:
+        <input type="number" formControlName="limiteAnualSegundoAno" id="limiteAnualSegundoAno" step="0.01" placeholder="0,00 R$">
+      </label>
+
+      <label for="limiteAnualTerceiroAno">
+        Terceiro Ano:
+        <input type="number" formControlName="limiteAnualTerceiroAno" id="limiteAnualTerceiroAno" step="0.01" placeholder="0,00 R$">
+      </label>
+
+      <label for="limiteAnualQuartoAno">
+        Quarto Ano:
+        <input type="number" formControlName="limiteAnualQuartoAno" id="limiteAnualQuartoAno" step="0.01" placeholder="0,00 R$">
+      </label>
+
+      <label for="limiteAnualQuintoAno">
+        Quinto Ano:
+        <input type="number" formControlName="limiteAnualQuintoAno" id="limiteAnualQuintoAno" step="0.01" placeholder="0,00 R$">
+      </label>
+    </div>
+
+    <hr>
+
+    <div class="bot">
+      <input type="button" value="Cancelar" routerLink="/editais/">
+      <input type="submit" value="Salvar" >
+  </div>
+  </form>
+</section>

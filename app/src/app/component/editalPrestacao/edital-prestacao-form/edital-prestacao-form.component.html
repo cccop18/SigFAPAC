@@ -1,0 +1,66 @@
+<app-menu-edital></app-menu-edital>
+<br>
+<section id="cadastro">
+  <div class="informacoes">
+    <h1>Prestação de Contas</h1>
+    <p>Escolha os bancos e funções necessários para as Propostas</p>
+  </div>
+  <hr>
+  <!-- Tabela de bancos -->
+  <div class="grid-container">
+    <div class="grid-item">
+      <h3>Bancos Disponíveis</h3>
+      <div class="banco-lista">
+        <ul>
+          <li *ngFor="let banco of bancos">
+            {{ banco.nomeBanco }}
+            <button (click)="adicionarBanco(banco)">+</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="grid-item">
+      <h3>Bancos Vinculados</h3>
+      <div class="banco-vinculado">
+        <ul>
+          <li *ngFor="let bancoVinculado of bancosVinculados">
+            {{ bancoVinculado.banco.nomeBanco }}
+            <button (click)="removerBanco(bancoVinculado)">-</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <!-- Tabela de funções -->
+  <div class="grid-container">
+    <div class="grid-item">
+      <h3>Funções Disponíveis</h3>
+      <div class="funcao-lista">
+        <ul>
+          <li *ngFor="let funcao of funcoes">
+            {{ funcao.nomeFuncao }}
+            <button (click)="adicionarFuncao(funcao)">+</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="grid-item">
+      <h3>Funções Vinculadas</h3>
+      <div class="funcao-vinculada">
+        <ul>
+          <li *ngFor="let funcaoVinculada of funcoesVinculadas">
+            {{ funcaoVinculada.funcao.nomeFuncao }}
+            <button (click)="removerFuncao(funcaoVinculada)">-</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <!-- Botões de ação -->
+  <div class="bot">
+    <button type="button" routerLink="/editais/">Cancelar</button>
+    <button type="submit" (click)="redirecionarComId()">Salvar</button>
+  </div>
+</section>

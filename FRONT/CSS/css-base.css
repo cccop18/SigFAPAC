@@ -1,0 +1,251 @@
+:root {
+    --verde1: #038E42;
+    --verde2: #2ecc71;
+    --background-color: #f4f4f4;
+    --text-color: #333;
+}
+
+/******* Configurações gerais da pagina *******/
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+/* Basic styling */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    height: 100%;
+    background-color: #41414115;
+}
+
+.voltar img {
+    width: 24px; /* 80% de 30px */
+    margin: 8px; /* 80% de 10px */
+}
+
+.inativo {
+    display: none;
+}
+
+/******* Configurações do cabeçalho da pagina *******/
+
+header {
+    width: 100%;
+    height: 160px; /* 80% de 200px */
+    display: inline-flex;
+    align-items: center;
+    background-color: white;
+}
+
+#logo {
+    margin-left: 32px; /* 80% de 40px */
+    padding: 12px 24px; /* 80% de 15px 30px */
+}
+
+#logo img {
+    height: 88px; /* 80% de 110px */
+}
+
+nav {
+    margin: auto;
+    margin-right: 80px; /* 80% de 100px */
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+}
+
+nav ul li {
+    padding: 4px 12px; /* 80% de 5px 15px */
+    font-size: 1.1em; /* 80% de 1.4em */
+}
+
+nav .nav-icon {
+    width: 24px; /* 80% de 30px */
+    display: none;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+    text-align: center;
+}
+
+a:hover {
+    color: rgb(253, 228, 0);
+}
+
+.vertical-line {
+    width: 0.8px; /* 80% de 1px */
+    height: 40px; /* 80% de 50px */
+    background-color: #33333354;
+    margin: 0 auto;
+}
+
+.linha-cabecalho {
+    width: 100%;
+    height: 0.8px; /* 80% de 1px */
+    background-color: #3333333d;
+}
+
+/******* Configurações do corpo da pagina *******/
+
+main {
+    width: 100%;
+    min-width: 520px; /* 80% de 650px */
+    min-height: calc(100vb - (161.6px + 160px)); /* 80% de 202px e 200px */
+    align-items: center;
+    display: flex;
+    align-items: stretch;
+}
+
+.conteudo-principal {
+    width: 90%;
+    max-width: 880px; /* 80% de 1100px */
+    min-width: 240px; /* 80% de 300px */
+    margin: 0 auto;
+    padding: 48px 20px; /* 80% de 60px 25px */
+    border-radius: 5.6px; /* 80% de 7px */
+    box-shadow: 0px 0px 8px #00000013; /* 80% de 10px */
+}
+
+/******* Configurações do rodapé da pagina *******/
+
+footer {
+    width: 100%;
+    min-width: 520px; /* 80% de 650px */
+    height: 120px; /* 80% de 150px */
+    padding: 20px 0px; /* 80% de 25px */
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    background-color: white;
+}
+
+#info-rodape {
+    margin: 40px 80px; /* 80% de 50px 100px */
+    width: 52%; /* 80% de 65% */
+}
+
+.rodape-line {
+    width: 0.8px; /* 80% de 1px */
+    height: 104px; /* 80% de 130px */
+    background-color: #33333354;
+    margin: 0 auto;
+    margin: 20px 8px; /* 80% de 25px 10px */
+}
+
+#redes-rodape {
+    width: 24%; /* 80% de 30% */
+}
+
+.redes-sociais {
+    width: 32px; /* 80% de 40px */
+    margin: auto;
+}
+
+/******* Configurações de responsividade da pagina *******/
+
+@media screen and (max-width: 650px) {
+
+    .inativo-menu {
+        display: none;
+    }
+
+    /******* Configurações de responsividade do cabeçalho da pagina *******/
+    header {
+        min-width: 400px; /* 80% de 400px */
+        height: 190px;
+        display: block;
+    }
+
+    #logo img {
+        height: auto;
+        width: 370px; /* 80% de 370px */
+        margin: auto;
+    }
+
+    #logo a {
+        margin: auto;
+        display: flex;
+    }
+
+    #logo {
+        margin: auto;
+        padding: 15px 0px; /* 80% de 15px 0px */
+    }
+
+    nav {
+        margin-top: 35px; /* 80% de 35px */
+        min-width: 400px; /* 80% de 400px */
+        width: 100%;
+        position: absolute;
+    }
+
+    nav .nav-icon {
+        display: block;
+        margin: auto;
+    }
+
+    nav ul {
+        display: block;
+        margin: auto;
+        background-color: rgb(255, 255, 255);
+    }
+
+    nav li {
+        margin: auto;
+        width: 350px; /* 80% de 350px */
+        text-align: center;
+        border-radius: 7px; /* 80% de 7px */
+    }
+
+    nav li:hover {
+        color: white;
+        background-color: #038E42;
+    }
+
+    .vertical-line {
+        display: none;
+    }
+
+    /******* Configurações de responsividade do corpo da pagina *******/
+
+    main {
+        min-width: 400px; /* 80% de 400px */
+        height: 100%;
+        min-height: 70vh;
+    }
+
+    /******* Configurações de responsividade do rodapé da pagina *******/
+
+    footer {
+        height: auto;
+        min-width: 400px; /* 80% de 400px */
+        display: block;
+    }
+
+    #info-rodape {
+        margin: 20px auto; /* 80% de 20px */
+        width: 80%; /* 80% de 80% */
+        overflow: hidden;
+        word-break: break-word;
+    }
+
+    .rodape-line {
+        display: none;
+    }
+
+    #redes-rodape {
+        align-items: center;
+        width: 100%; /* 80% de 100% */
+    }
+}

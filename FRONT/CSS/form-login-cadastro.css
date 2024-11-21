@@ -1,0 +1,103 @@
+:root {
+    --verde1: #038E42;
+    --verde2: #2ecc71;
+    --background-color: #f4f4f4;
+    --text-color: #333;
+}
+
+/******* Configurações do formulario de login *******/
+form {
+    border: 8px solid var(--verde1); /* 80% de 10px */
+    margin: auto;
+    width: 360px; /* 80% de 450px */
+}
+
+form label::after {
+    content: ":";
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.64em; /* 80% de 0.8em */
+    padding: 12px; /* 80% de 15px */
+    align-items: center;
+    font-size: 1em; /* 80% de 1.2em */
+    background-color: white;
+}
+
+.bot, .bot-login {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.64em; /* 80% de 0.8em */
+}
+
+input, select {
+    border-radius: 4px; /* 80% de 5px */
+    padding: 0.4em; /* 80% de 0.5em */
+    border: 1px solid black;
+    font-size: 0.9em; /* 80% de 0.9em */
+}
+
+.enviar, .cancelar, .adicionar, form a {
+    background-color: var(--verde1);
+    color: white;
+    border-radius: 4px; /* 80% de 5px */
+    padding: 0.4em; /* 80% de 0.5em */
+    border: none;
+    font-size: 1em; /* 80% de 1em */
+    font-weight: bold;
+    margin-top: 9.6px; /* 80% de 12px */
+}
+
+.enviar:hover, .cancelar:hover, .adicionar:hover, form a:hover {
+    background-color: var(--verde2);
+    color: rgb(0, 0, 0);
+}
+
+button > a {
+    width: 400px; /* 80% de 500px */
+}
+
+.pesquisador {
+    background-color: var(--verde2);
+    color: black;
+}
+
+.pesquisador:hover {
+    background-color: var(--verde1);
+    color: white;
+}
+
+@media screen and (max-width: 1050px) {
+    .bot {
+        width: calc(100% - 50px); /* 80% de 50px */
+        margin: auto;
+    }
+
+    #pessoais {
+        display: block;
+        width: calc(100% - 40px);
+    }
+}
+
+@media screen and (max-width: 650px) {
+
+    /******* Configurações de responsividade do formulario de login *******/
+
+    #cadastro {
+        width: calc(100% - 50px); /* 80% de 50px */
+    }
+
+    .grid {
+        font-size: 1.05em; /* 80% de 1.14em */
+    }
+
+    .bot {
+        grid-template-columns: 1fr;
+    }
+
+    .login {
+        width: calc(100% - 50px); /* 80% de 50px */
+    }
+}

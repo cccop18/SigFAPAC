@@ -1,0 +1,433 @@
+<section id="cadastro">
+  <div class="bot">
+    <a href="pesquisador/brasileiro" class="enviar">Pesquisador Brasileiro</a>
+    <a href="pesquisador/estrangeiro" class="enviar pesquisador">Pesquisador Estrangeiro</a>
+  </div>
+  <br>
+  <form (submit)="save()" [formGroup]="formPesquisadorEs" enctype="multipart/form-data">
+
+    <div class="form-group text-center">
+      <img [src]="imagemPreview || 'assets/img/sem-foto.png'" alt="Pré-visualização" id="imagemPreview"
+        class="img-thumbnail mb-3" style="width: 150px; height: 150px; object-fit: cover; border: 1px solid #ddd;" />
+      <div>
+        <label for="fotoPesquisador">Sua Foto:</label>
+        <input type="file" name="fotoPesquisador" id="fotoPesquisador" accept="image/*"
+          formControlName="fotoPesquisador" class="form-control-file" (change)="carregarImagem($event)" />
+      </div>
+
+      <!-- Mensagem de erro -->
+      <div *ngIf="form.fotoPesquisador?.invalid && form.fotoPesquisador?.touched" class="text-danger">
+        <small>Selecione uma imagem válida.</small>
+      </div>
+    </div>
+
+    <div class="grid">
+      <label for="nomeCompletoPesquisador" class="obrigatorio">Nome Completo</label>
+      <div>
+          <input style="height: 35px;" type="text" name="nomeCompletoPesquisador" id="nomeCompletoPesquisador" required formControlName="nomeCompletoPesquisador" class="form-control" [ngClass]="{'is-invalid': form.nomeCompletoPesquisador.invalid && form.nomeCompletoPesquisador.touched, 'is-valid': form.nomeCompletoPesquisador.valid && form.nomeCompletoPesquisador.touched}">
+        <div *ngIf="form.nomeCompletoPesquisador.hasError('pattern')" class="vermelho">
+          <small>Digite ao menos 3 caracteres (sem considerar espaços em branco)</small>
+        </div>
+      </div>
+
+      <label for="emailPesquisador" class="obrigatorio">E-mail</label>
+      <div>
+        <input style="height: 35px;" type="email" name="emailPesquisador" id="emailPesquisador" required formControlName="emailPesquisador" class="form-control" [ngClass]="{'is-invalid': form.emailPesquisador.invalid && form.emailPesquisador.touched, 'is-valid': form.emailPesquisador.valid && form.emailPesquisador.touched}">
+        <small *ngIf="form.emailPesquisador.hasError('email')">Formato inválido</small>
+      </div>
+
+
+      <label for="sexoPesquisador" class="obrigatorio">Sexo</label>
+      <div>
+        <select style="height: 35px;" id="sexoPesquisador" name="sexoPesquisador" required formControlName="sexoPesquisador" class="form-select"
+          [ngClass]="{'is-invalid': form.sexoPesquisador.invalid && form.sexoPesquisador.touched, 'is-valid': form.sexoPesquisador.valid && form.sexoPesquisador.touched}">
+          <option value="">Selecione</option>
+          <option value="Masculino">Masculino</option>
+          <option value="Feminino">Feminino</option>
+          <option value="Outros">Outros</option>
+        </select>
+      </div>
+
+
+      <label for="dataNascimentoPesquisador" class="obrigatorio">Data de nascimento</label>
+      <input type="date" name="dataNascimentoPesquisador" id="dataNascimentoPesquisador" required
+        formControlName="dataNascimentoPesquisador" class="form-control"
+        [ngClass]="{'is-invalid': form.dataNascimentoPesquisador.invalid && form.dataNascimentoPesquisador.touched, 'is-valid': form.dataNascimentoPesquisador.valid && form.dataNascimentoPesquisador.touched}">
+
+
+      <label for="corRaca" class="obrigatorio">Raça cor</label>
+      <select style="height: 35px;" id="corRaca" name="corRaca" required formControlName="corRaca" class="form-select"
+        [ngClass]="{'is-invalid': form.corRaca.invalid && form.corRaca.touched, 'is-valid': form.corRaca.valid && form.corRaca.touched}">
+        <option value="">Selecione</option>
+        <option value="Branco">Branco</option>
+        <option value="Negro">Negro</option>
+        <option value="Pardo">Pardo</option>
+        <option value="Indigina">Indigina</option>
+      </select>
+
+      <label for="telefonePesquisador" class="obrigatorio">Telefone</label>
+      <div>
+        <input style="height: 35px;" type="tel" name="telefonePesquisador" id="telefonePesquisador" required
+          formControlName="telefonePesquisador" class="form-control"
+          [ngClass]="{'is-invalid': form.telefonePesquisador.invalid && form.telefonePesquisador.touched, 'is-valid': form.telefonePesquisador.valid && form.telefonePesquisador.touched}">
+        <div *ngIf="form.telefonePesquisador.hasError('pattern')" class="vermelho">
+          <small>Telefone deve seguir o formato (55) 55555-5555</small>
+        </div>
+      </div>
+
+
+      <label for="nomeMaePesquisador" class="obrigatorio">Nome da Mãe</label>
+      <div>
+        <input style="height: 35px;" type="text" name="nomeMaePesquisador" id="nomeMaePesquisador" required formControlName="nomeMaePesquisador"
+          class="form-control"
+          [ngClass]="{'is-invalid': form.nomeMaePesquisador.invalid && form.nomeMaePesquisador.touched, 'is-valid': form.nomeMaePesquisador.valid && form.nomeMaePesquisador.touched}">
+        <div *ngIf="form.nomeMaePesquisador.hasError('pattern')" class="vermelho">
+          <small>Digite ao menos 3 caracteres (sem considerar espaços em branco)</small>
+        </div>
+      </div>
+
+
+      <label for="nomePaiPesquisador">Nome do Pai</label>
+      <div>
+        <input style="height: 35px;" type="text" name="nomePaiPesquisador" id="nomePaiPesquisador" formControlName="nomePaiPesquisador"
+          class="form-control">
+        <div *ngIf="form.nomePaiPesquisador.hasError('pattern')" class="vermelho">
+          <small>Digite ao menos 3 caracteres (sem considerar espaços em branco)</small>
+        </div>
+      </div>
+
+
+      <label for="curriculoLattesPesquisador" class="obrigatorio">Currículo:</label>
+      <input type="text" name="curriculoLattesPesquisador" id="curriculoLattesPesquisador" required
+        formControlName="curriculoLattesPesquisador" class="form-control"
+        [ngClass]="{'is-invalid': form.curriculoLattesPesquisador.invalid && form.curriculoLattesPesquisador.touched, 'is-valid': form.curriculoLattesPesquisador.valid && form.curriculoLattesPesquisador.touched}">
+
+
+      <label for="nivelAcademicoPesquisador" class="obrigatorio">Nível acadêmico</label>
+      <select name="nivelAcademicoPesquisador" id="nivelAcademicoPesquisador" required
+        formControlName="nivelAcademicoPesquisador" class="form-select"
+        [ngClass]="{'is-invalid': form.nivelAcademicoPesquisador.invalid && form.nivelAcademicoPesquisador.touched, 'is-valid': form.nivelAcademicoPesquisador.valid && form.nivelAcademicoPesquisador.touched}">
+        <option value="Superior">Superior</option>
+        <option value="Pós graduação">Pós graduação</option>
+        <option value="Mestrado">Mestrado</option>
+        <option value="Doutorado">Doutorado</option>
+        <option value="Pós doutorado">Pós doutorado</option>
+      </select>
+
+
+      <label for="rgPesquisador" class="obrigatorio">RG:</label>
+      <input type="text" name="rgPesquisador" id="rgPesquisador" required formControlName="rgPesquisador"
+        class="form-control"
+        [ngClass]="{'is-invalid': formPesquisadorEs.get('rgPesquisador')?.invalid && formPesquisadorEs.get('rgPesquisador')?.touched}">
+
+      <label for="passaportePesquisador" class="obrigatorio">Passaporte:</label>
+      <input type="text" name="passaportePesquisador" id="passaportePesquisador" formControlName="passaportePesquisador"
+        class="form-control">
+      <br>
+    </div>
+    <br><br>
+
+    <!-- Modal para Adicionar Áreas do Conhecimento -->
+    <div style="display: flex;">
+      <button type="button" class="btn btn-primary" (click)="openModal(modalAreaConhecimento)"
+        style="margin: auto;">Adicionar Áreas do Conhecimento</button>
+    </div>
+
+    <ng-template #modalAreaConhecimento let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title">Adicionar Áreas do Conhecimento</h4>
+        <button style="margin-left: 60%; font-size: 2em;" type="button" class="close" aria-label="Close"
+          (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-cadastro-areaconhecimento-pesquisador
+          (pesquisadorConhecimento)="receberPesquisadorConhecimento($event)"></app-cadastro-areaconhecimento-pesquisador>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="modal.close('Save click')">Fechar</button>
+      </div>
+    </ng-template>
+    <br>
+    <div *ngIf="PesquisadorConhecimento.length > 0">
+      <h3>Áreas de conhecimento adicionadas:</h3>
+      <table class=" table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Área de Conhecimento</th>
+            <th>Subárea 1</th>
+            <th>Subárea 2</th>
+            <th>Subárea 3</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let pc of PesquisadorConhecimento">
+            <td>{{ getAreaConhecimentoNome(pc.idAreaConhecimento) }}</td>
+            <td>{{ getPrimeiraSubAreaNome(pc.idPrimeiraSubArea) }}</td>
+            <td>{{ getSegundaSubAreaNome(pc.idSegundaSubArea) }}</td>
+            <td>{{ getTerceiraSubAreaNome(pc.idTerceiraSubArea) }}</td>
+            <td>
+              <a href="" class="botao excluir" ngbTooltip="Remover área do conhecimento"><i
+                  class="bi bi-x-square"></i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <hr>
+
+    <div>
+      <h2>Endereço residencial</h2>
+      <br>
+      <div class="grid">
+        <label for="cepEnderecoResidencial" class="obrigatorio">CEP:</label>
+        <div>
+          <input style="height: 35px;" type="text" name="cepEnderecoResidencial" id="cepEnderecoResidencial"
+            formControlName="cepEnderecoResidencial" class="form-control" [ngClass]="{
+                      'is-invalid': formPesquisadorEs.get('cepEnderecoResidencial')?.invalid && formPesquisadorEs.get('cepEnderecoResidencial')?.touched,
+                      'is-valid': formPesquisadorEs.get('cepEnderecoResidencial')?.valid && formPesquisadorEs.get('cepEnderecoResidencial')?.touched
+                    }" (blur)="verificarCep('RESIDENCIAL')">
+          <div *ngIf="form.cepEnderecoResidencial.hasError('pattern')" class="vermelho">
+            <small>CEP invalido.</small>
+          </div>
+        </div>
+
+
+        <label for="logradouroEnderecoResidencial" class="obrigatorio">Logradouro:</label>
+        <input style="height: 35px;" type="text" name="logradouroEnderecoResidencial" id="logradouroEnderecoResidencial"
+          formControlName="logradouroEnderecoResidencial" class="form-control"
+          [ngClass]="{'is-invalid': form.logradouroEnderecoResidencial.invalid && form.logradouroEnderecoResidencial.touched, 'is-valid': form.logradouroEnderecoResidencial.valid && form.logradouroEnderecoResidencial.touched}">
+
+        <label for="numeroEnderecoResidencial" class="obrigatorio">Número:</label>
+        <input style="height: 35px;" type="number" name="numeroEnderecoResidencial" id="numeroEnderecoResidencial" required
+          formControlName="numeroEnderecoResidencial" class="form-control"
+          [ngClass]="{'is-invalid': formPesquisadorEs.get('numeroEnderecoResidencial')?.invalid && formPesquisadorEs.get('numeroEnderecoResidencial')?.touched}">
+
+        <label style="height: 35px;" for="bairroEnderecoResidencial" class="obrigatorio">Bairro:</label>
+        <input type="text" name="bairroEnderecoResidencial" id="bairroEnderecoResidencial"
+          formControlName="bairroEnderecoResidencial" class="form-control"
+          [ngClass]="{'is-invalid': form.bairroEnderecoResidencial.invalid && form.bairroEnderecoResidencial.touched, 'is-valid': form.bairroEnderecoResidencial.valid && form.bairroEnderecoResidencial.touched}">
+
+        <label for="paisEnderecoResidencial" class="obrigatorio">Pais:</label>
+        <input style="height: 35px;" type="text" name="paisEnderecoResidencial" id="paisEnderecoResidencial"
+          formControlName="paisEnderecoResidencial" class="form-control"
+          [ngClass]="{'is-invalid': form.paisEnderecoResidencial.invalid && form.paisEnderecoResidencial.touched, 'is-valid': form.paisEnderecoResidencial.valid && form.paisEnderecoResidencial.touched}">
+
+        <label for="estadoEnderecoResidencial" class="obrigatorio">Estado:</label>
+        <input style="height: 35px;" type="text" name="estadoEnderecoResidencial" id="estadoEnderecoResidencial"
+          formControlName="estadoEnderecoResidencial" class="form-control"
+          [ngClass]="{'is-invalid': form.estadoEnderecoResidencial.invalid && form.estadoEnderecoResidencial.touched, 'is-valid': form.estadoEnderecoResidencial.valid && form.estadoEnderecoResidencial.touched}">
+
+        <label for="municipioEnderecoPesquisador" class="obrigatorio">Município:</label>
+        <input style="height: 35px;" type="text" name="municipioEnderecoPesquisador" id="municipioEnderecoPesquisador" required
+          formControlName="municipioEnderecoPesquisador" class="form-control"
+          [ngClass]="{'is-invalid': formPesquisadorEs.get('municipioEnderecoPesquisador')?.invalid && formPesquisadorEs.get('municipioEnderecoPesquisador')?.touched}">
+
+        <label for="telefoneEnderecoPesquisador" class="obrigatorio">Telefone:</label>
+        <div>
+          <input style="height: 35px;" type="tel" name="telefoneEnderecoPesquisador" id="telefoneEnderecoPesquisador"
+            formControlName="telefoneEnderecoPesquisador" class="form-control"
+            [ngClass]="{'is-invalid': form.telefoneEnderecoPesquisador.invalid && form.telefoneEnderecoPesquisador.touched, 'is-valid': form.telefoneEnderecoPesquisador.valid && form.telefoneEnderecoPesquisador.touched}">
+          <div *ngIf="form.telefoneEnderecoPesquisador.hasError('pattern')" class="vermelho">
+            <small>Telefone deve seguir o formato (55) 55555-5555</small>
+          </div>
+        </div>
+      </div>
+
+      <br>
+      <hr>
+      <h2>Endereço Profissional</h2>
+      <br>
+      <div class="grid">
+        <label for="cepEnderecoProfissional">CEP:</label>
+        <div>
+                  <input style="height: 35px;" type="text" name="cepEnderecoProfissional" id="cepEnderecoProfissional" formControlName="cepEnderecoProfissional" class="form-control" [ngClass]="{
+                    'is-invalid': formPesquisadorEs.get('cepEnderecoProfissional')?.invalid && formPesquisadorEs.get('cepEnderecoProfissional')?.touched,
+                    'is-valid': formPesquisadorEs.get('cepEnderecoProfissional')?.valid && formPesquisadorEs.get('cepEnderecoProfissional')?.touched
+                  }" (blur)="verificarCep('PROFISSIONAL')">
+          <div *ngIf="form.cepEnderecoProfissional.hasError('pattern')" class="vermelho">
+            <small>CEP invalido.</small>
+          </div>
+        </div>
+
+
+        <label for="logradouroEnderecoProfissional">Logradouro</label>
+        <input style="height: 35px;" type="text" name="logradouroEnderecoProfissional" id="logradouroEnderecoProfissional"
+          formControlName="logradouroEnderecoProfissional" class="form-control"
+          [ngClass]="{'is-invalid': form.logradouroEnderecoProfissional.invalid && form.logradouroEnderecoProfissional.touched, 'is-valid': form.logradouroEnderecoProfissional.valid && form.logradouroEnderecoProfissional.touched}">
+
+        <label for="numeroEnderecoProfissional">Numero:</label>
+        <input style="height: 35px;" type="number" name="numeroEnderecoProfissional" id="numeroEnderecoProfissional"
+          formControlName="numeroEnderecoProfissional" class="form-control"
+          [ngClass]="{'is-invalid': form.numeroEnderecoProfissional.invalid && form.numeroEnderecoProfissional.touched, 'is-valid': form.numeroEnderecoProfissional.valid && form.numeroEnderecoProfissional.touched}">
+
+        <label for="bairroEnderecoProfissional">Bairro:</label>
+        <input style="height: 35px;" type="text" name="bairroEnderecoProfissional" id="bairroEnderecoProfissional"
+          formControlName="bairroEnderecoProfissional" class="form-control"
+          [ngClass]="{'is-invalid': form.bairroEnderecoProfissional.invalid && form.bairroEnderecoProfissional.touched, 'is-valid': form.bairroEnderecoProfissional.valid && form.bairroEnderecoProfissional.touched}">
+
+        <label for="paisEnderecoProfissional"> Pais:</label>
+        <input style="height: 35px;" type="text" name="paisEnderecoProfissional" id="paisEnderecoProfissional"
+          formControlName="paisEnderecoProfissional" class="form-control"
+          [ngClass]="{'is-invalid': form.paisEnderecoProfissional.invalid && form.paisEnderecoProfissional.touched, 'is-valid': form.paisEnderecoProfissional.valid && form.paisEnderecoProfissional.touched}">
+
+        <label for="estadoEnderecoProfissional">Estado:</label>
+        <input style="height: 35px;" type="text" name="estadoEnderecoProfissional" id="estadoEnderecoProfissional"
+          formControlName="estadoEnderecoProfissional" class="form-control"
+          [ngClass]="{'is-invalid': form.estadoEnderecoProfissional.invalid && form.estadoEnderecoProfissional.touched, 'is-valid': form.estadoEnderecoProfissional.valid && form.estadoEnderecoProfissional.touched}">
+
+        <label for="municipioEnderecoProfissional">Município: </label>
+        <input style="height: 35px;" type="text" name="municipioEnderecoProfissional" id="municipioEnderecoProfissional"
+          formControlName="municipioEnderecoProfissional" class="form-control"
+          [ngClass]="{'is-invalid': form.municipioEnderecoProfissional.invalid && form.municipioEnderecoProfissional.touched, 'is-valid': form.municipioEnderecoProfissional.valid && form.municipioEnderecoProfissional.touched}">
+
+        <label for="telefoneEnderecoProfissional">Telefone: </label>
+        <div>
+          <input style="height: 35px;" type="tel" name="telefoneEnderecoProfissional" id="telefoneEnderecoProfissional"
+            formControlName="telefoneEnderecoProfissional" class="form-control"
+            [ngClass]="{'is-invalid': form.telefoneEnderecoProfissional.invalid && form.telefoneEnderecoProfissional.touched, 'is-valid': form.telefoneEnderecoProfissional.valid && form.telefoneEnderecoProfissional.touched}">
+          <div *ngIf="form.telefoneEnderecoProfissional.hasError('pattern')" class="vermelho">
+            <small>Telefone deve seguir o formato (55) 55555-5555</small>
+          </div>
+        </div>
+
+      </div>
+      <br>
+      <hr>
+      <h2>Cadastro da senha</h2>
+      <br>
+      <div class="grid">
+        <label for="senhaPesquisador">Senha</label>
+        <div>
+        <input style="height: 35px;" type="text" name="senhaPesquisador" id="senhaPesquisador" required formControlName="senhaPesquisador"
+          class="form-control" [ngClass]="{
+                    'is-invalid': formPesquisadorEs.get('senhaPesquisador')?.invalid && formPesquisadorEs.get('senhaPesquisador')?.touched,
+                    'is-valid': formPesquisadorEs.get('senhaPesquisador')?.valid && formPesquisadorEs.get('senhaPesquisador')?.touched
+                  }">
+
+        <!-- Exibe as mensagens de erro -->
+        <small
+          *ngIf="formPesquisadorEs.get('senhaPesquisador')?.hasError('strongPassword') && formPesquisadorEs.get('senhaPesquisador')?.touched"
+          class="vermelho">
+          A senha deve conter: <br>
+          <span *ngIf="!formPesquisadorEs.get('senhaPesquisador')?.errors?.['strongPassword'].hasUpperCase">- Pelo menos
+            uma letra maiúscula.</span>
+          <span *ngIf="!formPesquisadorEs.get('senhaPesquisador')?.errors?.['strongPassword'].hasLowerCase">- Pelo menos
+            uma letra minúscula.</span> <br>
+          <span *ngIf="!formPesquisadorEs.get('senhaPesquisador')?.errors?.['strongPassword'].hasNumber">- Pelo menos um
+            número.</span> <br>
+          <span *ngIf="!formPesquisadorEs.get('senhaPesquisador')?.errors?.['strongPassword'].hasSpecialChar">- Pelo
+            menos um caractere especial.</span><br>
+          <span *ngIf="!formPesquisadorEs.get('senhaPesquisador')?.errors?.['strongPassword'].isValidLength">- No mínimo
+            8 caracteres.</span>
+        </small>
+        </div>
+
+        <hr>
+        <hr>
+
+        <label for="senhaPesquisador">Confirmar Senha</label>
+        <input type="text" name="senhaPesquisador" id="senhaPesquisador" required formControlName="senhaPesquisador"
+          class="form-control"
+          [ngClass]="{'is-invalid': form.senhaPesquisador.invalid && form.senhaPesquisador.touched, 'is-valid': form.senhaPesquisador.valid && form.senhaPesquisador.touched}">
+        <hr>
+        <hr>
+      </div>
+
+    </div>
+
+    <br>
+    <div style="display: flex;">
+      <button type="button" class="btn btn-primary" (click)="openModal(modalVinculoInstitucional)"
+        style="margin: auto;">Adicionar Vínculo Institucional</button>
+    </div>
+    <ng-template #modalVinculoInstitucional let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title">{{ tituloModal }}</h4>
+        <button style="margin-left: 70%; font-size: 2em;" type="button" class="close" aria-label="Close"
+          (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+
+
+        <!-- Exibe o botão para adicionar nova instituição apenas no estado de vínculo institucional -->
+        <div class="bot">
+          <div style="display: flex; margin-bottom: 15px;" *ngIf="estadoModal === 'vinculoInstitucional'">
+            <button type="button" class="btn btn-primary" (click)="cadastroInstituicao()" style="margin: auto;">Adicionar
+              nova instituição</button>
+          </div>
+          <div style="display: flex; margin-bottom: 15px;" *ngIf="estadoModal === 'vinculoInstitucional'">
+            <button type="button" class="btn btn-primary" (click)="irParaCadastroUnidade()" style="margin: auto;">Adicionar nova unidade</button>
+          </div>
+       </div>
+
+        <!-- Exibe o componente de vínculo institucional -->
+        <app-cadastro-dados-profissionais *ngIf="estadoModal === 'vinculoInstitucional'"
+          (vinculoInstitucional)="receberVinculo($event)">
+        </app-cadastro-dados-profissionais>
+
+        <div class="bot">
+          <div style="display: flex; margin-bottom: 15px;" *ngIf="estadoModal === 'cadastroInstituicao' || estadoModal === 'cadastroUnidade'">
+            <button type="button" class="btn btn-primary" (click)="voltarParaVinculo()" style="margin: auto;">Voltar para o cadastro de vinculo</button>
+          </div>
+
+          <div style="display: flex; margin-bottom: 15px;" *ngIf="estadoModal === 'cadastroInstituicao'">
+            <button type="button" class="btn btn-primary" (click)="irParaCadastroUnidade()" style="margin: auto;">Adicionar
+              nova Unidade</button>
+          </div>
+        </div><br>
+        <!-- Exibe o componente de cadastro de instituição -->
+        <app-cadastro-instituicao *ngIf="estadoModal === 'cadastroInstituicao'"
+          (instituicaoCadastrada)="irParaCadastroUnidade()">
+        </app-cadastro-instituicao>
+
+        <!-- Exibe o componente de cadastro de unidade -->
+        <app-cadastro-unidade *ngIf="estadoModal === 'cadastroUnidade'" (unidadeCadastrada)="voltarParaVinculo()">
+        </app-cadastro-unidade>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="modal.close('Save click')">Fechar</button>
+      </div>
+    </ng-template>
+
+    <br>
+    <br>
+    <div *ngIf="vinculosInstitucionais.length > 0">
+      <h3>Vínculos Institucionais Adicionados:</h3>
+      <table class="table table-bordered table-striped">
+        <thead class="bg-success">
+          <tr>
+            <th>Instituição</th>
+            <th>Unidade</th>
+            <th>Tipo de Vínculo</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let v of vinculosInstitucionais">
+            <td>{{ getInstituicaoNome(v.idInstituicao) }}</td>
+            <td>{{ getUnidadeNome(v.idUnidadeInstituicao) }}</td>
+            <td>{{ v.vinculoInstitucional }}</td>
+            <td>
+              <a href="" class="botao excluir" ngbTooltip="Remover área do conhecimento"><i
+                  class="bi bi-x-square"></i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="bot">
+      <input type="button" value="Cancelar" routerLink="/login">
+      <input type="submit" value="Salvar" [disabled]="formPesquisadorEs.invalid">
+    </div>
+  </form>
+</section>

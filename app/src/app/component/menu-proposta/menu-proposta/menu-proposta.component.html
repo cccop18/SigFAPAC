@@ -1,0 +1,180 @@
+<div class="menu-edital">
+    <div class="breadcrumb">
+      <span>Proposta » Cadastrar Proposta</span>
+    </div>
+  
+    <ul class="menu-list">
+      <li>
+        <a [routerLink]="['/propostatitulo/form']"
+           [queryParams]="{ id: registro.idProposta, idEdital: registroEdital.idEdital}"
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact: true }"
+           class="btn">
+           Título
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/propostaconhecimento/form']"
+           [queryParams]="{ id: registro.idProposta, idEdital: registroEdital.idEdital}"
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact: true }"
+           class="btn">
+           Aréa do Conhecimento
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/']"
+           [queryParams]="{ id: registro.idProposta, idEdital: registroEdital.idEdital}"
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact: true }"
+           class="btn">
+           Arquivos
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/']"
+           [queryParams]="{ id: registro.idProposta, idEdital: registroEdital.idEdital}"
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact: true }"
+           class="btn">
+           Plano Apresentação
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/propostaabrangencia/form']"
+           [queryParams]="{ id: registro.idProposta, idEdital: registroEdital.idEdital}"
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact: true }"
+           class="btn">
+           Abrangência
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/propostamembros/form']"
+           [queryParams]="{ id: registro.idProposta }"
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact: true }"
+           class="btn">
+           Membros
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/propostaatividade/form']"
+           [queryParams]="{ id: registro.idProposta }"
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact: true }"
+           class="btn">
+           Atividades
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/propostadiaria/form']"
+           [queryParams]="{ orcamentoId: registroOrcamento.idOrcamentoProposta}"
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact: true }"
+           class="btn">
+           Diarias
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/propostamaterial/form']"
+           [queryParams]="{ orcamentoId: registroOrcamento.idOrcamentoProposta}"
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact: true }"
+           class="btn">
+           Material Consumo 
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/propostapassagem/form']"
+           [queryParams]="{ orcamentoId: registroOrcamento.idOrcamentoProposta}"
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact: true }"
+           class="btn">
+           Passagens
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/propostaservico/form']"
+           [queryParams]="{ orcamentoId: registroOrcamento.idOrcamentoProposta}"
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact: true }"
+           class="btn">
+           Serviços Terceiros
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/propostamaterialperm/form']"
+           [queryParams]="{ orcamentoId: registroOrcamento.idOrcamentoProposta}"
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact: true }"
+           class="btn">
+           Material Permanente
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/propostaparcerias/form']"
+           [queryParams]="{ orcamentoId: registroOrcamento.idOrcamentoProposta}"
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact: true }"
+           class="btn">
+           Parcerias / Contrapartida
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/propostapessoal/form']"
+           [queryParams]="{ orcamentoId: registroOrcamento.idOrcamentoProposta}"
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact: true }"
+           class="btn">
+           Pessoal
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/propostaencargo/form']"
+           [queryParams]="{ orcamentoId: registroOrcamento.idOrcamentoProposta}"
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact: true }"
+           class="btn">
+           Encargos
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/propostahospedagem/form']"
+           [queryParams]="{ orcamentoId: registroOrcamento.idOrcamentoProposta}"
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact: true }"
+           class="btn">
+           Hospedagem / Alimentação
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/propostabolsa/form']"
+           [queryParams]="{ orcamentoId: registroOrcamento.idOrcamentoProposta}"
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact: true }"
+           class="btn">
+           Bolsas
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/']"
+           [queryParams]="{ orcamentoId: registroOrcamento.idOrcamentoProposta}"
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact: true }"
+           class="btn">
+           Recursos  Solicitados
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/']"
+           [queryParams]="{ orcamentoId: registroOrcamento.idOrcamentoProposta}"
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact: true }"
+           class="btn">
+           Eviar Proposta 
+        </a>
+      </li>
+    </ul>
+  </div>
+  

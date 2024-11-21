@@ -1,0 +1,89 @@
+<p>proposta-conhecimento-form works!</p>
+<app-alerta></app-alerta>
+<form [formGroup]="formPropostaConhecimento" (ngSubmit)="salvarAreasConhecimento()">
+  <h3>Área de Conhecimento</h3>
+
+  <div class="form-group">
+    <!-- Campo para seleção da Área de Conhecimento -->
+
+    <label for="areaConhecimento" class="obrigatorio">Área Principal</label>
+    <select formControlName="areaConhecimento" id="areaConhecimento" class="form-control"
+      (change)="onAreaConhecimentoChange($event)">
+      <option value="">Escolher</option>
+      <option *ngFor="let area of areasConhecimento" [ngValue]="area.idAreaConhecimento">{{ area.nomeAreaConhecimento }}
+      </option>
+    </select>
+    <div
+      *ngIf="formPropostaConhecimento.get('areaConhecimento')?.invalid && formPropostaConhecimento.get('idAreaConhecimento')?.touched">
+      <small class="text-danger">Campo obrigatório</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <!-- Campo para seleção da Primeira Subárea -->
+    <label for="primeiraSubArea" class="obrigatorio">Sub Área 1</label>
+    <select formControlName="primeiraSubArea" id="primeiraSubArea" class="form-control"
+      (change)="onPrimeiraSubAreaChange($event)">
+      <option value="">Escolher</option>
+      <option *ngFor="let subArea of primeiraSubAreas" [ngValue]="subArea.id">{{ subArea.nomePrimeiraSub }}</option>
+    </select>
+    <div
+      *ngIf="formPropostaConhecimento.get('primeiraSubArea')?.invalid && formPropostaConhecimento.get('idPrimeiraSubArea')?.touched">
+      <small class="text-danger">Campo obrigatório</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <!-- Campo para seleção da Segunda Subárea -->
+    <label for="segundaSubArea">Sub Área 2</label>
+    <select formControlName="segundaSubArea" id="segundaSubArea" class="form-control"
+      (change)="onSegundaSubAreaChange($event)">
+      <option value="">Escolher</option>
+      <option *ngFor="let subArea of segundaSubAreas" [ngValue]="subArea.idSegundaSubArea">{{ subArea.nomeSegundaSub }}
+      </option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <!-- Campo para seleção da Terceira Subárea -->
+    <label for="terceiraSubArea">Sub Área 3</label>
+    <select formControlName="terceiraSubArea" id="terceiraSubArea" class="form-control">
+      <option value="">Escolher</option>
+      <option *ngFor="let subArea of terceiraSubAreas" [ngValue]="subArea.id">{{ subArea.nomeTerceiraSub }}</option>
+    </select>
+  </div>
+  <!-- Botões de navegação -->
+
+  <div *ngIf="minhasAreas.length > 0">
+    <hr>
+    <h3>Vínculos Institucionais Adicionados:</h3>
+    <table class="table table-bordered table-striped">
+      <thead class="bg-success">
+        <tr>
+          <th>Nome da Faixa</th>
+          <th>Valor mínimo</th>
+          <th>Valor máximo</th>
+          <th>Observações</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let f of minhasAreas">
+          <td>{{ getAreaConhecimentoNome(f.areaConhecimento) }}</td>
+          <td>{{ getPrimeiraSubAreaNome(f.primeiraSubArea) }}</td>
+          <td>{{ getSegundaSubAreaNome(f.segundaSubArea) }}</td>
+          <td>{{ getTerceiraSubAreaNome(f.terceiraSubArea) }}</td>
+          <td>
+            <a href="" class="botao excluir text-danger"
+              (click)="delete(f.idPropostaConhecimento);$event.preventDefault();"
+              ngbTooltip="Remover faixa de financiamento">Remover</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="bot">
+    <button type="button" class="cancelar btn btn-danger" routerLink="login">Cancelar</button>
+    <button type="submit" class="enviar btn btn-dark" [disabled]="formPropostaConhecimento.invalid">Adicionar</button>
+  </div>
+</form>

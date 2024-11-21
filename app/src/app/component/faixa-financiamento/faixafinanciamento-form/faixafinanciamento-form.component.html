@@ -1,0 +1,97 @@
+<app-menu-edital></app-menu-edital>
+<br>
+<section id="cadastro">
+  <form (submit)="save()" [formGroup]="formfaixaFinanciamento">
+    <div class="informacoes">
+      <h1>Faixa de Financiamento</h1>
+      <p>Preencha corretamente os campos abaixo para cadastrar uma Faixa de Financiamento.</p>
+      <h3>Os campos marcados com <span class="vermelho">*</span> são obrigatórios.</h3>
+    </div>
+    <br>
+    <hr>
+    <section id="chamadas" class="dados-edital">
+      <label for="nomeFaixaFinanciamento" class="obrigatorio">Nome Faixa </label>
+      <input type="text" id="nomeFaixaFinanciamento" formControlName="nomeFaixaFinanciamento" class="form-control"
+        required
+        [ngClass]="{'is-invalid': form.nomeFaixaFinanciamento.invalid && form.nomeFaixaFinanciamento.touched, 'is-valid': form.nomeFaixaFinanciamento.valid && form.nomeFaixaFinanciamento.touched}" />
+      <div
+        *ngIf="form.nomeFaixaFinanciamento.invalid && (form.nomeFaixaFinanciamento.dirty || form.nomeFaixaFinanciamento.touched)">
+        <small class="text-danger">Nome da faixa é obrigatório.</small>
+      </div>
+
+
+      <div class="form-group">
+        <label for="minFaixaFinanciamento" class="obrigatorio">Valor mínimo da faixa:</label>
+        <input type="number" id="minFaixaFinanciamento" formControlName="minFaixaFinanciamento" class="form-control"
+          placeholder="Insira o valor mínimo" />
+        <div
+          *ngIf="form.minFaixaFinanciamento.invalid && (form.minFaixaFinanciamento.dirty || form.minFaixaFinanciamento.touched)"
+          class="text-danger">
+          O valor da faixa é obrigatório.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="maxFaixaFinanciamento" class="obrigatorio">Valor máximo da faixa:</label>
+        <input type="number" id="maxFaixaFinanciamento" formControlName="maxFaixaFinanciamento" class="form-control"
+          placeholder="Insira o valor máximo " />
+        <div
+          *ngIf="form.maxFaixaFinanciamento.invalid && (form.maxFaixaFinanciamento.dirty || form.maxFaixaFinanciamento.touched)"
+          class="text-danger">
+          O valor da faixa é obrigatório.
+        </div>
+        <div *ngIf="formfaixaFinanciamento.hasError('faixaInvalida')" class="text-danger">
+          O valor máximo da faixa não pode ser menor que o valor mínimo.
+        </div>
+      </div>
+
+      <hr>
+      <label for="observacaoFaixaFinanciamento">Observações:</label>
+      <textarea id="observacaoFaixaFinanciamento" formControlName="observacaoFaixaFinanciamento" class="form-control"
+        rows="5" maxlength="250"></textarea>
+
+      
+      <div class="bot">
+          <input type="button" value="Limpar" />
+          <input type="submit" value="Inserir" [disabled]="formfaixaFinanciamento.invalid" />
+      </div>
+
+      <br>
+
+      <div *ngIf="faixafinanciamento.length > 0">
+        <hr>
+        <h3>Vínculos Institucionais Adicionados:</h3>
+        <table class="table table-bordered table-striped">
+          <thead class="bg-success">
+            <tr>
+              <th>Nome da Faixa</th>
+              <th>Valor mínimo</th>
+              <th>Valor máximo</th>
+              <th>Observações</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let f of faixafinanciamento">
+              <td>{{ f.nomeFaixaFinanciamento }}</td>
+              <td>{{ f.minFaixaFinanciamento }}</td>
+              <td>{{ f.maxFaixaFinanciamento }}</td>
+              <td>{{ f.observacaoFaixaFinanciamento }}</td>
+              <td>
+                <a href="" class="botao excluir text-danger" (click)="delete(f.idFaixaFinanciamento);$event.preventDefault();"
+                  ngbTooltip="Remover faixa de financiamento">Remover</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <!-- Botões para adicionar e remover faixas -->
+
+    <div class="bot">
+      <input type="button" value="Cancelar" routerLink="../">
+      <input type="button" value="Salvar" (click)="redirect()">
+    </div>
+
+  </form>
+</section>

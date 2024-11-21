@@ -1,0 +1,52 @@
+<h1>Programas</h1>
+<app-barra-comandos (eventoBusca)="get($event)"></app-barra-comandos>
+<table>
+    <thead app-thead-ordenacao
+        [colunas]="colunas"
+        (ordenacaoAtualizada)="ordenar($event)"></thead>
+    <tbody>
+        <tr *ngFor="let item of registros">
+            <td>{{ item.idPrograma }}</td>
+            <td>{{ item.nomePrograma }}</td>
+            <td>{{ item.ativoPrograma? 'Ativo' : 'Inativo'}}</td>
+            <td>
+                <a routerLink="/programa/form"
+                   [queryParams]="{id: item.idPrograma}"
+                   class="botao"
+                   ngbTooltip="Editar Programa"><i class="bi bi-pencil-square"></i></a>
+                <a href=""
+                   class="botao excluir"
+                   (click)="delete(item.idPrograma);$event.preventDefault();"
+                   ngbTooltip="Excluir Diaria"><i class="bi bi-x-square"></i></a>
+            </td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="7">
+                <span *ngIf="registros.length > 0">Total de registros: {{ respostaPaginada.totalElements }}</span>
+                <span *ngIf="registros.length == 0">Nenhum registro encontrado</span>
+            </td>
+        </tr>
+    </tfoot>
+</table>
+<div id="paginacao">
+    <div>
+        <label for="tamanhoPagina">Itens por página</label>
+        <select name="tamanhoPagina"
+                id="tamanhoPagina"
+                [(ngModel)]="requisicaoPaginada.size"
+                (change)="mudarTamanhoPagina()">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+        </select>
+    </div>
+    <ngb-pagination
+        [collectionSize]="respostaPaginada.totalElements"
+        [pageSize]="respostaPaginada.size"
+        (pageChange)="mudarPagina($event)"
+        [boundaryLinks]="true"></ngb-pagination>
+</div>
+
+

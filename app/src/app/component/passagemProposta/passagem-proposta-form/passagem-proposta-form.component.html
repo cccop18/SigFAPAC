@@ -1,0 +1,134 @@
+<app-menu-proposta></app-menu-proposta>
+<br>
+<section id="cadastro">
+  <form (submit)="save()" [formGroup]="formPassagemProposta">
+    <div class="informacoes">
+      <h1>Passagens</h1>
+      <p>Preencha corretamente os campos abaixo para adicionar novas Passagens.</p>
+      <h3>Os campos marcados com <span class="vermelho">*</span> são obrigatórios.</h3>
+    </div>
+    <br>
+    <hr>
+    <section id="diarias" class="dados-edital">
+      <!-- Localidade -->
+      <!-- Localidade como label com clique -->
+    <div>
+        <!-- Tipo de Localidade -->
+        <div class="form-group">
+          <label for="tipoPassagemProposta" class="obrigatorio">Tipo de Passagem</label>
+          <select id="tipoPassagemProposta" formControlName="tipoPassagemProposta" class="form-control" (change)="onTipoLocalidadeChange()">
+            <option value="Nacional">Nacional</option>
+            <option value="Internacional">Internacional</option>
+          </select>
+        </div>
+      
+        <!-- Campos para Internacional -->
+        <div *ngIf="formPassagemProposta.get('tipoPassagemProposta')?.value === 'Internacional'">
+          <div class="form-group">
+            <label for="origemPassagemProposta" class="obrigatorio">País de Origem</label>
+            <input type="text" id="origemPassagemProposta" formControlName="origemPassagemProposta" class="form-control"
+              placeholder="Informe o país de origem da passagem." />
+          </div>
+          <div class="form-group">
+            <label for="destinoPassagemProposta" class="obrigatorio">País de Destino</label>
+            <input type="text" id="destinoPassagemProposta" formControlName="destinoPassagemProposta" class="form-control"
+              placeholder="Informe o país de destino da passagem." />
+          </div>
+          <div class="form-group">
+            <label for="idaVoltaPassagemProposta" class="obrigatorio">Ida e Volta</label>
+            <input type="radio" formControlName="idaVoltaPassagemProposta" [value]="true"> Sim
+            <input type="radio" formControlName="idaVoltaPassagemProposta" [value]="false"> Não
+          </div>
+        </div>
+      
+        <!-- Campos para Nacional -->
+        <div *ngIf="formPassagemProposta.get('tipoPassagemProposta')?.value === 'Nacional'">
+          <div class="form-group">
+            <label for="origemPassagemProposta" class="obrigatorio">Origem</label>
+            <input type="text" id="origemPassagemProposta" formControlName="origemPassagemProposta" class="form-control"
+              placeholder="Informe o estado e municipio de origem" />
+          </div>
+          <div class="form-group">
+            <label for="destinoPassagemProposta" class="obrigatorio">Destino</label>
+            <input type="text" id="destinoPassagemProposta" formControlName="destinoPassagemProposta" class="form-control"
+              placeholder="Informe o estado e municipio de destino" />
+          </div>
+          <div class="form-group">
+            <label for="idaVoltaPassagemProposta" class="obrigatorio">Ida e Volta</label>
+            <input type="radio" formControlName="idaVoltaPassagemProposta" [value]="true"> Sim
+            <input type="radio" formControlName="idaVoltaPassagemProposta" [value]="false"> Não
+          </div>
+      </div>
+
+      <!-- Outros campos de diárias -->
+      <div class="form-group">
+        <label for="quantidadePassagemProposta" class="obrigatorio">Quantidade</label>
+        <input type="number" id="quantidadePassagemProposta" formControlName="quantidadePassagemProposta" class="form-control" required
+          placeholder="1" />
+      </div>
+
+      <div class="form-group">
+        <label for="custoUnitarioPassagemProposta" class="obrigatorio">Custo Unitário</label>
+        <input type="number" id="custoUnitarioPassagemProposta" formControlName="custoUnitarioPassagemProposta" class="form-control" required
+          placeholder="0,00" />
+      </div>
+
+      <div class="form-group">
+        <label for="moeda" class="obrigatorio">Moeda</label>
+        <select id="moeda" formControlName="moeda" class="form-control" required>
+          <option *ngFor="let moeda of moedas" [ngValue]="moeda">{{ moeda.nomeMoeda }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="dataPassagemProposta" class="obrigatorio">Data</label>
+        <input type="text" id="dataPassagemProposta" formControlName="dataPassagemProposta" class="form-control" placeholder="1º Mês" />
+      </div>
+
+      <div class="bot">
+        <input type="button" value="Limpar" />
+        <input type="submit" value="Inserir" [disabled]="formPassagemProposta.invalid" />
+      </div>
+    </div>
+    </section>
+    <br>
+
+    <!-- Diárias Adicionadas -->
+    <section *ngIf="passagemProposta.length > 0">
+      <hr>
+      <h3>Passagens Adicionadas:</h3>
+      <table class="table table-bordered table-striped">
+        <thead class="bg-success">
+          <tr>
+            <th>Trecho</th>
+            <th>Mês</th>
+            <th>Quantidade</th>
+            <th>Custo Unitário</th>
+            <th>Custo Total</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let passagem of passagemProposta">
+              <td>
+                {{ passagem.origemPassagemProposta }} - 
+                {{ passagem.destinoPassagemProposta }}
+              </td>
+              <td>{{ passagem.dataPassagemProposta }}</td>
+              <td>{{ passagem.quantidadePassagemProposta }}</td>
+              <td>{{ passagem.custoUnitarioPassagemProposta }}</td>
+              <td>{{ passagem.quantidadePassagemProposta * passagem.custoUnitarioPassagemProposta }}</td>
+              <td>
+                <a href="" class="botao excluir text-danger" (click)="delete(passagem.idPassagemProposta); $event.preventDefault();" ngbTooltip="Remover diária">Remover</a>
+              </td>
+            </tr>
+          </tbody>
+      </table>
+    </section>
+
+    <div class="bot">
+      <input type="button" value="Cancelar" routerLink="../">
+      <input type="button" value="Salvar" (click)="redirect()" />
+    </div>
+  </form>
+</section>

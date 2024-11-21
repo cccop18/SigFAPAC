@@ -1,0 +1,152 @@
+<app-menu-proposta></app-menu-proposta>
+
+<section id="cadastro">
+    <form [formGroup]="formPropostaTitulo" (ngSubmit)="save()">
+        <div class="informacoes">
+            <h1>Formulário Eletrônico de Proposta de Projeto</h1>
+            <p>Preencha corretamente as informações sobre o seu Projeto.</p>
+        </div>
+        <br>
+        <hr>
+        <div class="dados-edital">
+
+            <!-- Edital/Prog. Especial -->
+            <label for="edital" class="obrigatorio">Edital/Prog. Especial:</label>
+            <input type="text" id="nomeEdital" formControlName="nomeEdital" readonly>
+
+            <!-- Título do Projeto -->
+            <label for="tituloProposta" class="obrigatorio">Título do Projeto:</label>
+            <input type="text" id="tituloProposta" formControlName="tituloProposta">
+
+            <hr>
+            <!-- Faixa de Valor -->
+            <label for="faixaProposta" class="obrigatorio">Faixa de Valor:</label>
+            <label id="faixaProposta" class="vermelho">
+            {{ faixaMin && faixaMax ? 'R$ ' + faixaMin + ' - R$ ' + faixaMax : 'Faixa não disponível' }}
+            </label>
+            <p></p>
+
+            <hr>
+            <!--<label for="areaConhecimento1" class="obrigatorio">Áreas de Conhecimento: </label>
+            <div style="display: flex;">
+                <button type="button" class="btn btn-primary" (click)="openModal(modalAreaConhecimento)"
+                    style="margin: auto;">Adicionar Áreas do Conhecimento</button>
+            </div>
+
+             <ng-template #modalAreaConhecimento let-modal>
+                <div class="modal-header">
+                    <h4 class="modal-title">Adicionar Áreas do Conhecimento</h4>
+                    <button style="margin-left: 60%; font-size: 2em;" type="button" class="close" aria-label="Close"
+                        (click)="modal.dismiss('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <app-cadastro-areaconhecimento-pesquisador
+                        (propostaConhecimento)="receberPropostaConhecimento($event)"></app-cadastro-areaconhecimento-pesquisador>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" (click)="modal.close('Save click')">Fechar</button>
+                </div>
+            </ng-template>
+            <br>
+
+            <div *ngIf="PropostaConhecimento.length > 0">
+                <h3>Áreas de conhecimento adicionadas:</h3>
+                <table class=" table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Área de Conhecimento</th>
+                            <th>Subárea 1</th>
+                            <th>Subárea 2</th>
+                            <th>Subárea 3</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor="let pc of PropostaConhecimento">
+                            <td>{{ getAreaConhecimentoNome(pc.idAreaConhecimento) }}</td>
+                            <td>{{ getPrimeiraSubAreaNome(pc.idPrimeiraSubArea) }}</td>
+                            <td>{{ getSegundaSubAreaNome(pc.idSegundaSubArea) }}</td>
+                            <td>{{ getTerceiraSubAreaNome(pc.idTerceiraSubArea) }}</td>
+                            <td>
+                                <a href="" class="botao excluir" ngbTooltip="Remover área do conhecimento"><i
+                                        class="bi bi-x-square"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <br>
+            <hr>
+            <hr>-->
+
+            <!-- Grupo de Pesquisa/CNPq -->
+            <label for="grupoPesquisa">Grupo de Pesquisa/CNPq:</label>
+            <input type="text" id="grupoPesquisa" formControlName="grupoPesquisa">
+
+            <!-- Aqui seleciona a instituicão -->
+        <label for="instituicao" class="obrigatorio">Instituicão/empresa</label>
+        <select name="instituicao" id="instituicao" required formControlName="idInstituicao" class="form-select"
+          [ngClass]="{'is-invalid': form.idInstituicao.invalid && form.idInstituicao.touched, 'is-valid': form.idInstituicao.valid && form.idInstituicao.touched}">
+          <option *ngFor="let e of instituicoes" [ngValue]="e.idInstituicao">{{e.nomeInstituicao}}</option>
+        </select>
+        <!-- Aqui seleciona a unidade -->
+        <label for="idUnidade" class="obrigatorio">Unidade/Departamento</label>
+        <select name="idUnidade" id="idUnidade" required formControlName="idUnidade"
+          class="form-select"
+          [ngClass]="{'is-invalid': form.idUnidade.invalid && form.idUnidade.touched, 'is-valid': form.idUnidade.valid && form.idUnidade.touched}">
+          <option value="" disabled selected>Selecione a unidade</option>
+          <option *ngFor="let u of unidades" [ngValue]="u.id">{{ u.nome_unidade }}</option>
+        </select>
+            <hr>
+            <!-- Início Previsto -->
+            <label for="dataInicioPesquisa" class="obrigatorio">Início Previsto:</label>
+            <input type="date" id="dataInicioPesquisa" formControlName="dataInicioPesquisa">
+
+            <!-- Duração -->
+            <label for="duracaoProposta" class="obrigatorio">Duração (Meses):</label>
+            <input type="text" id="duracaoProposta" formControlName="duracaoProposta" min="1">
+
+            <hr>
+            <!-- Condicionalmente exibir o campo de Termo de Aceite -->
+            <div *ngIf="exibirTermoAceite">
+                <label class="obrigatorio">Termo de Aceite:</label>
+                <textarea id="termoAceiteTexto" formControlName="termoAceiteTexto" readonly></textarea>
+                <label class="obrigatorio">Aceito o termo:</label>
+                <input type="radio" formControlName="termoAceiteProposta" [value]="true"> Sim
+                <input type="radio" formControlName="termoAceiteProposta" [value]="false"> Não
+                <hr>
+            </div>
+
+            <!-- Condicionalmente exibir o campo Gera Patente -->
+            <div *ngIf="exibirCamposPatente">
+                <label>Gera patente?</label>
+                <input type="radio" formControlName="patenteProposta" [value]="true"> Sim
+                <input type="radio" formControlName="patenteProposta" [value]="false"> Não
+            </div>
+
+            <!-- Condicionalmente exibir o campo Inovação Tecnológica -->
+            <div *ngIf="exibirCamposInovacao">
+                <label>Possui Inovação Tecnológica?</label>
+                <input type="radio" formControlName="inovacaoProposta" [value]="true"> Sim
+                <input type="radio" formControlName="inovacaoProposta" [value]="false"> Não
+            </div>
+
+            <!-- Condicionalmente exibir o campo Autorização Ética -->
+            <div *ngIf="exibirCamposEtica">
+                <label>Possui Autorização Ética?</label>
+                <input type="radio" formControlName="eticaProposta" [value]="true"> Sim
+                <input type="radio" formControlName="eticaProposta" [value]="false"> Não
+            </div>
+
+            <!-- Botões de ação -->
+            <div class="bot">
+                <button type="button">Cancelar</button>
+                <button type="submit" [disabled]="formPropostaTitulo.invalid">Salvar</button>
+            </div>
+
+        </div>
+    </form>
+</section>
